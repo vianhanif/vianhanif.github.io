@@ -10,7 +10,7 @@
 
 /* Custom: Warp Dark theme colors */
 
-[data-theme='dark'] {
+:root[data-bs-theme='dark'] {
   --main-bg: #181818;
   --mask-bg: #202020;
   --main-border-color: #282828;
