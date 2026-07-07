@@ -8,7 +8,7 @@ tags: [9router, warp, ade, terminal, tooling]
 
 ## How It Started
 
-It began with a privacy notice. I'd been using GitHub Copilot in VS Code — it worked fine, autocomplete was helpful. Then GitHub announced they'd start using user prompt data for model training. That didn't sit right with me. I started looking for alternatives and realized most AI coding tools had the same trade-offs: locked to one provider, opaque about data use, and expensive when you wanted more.
+It began with a privacy notice 🔒. I'd been using GitHub Copilot in VS Code — it worked fine, autocomplete was helpful. Then GitHub announced they'd start using user prompt data for model training. That didn't sit right with me 😬. I started looking for alternatives and realized most AI coding tools had the same trade-offs: locked to one provider, opaque about data use, and expensive when you wanted more.
 
 The tools I was using were black boxes. They connected to one provider, had one pricing model, and if something broke, I was stuck waiting.
 
@@ -18,7 +18,7 @@ For a while I bounced between opencode Zen (free tier) and opencode Go (paid sub
 
 Then a colleague shared 9router with me. At first it looked like overkill — a whole AI routing layer with 40+ providers, format translation, fallback chains. I didn't see why I'd need it. I was wrong. When you hit your paid subscription limit within three weeks, having fallback providers isn't optional — it's the difference between shipping a feature and waiting for the reset date.
 
-So I forked it. And then I couldn't stop.
+So I forked it. And then I couldn't stop 🏃‍♂️.
 
 ## Phase 1: Forking 9router
 
@@ -44,7 +44,7 @@ Running 9router daily taught me what matters in practice:
 
 **Multiple accounts per provider.** One provider account is a single point of failure. Upstream 9router already supports multiple accounts per provider with round-robin and sticky sessions — requests stick to one account until a configurable limit, then rotate. If an account gets locked (model-level rate limiting), it's skipped automatically.
 
-**Token compression is free money.** Upstream 9router includes the RTK (Reduce Token Kitchen) saver — it compresses `tool_result` content server-side. 20-40% fewer tokens per request, applied transparently. The agent doesn't know it's happening. The bill just shrinks.
+**Token compression is free money 💰.** Upstream 9router includes the RTK (Reduce Token Kitchen) saver — it compresses `tool_result` content server-side. 20-40% fewer tokens per request, applied transparently. The agent doesn't know it's happening. The bill just shrinks.
 
 **I rebuilt the headroom API routes for the separated server.** The headroom compression proxy (port 8787) is an upstream feature, but the original API was still wired into the monolithic Next.js server. After the monorepo split, I reimplemented `/api/headroom/status`, `/api/headroom/start`, and `/api/headroom/stop` on the new Hono server — auth-gated with localhost detection plus a CLI token for remote control. The service auto-detects the binary (headroom CLI or Python 3.10+), manages a PID file under `~/.9router/headroom/`, and probes health with configurable timeout. Once the tunnel was in place I could check compression status from anywhere.
 
@@ -93,7 +93,7 @@ It didn't stick. The tmux overhead felt heavy, and the isolation added ceremony 
 
 ### opencode-environment-bootstrap — Reproducible Setup
 
-Every new machine meant reinstalling OpenCode, reconfiguring MCP servers, re-setting up shell aliases, re-downloading skills. I built [opencode-environment-bootstrap](https://github.com/vianhanif/opencode-environment-bootstrap) — a single curl-to-bash command that provisions an entire workstation: OpenCode config, Zsh setup, dev tools (Zed, Ghostty, Bruno), MCP runtimes (duckdb, firecrawl, metabase, serena), and a full custom agent system.
+Every new machine meant reinstalling OpenCode, reconfiguring MCP servers, re-setting up shell aliases, re-downloading skills 🥱. I built [opencode-environment-bootstrap](https://github.com/vianhanif/opencode-environment-bootstrap) — a single curl-to-bash command that provisions an entire workstation: OpenCode config, Zsh setup, dev tools (Zed, Ghostty, Bruno), MCP runtimes (duckdb, firecrawl, metabase, serena), and a full custom agent system.
 
 ### The `/delegate` System — Multi-Agent Orchestration
 
@@ -122,7 +122,7 @@ All of these were bolt-on solutions. They worked — up to a point. The hard lim
 
 **1. OpenCode CLI is a TUI.** Full-screen terminal UI with menus, panels, focus modes. Powerful, but it doesn't feel native when you live in a shell. I want to type commands, pipe output, use my own prompt, my own aliases. A TUI is a layer between me and the terminal that I can't bypass. Every time I tabbed into OpenCode, I left my shell environment behind.
 
-**2. The agent execution model is sequential.** The `/delegate` system could fan out — but once a subagent finished, the parent had exactly one shot to process the result. No re-iteration. No follow-up. No "that doesn't look right, try again." The flow was delegate → subagent completes → parent continues. No feedback cycle. OpenCode's session model doesn't support a parent resuming a subagent with new context after receiving results.
+**2. The agent execution model is sequential 🔗.** The `/delegate` system could fan out — but once a subagent finished, the parent had exactly one shot to process the result. No re-iteration. No follow-up. No "that doesn't look right, try again." The flow was delegate → subagent completes → parent continues. No feedback cycle. OpenCode's session model doesn't support a parent resuming a subagent with new context after receiving results.
 
 **3. No native orchestration.** Everything I built with `/delegate` was a custom protocol on top of OpenCode's tool system. There was no runtime managing lifecycle, no message passing between agents, no shared state. The DAG execution was emulated, not native.
 
@@ -172,7 +172,7 @@ And critically: Oz agents run in the terminal itself — no TUI layer. I'm in my
 
 Warp also supports custom OpenAI-compatible providers. I pointed it at a 9router endpoint and suddenly every agent session was routing through 9router — multi-provider, compressed tokens, automatic fallback, all invisible. But there was a catch: Warp's Oz agent infrastructure runs in an isolated context. It can't reach `localhost` ports. To connect Warp to 9router, I needed a public HTTPS endpoint.
 
-That's where the tunnel came in.
+That's where the tunnel came in 🕳️.
 
 **The cost economics are worth calling out.** Oz orchestration syncs to Warp's cloud by default — conversation history, agent runs, artifacts — and it's free. My only recurring costs are $10/month for opencode Go (paid tier) plus a yearly domain invoice for the tunnel endpoint, with free providers (Gemini free tier, OpenCode Free, Groq free tier) as fallback layers through 9router. There's no Warp subscription, no per-seat fee, no hidden infra cost. The router handles the cost optimization; Warp provides the orchestration runtime at zero marginal cost.
 
@@ -227,13 +227,13 @@ I also built tunnel management into 9router's Hono server — API endpoints to s
 
 ## Phase 6: What Broke (and What Didn't)
 
-Things that failed more than once:
+Things that failed more than once 💥:
 
 - **OAuth token expiry mid-request** — fixed by proactive refresh
 - **cloudflared crash after macOS sleep/wake** — fixed by launchd KeepAlive
 - **Model-level rate limits on shared accounts** — fixed by per-model lock keys in the database
 
-Things that held up:
+Things that held up 🛡️:
 
 - The Hono server has never crashed on me
 - Format translation (between provider formats) works silently — I forget it's happening
@@ -294,7 +294,7 @@ The day-to-day interface to this stack is a handful of zsh aliases across `~/.zs
 
 The split is intentional: `headroom-start/stop` talk directly to the headroom binary, `hr-start/stop/status` route through the Hono server API (accessible remotely via the tunnel). Same proxy, two control paths.
 
-## Still In Progress
+## Still In Progress 🚧
 
 This isn't a finished product. It's a running experiment. Current open questions:
 
