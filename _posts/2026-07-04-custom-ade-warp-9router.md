@@ -61,6 +61,7 @@ Running 9router daily taught me what matters in practice:
 | Architect | round-robin | ocg/qwen3.6-plus, minimax-m2.7, ocg/deepseek-v4-pro |
 | Premium | round-robin | ocg/deepseek-v4-pro, qwen3.7-max, qwen3.6-plus |
 | General | round-robin | nests into Cheap → Almost-Free → Medium (combo hierarchy) |
+
 `Deep-Thinker` chains Architect → Premium.
 
 The import/export format evolved alongside the strategies. I bumped the export to version 2 so it emits the full strategy config object (`fallbackStrategy` + optional `judgeModel`) instead of the legacy `roundRobin` boolean. The import path does backward-compat detection — old exports still work. The round-trip is how I tune routing: export JSON, paste into any AI chat for analysis, get back a tuned config, import. No dashboard required.
@@ -243,6 +244,7 @@ Things that held up 🛡️:
 ## Comparing Approaches: Warp ADE vs OpenCode Go
 
 At this point opencode Go was my daily driver. Coming from this setup, the limitations become visible:
+
 | Dimension | Warp ADE | OpenCode Go |
 |---|---|---|
 | **Interface** | Shell-native — agents run inline in terminal | Full-screen TUI — separate from shell |
