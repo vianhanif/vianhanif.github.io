@@ -1,132 +1,113 @@
 {
-  "theme": "Warp Dark (Chirpy Adaptation)",
-  "colors": {
-    "--main-bg": "#061229",
-    "--mask-bg": "#10203d",
-    "--main-border-color": "#163056",
+  "theme": "Warp True Black",
 
-    "--text-color": "#FFFFFF",
-    "--text-muted-color": "#A9C4DD",
-    "--text-muted-highlight-color": "#D5E8F8",
+  "colors": {
+    "--main-bg": "#0B0B0B",
+    "--mask-bg": "#161616",
+    "--main-border-color": "#222222",
+
+    "--text-color": "#F5F5F5",
+    "--text-muted-color": "#9C9C9C",
+    "--text-muted-highlight-color": "#CFCFCF",
     "--heading-color": "#FFFFFF",
-    "--label-color": "#C8DEF2",
+    "--label-color": "#C4C4C4",
 
     "--link-color": "#82CFFF",
-    "--link-hover-color": "#C1E3FE",
+    "--link-hover-color": "#A6DEFF",
     "--link-underline-color": "#60A5FA",
 
-    "--sidebar-bg": "#08152F",
-    "--sidebar-border-color": "#163056",
-    "--sidebar-muted-color": "#9BBAD8",
+    "--sidebar-bg": "#0D0D0D",
+    "--sidebar-border-color": "#1E1E1E",
+    "--sidebar-muted-color": "#7F7F7F",
     "--sidebar-active-color": "#FFFFFF",
-    "--sidebar-hover-bg": "#10203D",
-    "--sidebar-btn-bg": "#0C1A36",
-    "--sidebar-btn-color": "#A9C4DD",
+    "--sidebar-hover-bg": "#171717",
+    "--sidebar-btn-bg": "#151515",
+    "--sidebar-btn-color": "#9C9C9C",
     "--site-title-color": "#FFFFFF",
-    "--site-subtitle-color": "#A9C4DD",
-    "--avatar-border-color": "#D5E8F8",
+    "--site-subtitle-color": "#8E8E8E",
 
-    "--topbar-bg": "#08152FCC",
-    "--topbar-text-color": "#FFFFFF",
-    "--search-border-color": "#163056",
-    "--search-icon-color": "#82CFFF",
-    "--input-focus-border-color": "#60A5FA",
+    "--topbar-bg": "rgba(11,11,11,0.82)",
+    "--topbar-text-color": "#F5F5F5",
+    "--search-border-color": "#232323",
+    "--search-icon-color": "#7A7A7A",
+    "--input-focus-border-color": "#82CFFF",
 
-    "--button-bg": "#08152F",
-    "--btn-border-color": "#163056",
-    "--card-header-bg": "#10203D",
-    "--card-bg": "#08152F",
-    "--card-hover-bg": "#163056",
-    "--kbd-bg-color": "#10203D",
-    "--kbd-text-color": "#FFFFFF",
-    "--kbd-wrap-color": "#82CFFF",
+    "--button-bg": "#121212",
+    "--btn-border-color": "#262626",
 
-    "--highlight-bg-color": "#04101F",
-    "--highlighter-rouge-color": "#C1E3FE",
-    "--highlight-lineno-color": "#82CFFF",
-    "--inline-code-bg": "#10203D",
-    "--code-color": "#FFFFFF",
-    "--code-header-text-color": "#A9C4DD",
-    "--code-header-muted-color": "#163056",
-    "--language-border-color": "#163056",
+    "--card-bg": "#111111",
+    "--card-header-bg": "#161616",
+    "--card-hover-bg": "#1B1B1B",
+
+    "--kbd-bg-color": "#171717",
+    "--kbd-text-color": "#F5F5F5",
+    "--kbd-wrap-color": "#5C5C5C",
+
+    "--highlight-bg-color": "#151515",
+    "--highlighter-rouge-color": "#CFEBFF",
+    "--highlight-lineno-color": "#666666",
+
+    "--inline-code-bg": "#191919",
+    "--code-color": "#EDEDED",
+    "--code-header-text-color": "#A3A3A3",
+    "--code-header-muted-color": "#252525",
+    "--language-border-color": "#252525",
 
     "--toc-highlight": "#82CFFF",
-    "--toc-popup-border-color": "#163056",
-    "--menu-bg": "#08152F",
-    "--menu-border-color": "#163056",
+    "--toc-popup-border-color": "#232323",
+
+    "--menu-bg": "#111111",
+    "--menu-border-color": "#242424",
     "--menu-active-color": "#FFFFFF",
-    "--menu-highlight-bg": "#10203D",
+    "--menu-highlight-bg": "#1B1B1B",
 
-    "--tag-hover": "#163056",
-    "--tag-border": "#2B4A75",
-    "--tag-shadow": "#04101F",
-    "--dash-color": "#2B4A75",
-    "--categories-border": "#2B4A75",
-    "--categories-hover-bg": "#163056",
+    "--tag-hover": "#1A1A1A",
+    "--tag-border": "#303030",
+    "--tag-shadow": "#090909",
+
+    "--dash-color": "#343434",
+    "--categories-border": "#343434",
+    "--categories-hover-bg": "#222222",
+
     "--timeline-node-bg": "#82CFFF",
-    "--timeline-color": "#2B4A75",
+    "--timeline-color": "#2B2B2B",
 
-    "--tb-odd-bg": "#08152F",
-    "--tb-even-bg": "#10203D",
-    "--tb-border-color": "#163056",
+    "--tb-odd-bg": "#121212",
+    "--tb-even-bg": "#181818",
+    "--tb-border-color": "#242424",
 
-    "--prompt-text-color": "#D5E8F8",
+    "--prompt-text-color": "#DADADA",
 
-    "--prompt-tip-bg": "#10311D",
+    "--prompt-tip-bg": "#13261A",
     "--prompt-tip-icon-color": "#4ADE80",
 
-    "--prompt-info-bg": "#0B2A45",
+    "--prompt-info-bg": "#13273B",
     "--prompt-info-icon-color": "#82CFFF",
 
-    "--prompt-warning-bg": "#3A300F",
+    "--prompt-warning-bg": "#372A0C",
     "--prompt-warning-icon-color": "#FACC15",
 
-    "--prompt-danger-bg": "#381818",
+    "--prompt-danger-bg": "#3B1717",
     "--prompt-danger-icon-color": "#FF6B6B",
 
-    "--checkbox-color": "#82CFFF",
+    "--checkbox-color": "#7C7C7C",
     "--checkbox-checked-color": "#82CFFF",
 
-    "--footnote-target-bg": "#60A5FA",
+    "--footnote-target-bg": "#2B67C8",
 
-    "--btn-share-color": "#A9C4DD",
+    "--btn-share-color": "#8D8D8D",
     "--btn-share-hover-color": "#FFFFFF",
 
-    "--btn-backtotop-color": "#FFFFFF",
-    "--btn-backtotop-border-color": "#163056",
+    "--btn-backtotop-color": "#E8E8E8",
+    "--btn-backtotop-border-color": "#222222",
 
-    "--btn-paginator-text-color": "#FFFFFF",
-    "--btn-paginator-hover-color": "#10203D",
+    "--btn-paginator-text-color": "#F5F5F5",
+    "--btn-paginator-hover-color": "#1A1A1A",
 
-    "--search-tag-bg": "#10203D",
+    "--search-tag-bg": "#181818",
 
     "--clipboard-checked-color": "#4ADE80",
 
-    "--filepath-text-color": "#FFFFFF",
-
-    "terminal": {
-      "background": "#061229",
-      "foreground": "#FFFFFF",
-      "cursor": "#82CFFF",
-      "selection": "#163056",
-
-      "black": "#000000",
-      "red": "#FF6B6B",
-      "green": "#4ADE80",
-      "yellow": "#FACC15",
-      "blue": "#60A5FA",
-      "magenta": "#C084FC",
-      "cyan": "#22D3EE",
-      "white": "#E5E7EB",
-
-      "brightBlack": "#666666",
-      "brightRed": "#FF8E8E",
-      "brightGreen": "#6EE7A8",
-      "brightYellow": "#FFE066",
-      "brightBlue": "#82CFFF",
-      "brightMagenta": "#D8B4FE",
-      "brightCyan": "#67E8F9",
-      "brightWhite": "#FFFFFF"
-    }
+    "--filepath-text-color": "#F5F5F5"
   }
 }
