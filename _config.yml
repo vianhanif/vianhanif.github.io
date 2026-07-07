@@ -1,0 +1,22 @@
+title: "Alvian's Blog"
+description: >-
+  Stories about building tools, AI routing, and custom development environments.
+baseurl: ""
+url: "https://vianhanif.github.io"
+permalink: pretty
+markdown: kramdown
+
+exclude:
+  - posts/
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - README.md
+  - .gitignore
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: "default"
