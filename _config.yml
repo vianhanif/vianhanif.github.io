@@ -14,18 +14,18 @@ github:
   username: vianhanif
 
 twitter:
-  username: vianhanif
+  username:
 
 social:
   name: Alvian
-  email: alvian@example.com
+  email: alvian524@gmail.com
   links:
     - https://github.com/vianhanif
-    - https://twitter.com/vianhanif
+    - https://linkedin.com/in/vianhanif
 
-theme_mode:
-avatar:
-social_preview_image:
+theme_mode: dark
+avatar: /static/image.jpg
+social_preview_image: /static/social_image.jpeg
 toc: true
 
 paginate: 10
