@@ -1,0 +1,132 @@
+{
+  "theme": "Warp Dark (Chirpy Adaptation)",
+  "colors": {
+    "--main-bg": "#061229",
+    "--mask-bg": "#10203d",
+    "--main-border-color": "#163056",
+
+    "--text-color": "#FFFFFF",
+    "--text-muted-color": "#A9C4DD",
+    "--text-muted-highlight-color": "#D5E8F8",
+    "--heading-color": "#FFFFFF",
+    "--label-color": "#C8DEF2",
+
+    "--link-color": "#82CFFF",
+    "--link-hover-color": "#C1E3FE",
+    "--link-underline-color": "#60A5FA",
+
+    "--sidebar-bg": "#08152F",
+    "--sidebar-border-color": "#163056",
+    "--sidebar-muted-color": "#9BBAD8",
+    "--sidebar-active-color": "#FFFFFF",
+    "--sidebar-hover-bg": "#10203D",
+    "--sidebar-btn-bg": "#0C1A36",
+    "--sidebar-btn-color": "#A9C4DD",
+    "--site-title-color": "#FFFFFF",
+    "--site-subtitle-color": "#A9C4DD",
+    "--avatar-border-color": "#D5E8F8",
+
+    "--topbar-bg": "#08152FCC",
+    "--topbar-text-color": "#FFFFFF",
+    "--search-border-color": "#163056",
+    "--search-icon-color": "#82CFFF",
+    "--input-focus-border-color": "#60A5FA",
+
+    "--button-bg": "#08152F",
+    "--btn-border-color": "#163056",
+    "--card-header-bg": "#10203D",
+    "--card-bg": "#08152F",
+    "--card-hover-bg": "#163056",
+    "--kbd-bg-color": "#10203D",
+    "--kbd-text-color": "#FFFFFF",
+    "--kbd-wrap-color": "#82CFFF",
+
+    "--highlight-bg-color": "#04101F",
+    "--highlighter-rouge-color": "#C1E3FE",
+    "--highlight-lineno-color": "#82CFFF",
+    "--inline-code-bg": "#10203D",
+    "--code-color": "#FFFFFF",
+    "--code-header-text-color": "#A9C4DD",
+    "--code-header-muted-color": "#163056",
+    "--language-border-color": "#163056",
+
+    "--toc-highlight": "#82CFFF",
+    "--toc-popup-border-color": "#163056",
+    "--menu-bg": "#08152F",
+    "--menu-border-color": "#163056",
+    "--menu-active-color": "#FFFFFF",
+    "--menu-highlight-bg": "#10203D",
+
+    "--tag-hover": "#163056",
+    "--tag-border": "#2B4A75",
+    "--tag-shadow": "#04101F",
+    "--dash-color": "#2B4A75",
+    "--categories-border": "#2B4A75",
+    "--categories-hover-bg": "#163056",
+    "--timeline-node-bg": "#82CFFF",
+    "--timeline-color": "#2B4A75",
+
+    "--tb-odd-bg": "#08152F",
+    "--tb-even-bg": "#10203D",
+    "--tb-border-color": "#163056",
+
+    "--prompt-text-color": "#D5E8F8",
+
+    "--prompt-tip-bg": "#10311D",
+    "--prompt-tip-icon-color": "#4ADE80",
+
+    "--prompt-info-bg": "#0B2A45",
+    "--prompt-info-icon-color": "#82CFFF",
+
+    "--prompt-warning-bg": "#3A300F",
+    "--prompt-warning-icon-color": "#FACC15",
+
+    "--prompt-danger-bg": "#381818",
+    "--prompt-danger-icon-color": "#FF6B6B",
+
+    "--checkbox-color": "#82CFFF",
+    "--checkbox-checked-color": "#82CFFF",
+
+    "--footnote-target-bg": "#60A5FA",
+
+    "--btn-share-color": "#A9C4DD",
+    "--btn-share-hover-color": "#FFFFFF",
+
+    "--btn-backtotop-color": "#FFFFFF",
+    "--btn-backtotop-border-color": "#163056",
+
+    "--btn-paginator-text-color": "#FFFFFF",
+    "--btn-paginator-hover-color": "#10203D",
+
+    "--search-tag-bg": "#10203D",
+
+    "--clipboard-checked-color": "#4ADE80",
+
+    "--filepath-text-color": "#FFFFFF",
+
+    "terminal": {
+      "background": "#061229",
+      "foreground": "#FFFFFF",
+      "cursor": "#82CFFF",
+      "selection": "#163056",
+
+      "black": "#000000",
+      "red": "#FF6B6B",
+      "green": "#4ADE80",
+      "yellow": "#FACC15",
+      "blue": "#60A5FA",
+      "magenta": "#C084FC",
+      "cyan": "#22D3EE",
+      "white": "#E5E7EB",
+
+      "brightBlack": "#666666",
+      "brightRed": "#FF8E8E",
+      "brightGreen": "#6EE7A8",
+      "brightYellow": "#FFE066",
+      "brightBlue": "#82CFFF",
+      "brightMagenta": "#D8B4FE",
+      "brightCyan": "#67E8F9",
+      "brightWhite": "#FFFFFF"
+    }
+  }
+}
