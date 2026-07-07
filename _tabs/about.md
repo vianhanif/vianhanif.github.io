@@ -1,9 +1,8 @@
 ---
-layout: default
-title: About
+# the default layout is 'page'
+icon: fas fa-info-circle
+order: 4
 ---
-
-# About
 
 I build tools, break things, and write about the intersection of AI, infrastructure, and developer environments.
 

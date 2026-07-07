@@ -1,5 +1,4 @@
 ---
-layout: default
 title: "Building a Custom ADE: The Story of 9router + Warp Terminal"
 date: 2026-07-04
 tags: [9router, warp, ade, terminal, tooling]
