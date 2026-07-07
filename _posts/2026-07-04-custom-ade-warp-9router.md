@@ -22,11 +22,11 @@ So I forked it. And then I couldn't stop.
 
 ## Phase 1: Forking 9router
 
-9router (based on [decolua/9router](https://github.com/decolua/9router)) was already a smart AI router — it sat between your coding tools and 40+ LLM providers, handling format translation and fallback. But it was built as a Next.js monolith. The dashboard and the routing engine were one big blob.
+9router (based on [decolua/9router](https://github.com/decolua/9router)) was already a smart AI router — it sat between your coding tools and LLM providers, handling format translation and fallback. But it was built as a Next.js monolith. The dashboard and the routing engine were one big blob.
 
 First thing I did: split the monorepo. The API server (Hono, ~65KB) got its own workspace. The dashboard (Next.js, ~300MB with deps) got another. The CLI got its own package with esbuild bundling.
 
-```
+```text
 Before:  one big Next.js app
 After:   apps/server/   (Hono, port 20128)
          apps/dashboard/ (Next.js, port 3000)
@@ -49,7 +49,6 @@ Running 9router daily taught me what matters in practice:
 **I rebuilt the headroom API routes for the separated server.** The headroom compression proxy (port 8787) is an upstream feature, but the original API was still wired into the monolithic Next.js server. After the monorepo split, I reimplemented `/api/headroom/status`, `/api/headroom/start`, and `/api/headroom/stop` on the new Hono server — auth-gated with localhost detection plus a CLI token for remote control. The service auto-detects the binary (headroom CLI or Python 3.10+), manages a PID file under `~/.9router/headroom/`, and probes health with configurable timeout. Once the tunnel was in place I could check compression status from anywhere.
 
 **OAuth tokens expire.** 9router handles proactive token refresh — before every request, it checks if any credentials are near expiry and refreshes them. This stopped a recurring failure mode where my provider OAuth tokens would expire mid-session.
-
 
 **The combo system — cost architecture in practice.** The actual routing config lives in `~/.ai/combos.json`. It defines named model tiers with specific fallback strategies:
 
@@ -84,13 +83,13 @@ This directory is the entire operational state. 9router doesn't depend on extern
 
 ## Phase 3: Pre-Warp — The OpenCode Ecosystem
 
-Before Warp had agents, OpenCode CLI was my daily driver. It ran on top of 9router, and for single-turn coding tasks it was fine. But as I pushed it further, I kept running into edges. Each edge got its own repo.
+Before Warp had agents, OpenCode CLI was my daily driver. It ran on top of 9router, and for single-turn coding tasks it was fine. But as I pushed it further, I kept running into edges that each warranted their own tool.
 
 ### opencode-tree — Attempt at Environment Isolation (Failed)
 
 OpenCode runs one session at a time in one directory. Context-switching between tasks meant stashing changes, switching branches, hoping not to lose my place. I tried building [opencode-tree](https://github.com/vianhanif/opencode-tree) — a tool that creates isolated git worktrees with a tmux session, one window for OpenCode and another for shell, with auto-cleanup.
 
-It didn't stick. The tmux overhead felt heavy, and the isolation added ceremony to every task start/stop. The idea was right (worktree isolation), but the execution didn't fit my flow. I still want to solve this — Warp has tab configs with worktree templates that might achieve the same isolation with less ceremony, but I haven't explored that path yet.
+It didn't stick. The tmux overhead felt heavy, and the isolation added ceremony to every task start/stop. The idea was right (worktree isolation), but the execution didn't fit my flow. Warp's tab configs with worktree templates might achieve the same isolation with less ceremony — I haven't explored that path yet.
 
 ### opencode-environment-bootstrap — Reproducible Setup
 
@@ -100,7 +99,7 @@ Every new machine meant reinstalling OpenCode, reconfiguring MCP servers, re-set
 
 The bootstrap included my most ambitious OpenCode hack: the `/delegate` command. A custom OpenCode command that orchestrates multi-agent workflows via annotated task delegation.
 
-```
+```text
 /delegate
 @planner design auth system migration for PROJ-1237
 @result @coder implement auth changes
@@ -115,7 +114,7 @@ It even had a pre-delegation validation step that enforced 4 explicit confirmati
 
 ### opencode-session-viewer — Session Forensics
 
-OpenCode's built-in `opencode session list` shows only 3 fields: session ID, title, and update time. There's no detail command. I built [opencode-session-viewer](https://github.com/vianhanif/opencode-session-viewer) in Go to fill this gap — it queries the OpenCode SQLite DB directly and surfaces agent used, model used, message count, todo progress, recent message content, diff stats, and subagent hierarchy. A forensic tool for understanding what actually happened across sessions.
+OpenCode's built-in `opencode session list` shows only 3 fields: session ID, title, and update time. There's no detail command. I built [opencode-session-viewer](https://github.com/vianhanif/opencode-session-viewer) in Go to fill this gap — it queries the OpenCode SQLite DB directly and surfaces agent used, model used, message count, todo progress, recent message content, diff stats, and subagent hierarchy. A forensic tool for understanding what happened across sessions.
 
 ### Why I Eventually Hit a Wall
 
@@ -155,11 +154,11 @@ Then Warp added agents. And more importantly, it added orchestration.
 
 The Oz platform in Warp lets a lead agent spawn parallel child agents, each working on independent subtasks. The lead agent coordinates them via messaging, collects results, and integrates. This is exactly what my `/delegate` function tried to do — but without the limitations.
 
-Child agents can be messaged. The lead agent can send follow-up instructions, ask for revisions, or re-delegate after reviewing results. The flow is bidirectional, not fire-and-forget.
+Child agents can be messaged. The lead agent can send follow-up instructions, ask for revisions, or re-delegate after reviewing results.
 
 A task that would normally be a serial sequence becomes a fan-out:
 
-```
+```text
 Lead agent (plans, coordinates)
   ├── child: research the API surface and write findings
   ├── child: implement the backend changes on a worktree
@@ -204,7 +203,7 @@ The result is `local-tunnel`: Cloudflare tunnel + Caddy (optional), managed as a
 
 **The flow:**
 
-```
+```text
 Warp agent (needs HTTPS endpoint)
   ↓
 https://my-subdomain.example.com/v1
