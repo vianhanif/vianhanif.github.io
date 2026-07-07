@@ -14,6 +14,19 @@ exclude:
   - README.md
   - .gitignore
 
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+author: Alvian
+
+highlighter: rouge
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
 defaults:
   - scope:
       path: ""

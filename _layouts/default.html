@@ -3,19 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title != "Home" %}{{ page.title }} — {% endif %}{{ site.title }}</title>
+  {% seo %}
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
 </head>
 <body>
+  <div class="progress-bar" id="progressBar"></div>
   <header class="site-header">
-    <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    <div class="header-left">
+      <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+    </div>
+    <nav class="header-right">
+      <a href="{{ '/tags/' | relative_url }}" class="header-link">Tags</a>
+      <a href="{{ '/about/' | relative_url }}" class="header-link">About</a>
+      <a href="{{ '/feed.xml' | relative_url }}" class="header-link" title="RSS Feed">RSS</a>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    </nav>
   </header>
   <main>
+    {% if page.date %}
+    <div class="post-meta">
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+      {% assign words = content | number_of_words | default: 0 %}
+      {% assign minutes = words | divided_by: 200 | at_least: 1 %}
+      <span class="reading-time">{{ minutes }} min read</span>
+    </div>
+    {% endif %}
+    <details id="toc" class="toc">
+      <summary>Table of Contents</summary>
+    </details>
     {{ content }}
   </main>
   <footer class="site-footer">
     <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Written with curiosity in Jakarta.</p>
   </footer>
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
