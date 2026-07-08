@@ -4,8 +4,6 @@ date: 2026-07-04
 tags: [9router, warp, ade, terminal, tooling]
 ---
 
-# Building a Custom ADE: The Story of 9router + Warp Terminal
-
 ## How It Started
 
 It began with a privacy notice 🔒. I'd been using GitHub Copilot in VS Code — it worked fine, autocomplete was helpful. Then GitHub announced they'd start using user prompt data for model training. That didn't sit right with me 😬. I started looking for alternatives and realized most AI coding tools had the same trade-offs: locked to one provider, opaque about data use, and expensive when you wanted more.
