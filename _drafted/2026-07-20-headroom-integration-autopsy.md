@@ -5,7 +5,7 @@ layout: page
 
 So, I spent a weekend building a feature that did absolutely nothing.
 
-Let me back up. 9Router routes LLM requests to various providers—opencode-go, groq, cerebras, the usual suspects. Tokens add up, costs add up, and I figured, *what if we could compress the messages before sending them?*
+Let me back up. [9Router](https://github.com/vianhanif/9router) routes LLM requests to various providers—opencode-go, groq, cerebras, the usual suspects. Tokens add up, costs add up, and I figured, *what if we could compress the messages before sending them?*
 
 Enter Headroom. It's this nifty proxy that sits between your app and the LLM providers and compresses the conversation context. The pitch is compelling: less tokens, less money, same output quality. Sign me up.
 
