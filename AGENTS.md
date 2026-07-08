@@ -120,6 +120,7 @@ All projects live under `~/Documents/alvian/`:
    - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
 4. Commit and push — pipeline auto-deploys
 5. **Manual**: Post LinkedIn text + comment first. Then Medium post (publish timing staggered 2-4 weeks after each blog group)
+   - **Medium import**: https://medium.com/p/import — paste content here, set canonical URL to your blog post, publish
 
 ### Publishing orchestration rule
 
