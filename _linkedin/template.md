@@ -1,31 +1,34 @@
 ---
-title: "[TITLE] - LinkedIn Post"
+title: "[TITLE]"
 date: 2026-07-08
-linked_post: /posts/[slug]/
+linked_posts:
+  - /posts/[slug-1]/
+  - /posts/[slug-2]/
 medium_post: https://medium.com/@[username]/[slug]
-status: ready
+status: draft
 ---
 
-# LinkedIn Post (Text-Only)
+# LinkedIn Post (Text-Only, Teaser)
 
 [Hook - 1-2 sentences that creates curiosity or states the problem]
 
-[Body - 2-4 paragraphs. Tell the story. What was the problem? What did you try? What worked? Keep it conversational, like explaining to a colleague.]
+[Body - 2-4 paragraphs. Short teaser covering the story arc across multiple blog posts. Keep it tight — 3-5 paragraphs max. Like telling a colleague about something that happened.]
 
-[Key insight or takeaway - one sentence that summarizes the main value]
+[Key insight - one sentence that closes the teaser and makes people want more]
 
 ---
 
 # Comment (First Comment)
 
-Full breakdown linked:
+Full story on Medium — with links to the original blog posts:
 
-→ Blog: [vianhanif.github.io/linked_post]
-→ Medium: [medium_post]
+→ https://medium.com/@[username]/[slug]
+
+---
 
 # Notes
 
 - [ ] Post text-only (no links in main body)
-- [ ] CTA: "Full breakdown linked in the comments below"
+- [ ] CTA: teaser ends with a hook
 - [ ] Post the comment immediately after publishing post
 - [ ] Wait 10-15 minutes before engaging with comments

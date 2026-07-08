@@ -98,8 +98,8 @@ All projects live under `~/Documents/alvian/`:
 |-----------|---------|
 | `_posts/` | Published posts (live on site) |
 | `_drafted/` | Draft posts staged for future publication |
-| `_linkedin/` | LinkedIn post + comment link prep (one `.md` per blog post) |
-| `_medium/` | Medium syndication prep with canonical URL (one `.md` per blog post) |
+| `_linkedin/` | Short teaser post + first-comment link to Medium. 3 items, one per topic group |
+| `_medium/` | Expanded story per LinkedIn topic with inline links back to blog. 3 items. Original content — no canonical URL |
 | `_drafts/` | Jekyll-native drafts dir (not used — use `_drafted/` instead) |
 
 **Draft posts go in `_drafted/`**, not `_drafts/`. The `_drafted/` directory is a custom Jekyll collection defined in `_config.yml` — it has `output: true` so drafts are previewable at `/drafted/:title/` without being indexed or on the main feed.
@@ -116,18 +116,19 @@ All projects live under `~/Documents/alvian/`:
 1. Draft written and pushed to `_drafted/YYYY-MM-DD-title.md`
 2. On publish day, move file from `_drafted/` → `_posts/` (update frontmatter if needed, keep same date)
 3. **AI generates**:
-   - `_linkedin/YYYY-MM-DD-title.md` — LinkedIn post text + comment links
-   - `_medium/YYYY-MM-DD-title.md` — Medium copy + canonical URL prep
+   - `_linkedin/` — 3 short teaser posts, one per topic group, grouped by story arc
+   - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
 4. Commit and push — pipeline auto-deploys
-5. **Manual**: Post LinkedIn text + comment. Medium syndicate 2-4 weeks later
+5. **Manual**: Post LinkedIn text + comment first. Then Medium post (publish timing staggered 2-4 weeks after each blog group)
 
 ### Publishing orchestration rule
 
 Every AI-assisted writing session MUST:
 1. Check if the drafted post will be published (asked or implied by user)
-2. If yes, auto-create prep files in `_linkedin/` and `_medium/` matching the post slug
-3. Fill in: post content preview, links, canonical URL, copy-ready text
-4. Use `_linkedin/` and `_medium/` templates for structure
+2. If yes, determine the topic group it belongs to (subscription story, router story, or ADE story)
+3. Generate or update the corresponding `_linkedin/` and `_medium/` prep files for that topic group
+4. Fill in: teaser text for LinkedIn, expanded story for Medium, inline links back to blog posts
+5. Use `_linkedin/` and `_medium/` templates for structure
 
 **Do NOT post to LinkedIn or Medium on behalf of the user. Generate prep files only — the post/comment action is manual.**
 
