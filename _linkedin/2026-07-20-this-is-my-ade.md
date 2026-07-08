@@ -1,6 +1,6 @@
 ---
 title: "This Is My ADE"
-date: 2026-07-09
+date: 2026-07-20
 linked_posts:
   - /posts/the-tunnel/
   - /posts/warp-came-back-around/

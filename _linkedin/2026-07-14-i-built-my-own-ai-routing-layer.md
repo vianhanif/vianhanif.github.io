@@ -1,6 +1,6 @@
 ---
 title: "I Built My Own AI Routing Layer"
-date: 2026-07-09
+date: 2026-07-14
 linked_posts:
   - /posts/tools-i-built-around-opencode/
   - /posts/the-router-my-colleague-showed-me/
