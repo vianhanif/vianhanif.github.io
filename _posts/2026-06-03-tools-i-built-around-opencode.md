@@ -8,11 +8,11 @@ I was three levels deep in an OpenCode session when I realized the tool wasn't g
 
 I built four tools that month. Not because I wanted to. Because I had to.
 
-**opencode-tree** came first. It created isolated git worktrees with dedicated tmux sessions — each project got its own workspace, dependencies, and terminal layout. The theory was clean: keep projects separate so agents don't cross-contaminate. In practice, it meant naming tmux sessions, remembering window layouts, and managing panes. The isolation worked. The cognitive overhead didn't. I abandoned it after two weeks. The relief of deleting that code was immediate.
+[**opencode-tree**](https://github.com/vianhanif/opencode-tree) came first. It created isolated git worktrees with dedicated tmux sessions — each project got its own workspace, dependencies, and terminal layout. The theory was clean: keep projects separate so agents don't cross-contaminate. In practice, it meant naming tmux sessions, remembering window layouts, and managing panes. The isolation worked. The cognitive overhead didn't. I abandoned it after two weeks. The relief of deleting that code was immediate.
 
-**opencode-environment-bootstrap** solved the opposite problem: starting from zero. I'm a tech lead at work with three team members. Every time someone joined or we added a new tool, I'd walk them through the same setup — install this, clone that, configure these credentials. The bootstrap script automated the entire handoff. A single `curl | bash` provisioned a complete workstation with repos cloned, dependencies installed, SSH keys generated, OpenCode pre-configured. I could send one link in Slack and they'd be ready in five minutes. Standardizing the team environment meant fewer surprises when code ran differently on different machines. This one survived the cull — it's still in my toolchain today, updated with every new tool we adopt.
+[**opencode-environment-bootstrap**](https://github.com/vianhanif/opencode-environment-bootstrap) solved the opposite problem: starting from zero. I'm a tech lead at work with three team members. Every time someone joined or we added a new tool, I'd walk them through the same setup — install this, clone that, configure these credentials. The bootstrap script automated the entire handoff. A single `curl | bash` provisioned a complete workstation with repos cloned, dependencies installed, SSH keys generated, OpenCode pre-configured. I could send one link in Slack and they'd be ready in five minutes. Standardizing the team environment meant fewer surprises when code ran differently on different machines. This one survived the cull — it's still in my toolchain today, updated with every new tool we adopt.
 
-The main event was **`/delegate`**.
+The main event was **[`/delegate`](https://github.com/vianhanif/opencode-environment-bootstrap)**.
 
 ```
 /delegate
@@ -27,7 +27,7 @@ Six agent types — planner, coder, reviewer, tester, analyzer, brain — with d
 
 The first time I ran a four-agent chain and watched it complete without intervention, I felt relief I hadn't expected. The system worked. It was janky, bolt-on, and held together by annotation parsing, but it worked.
 
-I also built a **session-viewer** — a timeline renderer for OpenCode conversations. It showed agent actions, file changes, provider switches, token consumption per step. Useful for debugging why an agent went off course. Purely diagnostic. It told me what happened after the fact. It couldn't shape the flow.
+I also built a **[session-viewer](https://github.com/vianhanif/opencode-session-viewer)** — a timeline renderer for OpenCode conversations. It showed agent actions, file changes, provider switches, token consumption per step. Useful for debugging why an agent went off course. Purely diagnostic. It told me what happened after the fact. It couldn't shape the flow.
 
 All four tools were bolt-on solutions. They worked, but they hit hard limits.
 
