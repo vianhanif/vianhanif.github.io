@@ -7,8 +7,10 @@ sitemap: false
 
 Syndication prep files for LinkedIn posts.
 
-{% if site.linkedin.size > 0 %}
-  {% for post in site.linkedin reversed %}
+{% assign template = "[TITLE]" %}
+{% assign posts = site.linkedin | where_exp: "post", "post.title != template" %}
+{% if posts.size > 0 %}
+  {% for post in posts reversed %}
 - [**{{ post.title }}**]({{ post.url | relative_url }})
   {% if post.date %}  *Date: {{ post.date | date: "%B %-d, %Y" }}*{% endif %}
   {% endfor %}
