@@ -18,7 +18,7 @@ I closed the tab. Went back to the auth bug.
 
 ---
 
-A week later, it happened again. 1am. Deploy waiting. OpenCode Go had hit its monthly cap. I was staring at a rate-limit error, thinking about how much work I still had left.
+A week later, it happened again. 1am. Deploy waiting. OpenCode Go had hit its $60 monthly cap. I was staring at a rate-limit error, thinking about how much work I still had left.
 
 The fallback providers existed. They were right there in the account settings — a list of free tier options I'd never configured. I'd been treating them like a joke. A backup for emergencies. Something I'd get around to someday.
 
