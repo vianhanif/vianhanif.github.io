@@ -1,6 +1,6 @@
 ---
 title: "This Is My ADE"
-date: 2026-08-03
+date: 2026-07-20
 linked_posts:
   - /posts/the-tunnel/
   - /posts/warp-came-back-around/
@@ -45,12 +45,11 @@ ade, developer-tools, ai, infrastructure, orchestration, devops
 
 ## Publish Timing
 → Blog series: all 9 posts published July 9, 2026
-→ LinkedIn: Jul 9, Jul 14, Jul 20 (5-day stagger)
-→ Medium: Jul 24, Jul 29, Aug 3 (same cadence, day after each LinkedIn post)
+→ LinkedIn + Medium: Jul 9, Jul 14, Jul 20 (same-day per topic group)
 
 ## Notes
 
-- [ ] Schedule Medium: Aug 3 (day after third LinkedIn post Jul 20)
+- [ ] Schedule on Fedica: LinkedIn post + comment with Medium link → then post on Medium same day
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: this is the capstone story, may perform well behind paywall
