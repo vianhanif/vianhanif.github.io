@@ -10,7 +10,7 @@ Then the server started. 200 milliseconds instead of fifteen seconds.
 
 I sat there for a moment, surprised at how light it felt. I'd been bracing for a heavy dev loop and got something that felt almost empty.
 
-This was the first thing I changed after forking 9router: the monorepo split.
+This was the first thing I changed after forking [9router](https://github.com/vianhanif/9router): the monorepo split.
 
 The upstream was a Next.js monolith — dashboard, routing engine, CLI, all in one blob. Every change meant waiting for Next.js to recompile. The CLI `npm install` pulled in the entire dashboard dependency tree. I ripped it apart: the API server (Hono) got its own workspace, the dashboard (Next.js) another, the CLI got esbuild bundling and its own package. Now I can update the routing engine without touching the dashboard — or never install the dashboard at all.
 
