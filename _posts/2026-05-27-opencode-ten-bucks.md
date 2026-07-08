@@ -20,7 +20,7 @@ I remember one specific moment: debugging a production issue, had four tmux pane
 
 I felt trapped. The best coding AI I'd used required me to step out of my environment to reach it. That's when I started looking more seriously at alternatives.
 
-I built tools to paper over the gaps. Git worktree isolation scripts, environment bootstrap from a single curl command, even a custom `/delegate` system for multi-agent orchestration. (Full story in [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/).) They worked. But every tool was a bolt-on. The architecture had a ceiling I couldn't raise from the outside.
+I built tools to paper over the gaps. Git worktree isolation scripts, environment bootstrap from a single curl command, even a custom [`/delegate`](https://github.com/vianhanif/opencode-environment-bootstrap) system for multi-agent orchestration. (Full story in [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/).) They worked. But every tool was a bolt-on. The architecture had a ceiling I couldn't raise from the outside.
 
 A colleague put it to me this way: OpenCode is an appliance. It works out of the box. You pay, you use, it delivers. But you own nothing inside it. I was trying to turn an appliance into a chassis — something I could swap components in and out of. The chassis analogy stuck. OpenCode was the best appliance I'd used. But I could feel the difference between using a tool and owning the stack.
 
