@@ -1,5 +1,7 @@
 ---
 title: "The 403 That Wasn't One Problem"
+date: 2026-08-01
+tags: [warp, 9router, postmortem, technical]
 layout: page
 ---
 

@@ -41,3 +41,7 @@ The entire operational state lives in `~/.9router/`: a SQLite database with prov
 I didn't plan any of this. Each change came from a specific failure — rate limit at midnight, slow startup every edit, token expiry mid-request, locked account on a Friday deploy. The router became what the failures demanded.
 
 See [how I found 9router in the first place](/posts/the-router-my-colleague-showed-me/) and [why it needed a tunnel to be useful](/posts/the-tunnel/). [Warp Came Back Around](/posts/warp-came-back-around/) is where all this finally clicked.
+
+---
+
+**Sources:** [9router upstream README](https://github.com/decolua/9router) (RTK 20-40% token savings, tier 2 cheap providers including MiniMax) · [MiniMax API pricing](https://platform.minimax.io/docs/guides/pricing-paygo) (M2.7, M2.5, M2.1 at $0.30/M input)

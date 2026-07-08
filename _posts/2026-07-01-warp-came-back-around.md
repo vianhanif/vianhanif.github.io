@@ -38,10 +38,14 @@ The flow: Warp agent hits `https://api.mydomain.com`, Cloudflare routes through 
 
 I wrote the full tunnel story separately (see [The Tunnel](/posts/the-tunnel/)), but the punchline matters here: before the tunnel, I was hedging — running prompts twice, burning API credits. After the tunnel, every request hits my local server. Sub-millisecond latency. Zero per-call cost.
 
-The cost economics sealed the deal. Oz orchestration is free. My only recurring costs: $10/month for OpenCode Go plus a yearly domain invoice. Free providers handle the fallback layers through 9router. No Warp subscription. No per-seat fee.
+The cost economics sealed the deal. Oz orchestration is free — Warp's Free plan includes BYOK, so every request hits my own 9router endpoint with no per-call Warp charges. My only recurring costs: $10/month for OpenCode Go plus a yearly domain invoice. Free providers handle the fallback layers through 9router. No per-seat fee.
 
 I added MCP servers — kubectl for Kubernetes context, duckdb for inline queries, firecrawl for web research, lean-ctx for codebase search. Every child agent gets access through the shared MCP configuration.
 
 I walked away from Warp the first time because it looked like another locked-in AI subscription. I came back because they'd built the platform I was hacking together myself.
+
+---
+
+**Sources:** [Warp pricing page](https://www.warp.dev/pricing) (Free plan includes BYOK, no per-call charge) · [OpenCode Go documentation](https://opencode.ai/docs/go/) ($10/month)
 
 The difference between being locked in and choosing to use something is the ability to leave. That's what custom providers gave me. And that's what made Warp worth a second look.

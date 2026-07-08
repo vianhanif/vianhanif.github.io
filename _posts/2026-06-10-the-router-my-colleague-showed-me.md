@@ -40,4 +40,8 @@ So the monorepo split became the first change after forking: the API server (Hon
 
 See [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/) for what led here. See [What I Changed in 9router](/posts/what-i-changed-in-9router/) for what happened next.
 
+---
+
+**Sources:** [OpenCode Go documentation](https://opencode.ai/docs/go/) ($10/month, $60/month usage budget across three rolling windows: $12/5h, $30/week, $60/month)
+
 *Thanks to [Mahardicka Nurachman](https://github.com/m4har) and [Valerian Dwi Purnomo](https://github.com/valeriandwi) for showing me 9router.*

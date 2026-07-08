@@ -1,17 +1,19 @@
 ---
 title: "The Headroom Debacle: When Good Ideas Go Silent"
+date: 2026-07-20
+tags: [9router, postmortem, technical]
 layout: page
 ---
 
-So, I spent a weekend building a feature that did absolutely nothing.
+I found Headroom in a random LinkedIn post. It looked great — a compression proxy that sits between your app and the LLM providers, strips redundant context, saves tokens. The pitch was compelling. I wanted it.
 
-Let me back up. [9Router](https://github.com/vianhanif/9router) routes LLM requests to various providers—opencode-go, groq, cerebras, the usual suspects. Tokens add up, costs add up, and I figured, *what if we could compress the messages before sending them?*
+I was already running my own [9router](https://github.com/vianhanif/9router) fork by this point. So I tried setting it up myself. Installed the proxy, pointed it at localhost:8787, tested a few requests. Got something working — or so I thought.
 
-Enter Headroom. It's this nifty proxy that sits between your app and the LLM providers and compresses the conversation context. The pitch is compelling: less tokens, less money, same output quality. Sign me up.
+Around the same time, my colleague [Aries Maulana](https://github.com/ariesmaulana) mentioned that upstream 9router had shipped a version update with Headroom built in. No need for the manual setup I'd been hacking together — the upstream had already done the integration.
 
-I integrated it into 9Router's routing pipeline. The code path looked clean: chat.js → chatCore.js → rtk/headroom.js → HTTP POST localhost:8787/v1/compress. I wrote the integration, tested it locally, shipped it.
+I pulled the newer version. Then came the merge conflicts. Lots of them. My fork had diverged, and reconciling the upstream's headroom integration with my changes was the heaviest work of the whole thing. I resolved everything, tested it, and it seemed to work. The dashboard showed the Headroom toggle. The logs showed compression events. I thought I was done.
 
-And then... nothing happened. Costs stayed the same. Token counts didn't budge.
+I wasn't.
 
 ## The Silent 404
 
@@ -48,10 +50,10 @@ I evaluated six approaches:
 | Fix the URL | ❌ No such endpoint exists |
 | Fork Headroom | ❌ Scope creep |
 | Python microserver with transformers | ❌ ~2.5GB of ML deps for one feature |
-| Route through headroom proxy | ❌ Only works for OpenAI/Anthropic/Gemini, not 9Router's custom providers |
+| Route through headroom proxy | ❌ Only works for OpenAI/Anthropic/Gemini, not 9router's custom providers |
 | **Remove it** | ✅ Done |
 
-Option E—the proxy route—also failed because 9Router's providers use custom API paths. opencode-go uses `/zen/go/v1/chat/completions`, groq uses `/openai/v1/chat/completions`. These don't match Headroom's explicit routes. Even when paths *did* match, Headroom hard-forwards to OpenAI, not to 9Router's actual backend.
+Option E—the proxy route—also failed because 9router's providers use custom API paths. opencode-go uses `/zen/go/v1/chat/completions`, groq uses `/openai/v1/chat/completions`. These don't match Headroom's explicit routes. Even when paths *did* match, Headroom hard-forwards to OpenAI, not to 9router's actual backend.
 
 ## What Actually Works
 

@@ -1,5 +1,7 @@
 ---
 title: "The Server That Lived in My Sight"
+date: 2026-08-15
+tags: [9router, postmortem, technical]
 layout: page
 ---
 
