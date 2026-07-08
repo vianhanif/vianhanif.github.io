@@ -16,7 +16,7 @@ I'd spotted it a few weeks earlier. Colleagues had a dashboard open — more pro
 
 Then the subscription cap hit again.
 
-A week later: 1am. Deploy waiting. OpenCode Go had hit its monthly cap. The rate-limit error stared back at me. The fallback providers existed — I'd been treating them like a joke. A backup for emergencies. Something I'd get around to someday.
+A week later: 1am. Deploy waiting. OpenCode Go had hit its $60 monthly cap. The rate-limit error stared back at me. The fallback providers existed — I'd been treating them like a joke. A backup for emergencies. Something I'd get around to someday.
 
 When you hit your paid limit three weeks in, having fallback providers isn't optional. It's the difference between shipping and waiting for the reset date.
 

@@ -28,7 +28,7 @@ Then came the tunnel. Warp's Oz agents run in an isolated context — they can't
 
 The full tunnel story — the wrong turns with local-tunnel and Cloudflare Quick Tunnel, the two-layer architecture, surviving macOS sleep: [The Tunnel](https://vianhanif.github.io/posts/the-tunnel/).
 
-The last piece was Warp itself. I'd walked away the first time — another AI subscription. But by the time I came back, Warp had transformed. Custom provider support meant I could point it at my 9router endpoint. Native orchestration with `run_agents` meant I could finally do what my bolt-on `/delegate` system had tried to do — but with lifecycle management, inter-agent messaging, and parallel fan-out instead of sequential chains.
+The last piece was Warp itself. I'd walked away the first time — the Build plan was $20/month for 1,500 credits, another AI subscription. But by the time I came back, Warp had transformed. Custom provider support meant I could point it at my 9router endpoint with my own API keys — no Warp AI credits needed. The Free plan covered everything else. Native orchestration with `run_agents` meant I could finally do what my bolt-on `/delegate` system had tried to do — but with lifecycle management, inter-agent messaging, and parallel fan-out instead of sequential chains.
 
 The full story of coming back to Warp, migrating the agent system, and why custom providers made all the difference: [Warp Came Back Around](https://vianhanif.github.io/posts/warp-came-back-around/).
 

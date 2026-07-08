@@ -12,15 +12,15 @@ status: draft
 
 ## Content to Copy
 
-GitHub Copilot started training on my prompts. Not opt-in. Not a checkbox. Just: *your code now belongs to us unless you noticed this buried in a changelog and turned it off.*
+On March 25, 2026, GitHub announced that interaction data from Copilot Free, Pro, and Pro+ users would be used for AI model training starting April 24 — opt-out by default, not opt-in. The toggle lives under Settings > Copilot > Privacy. You'd have to know it exists. Just: *your code now belongs to us unless you noticed this buried in a changelog and turned it off.*
 
 I left that afternoon. The trust broke in five minutes — and once broken, I couldn't unsee the rest. I was locked to one provider, paying a subscription, and my data was being fed back into training. That's not ownership. It's tenancy.
 
-I went looking for alternatives. Warp had a beautiful terminal with inline AI completions — the kind of experience that feels like the future for the first hour. Then I hit the pricing page. AI features required a separate subscription. Monthly. On top of everything else. Same model, different package.
+I went looking for alternatives. Warp had a beautiful terminal with inline AI completions — the kind of experience that feels like the future for the first hour. Then I hit the pricing page. AI features required the Build plan: $20/month for 1,500 credits, or you could bring your own API key to avoid Warp's metering entirely. Monthly. On top of everything else. Same model, different package.
 
 I uninstalled it that evening. Not angry — tired. Tired of every AI tool becoming a platform with pricing tiers. I wrote the full breakdown of that moment here: [Warp Tried to Sell Me AI Again](https://vianhanif.github.io/posts/warp-tried-to-sell-me-ai/).
 
-OpenCode came next. A $10/month TUI that worked great — fast models, responsive CLI, solid output. I forgot I was paying per month. Then I hit the cap. Three weeks into every billing cycle, the spinner stopped. Rate limit exceeded. The feature I was building could wait — but the resentment didn't.
+OpenCode came next. A $10/month TUI that worked great — fast models, responsive CLI, solid output. I forgot I was paying per month. Then I hit the cap. OpenCode Go runs on a $60/month usage budget split across three rolling windows: $12 per 5 hours, $30 per week, $60 per month. Three weeks of heavy use and I was staring at a rate-limit error. The feature I was building could wait — but the resentment didn't.
 
 OpenCode isn't bad. It's the best appliance I've used. But it's an appliance — you pay, it works, and you own nothing inside it. I wanted a chassis: something I could swap components in and out of. The difference between using a tool and owning the stack.
 

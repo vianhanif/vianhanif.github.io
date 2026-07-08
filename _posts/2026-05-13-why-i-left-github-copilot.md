@@ -4,9 +4,9 @@ date: 2026-05-13
 tags: [copilot, privacy, ai, tooling]
 ---
 
-I remember the exact moment. Scrolling through GitHub notifications on a Tuesday afternoon and there it was — an announcement buried in a changelog. GitHub Copilot would start using your prompts to train future models.
+I remember the exact moment. Scrolling through GitHub notifications on a Tuesday afternoon and there it was — an announcement buried in a changelog. GitHub Copilot would start using your prompts to train future models, effective April 24, 2026.
 
-Not opt-in. Not a checkbox buried in settings. Just: *your code now belongs to us unless you noticed this and turned it off.*
+Not opt-in. Not a checkbox buried in settings. The toggle exists — under Settings > Copilot > Privacy — but default-on is not consent. Just: *your code now belongs to us unless you noticed this and turned it off.*
 
 I sat with that for a while. The sick feeling of realizing a tool I'd been depending on had made a decision about my work without asking, without warning, without recourse.
 

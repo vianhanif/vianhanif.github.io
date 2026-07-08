@@ -18,7 +18,7 @@ It was fast. Inline completions appearing before I finished typing. Natural lang
 
 Then I hit the pricing page.
 
-The AI features needed Warp's own subscription. Monthly. On top of everything else.
+The AI features needed the Build plan — $20/month at the time — for anything beyond a handful of trial credits. Monthly. On top of everything else.
 
 I closed the settings panel and sat with the disappointment.
 

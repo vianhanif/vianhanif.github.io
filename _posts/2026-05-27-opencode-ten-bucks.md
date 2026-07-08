@@ -6,7 +6,7 @@ tags: [opencode, tui, ai, tooling]
 
 Three weeks into the billing cycle, I watched the spinner stop. Rate limit exceeded. The feature I was building could wait — but the resentment didn't.
 
-I'd been bouncing between OpenCode Zen (free) and OpenCode Go ($10/mo) for months. Neither was bad. Both had the same flaw: I'd hit the subscription cap before the month ended. Three weeks in, every time, like clockwork.
+I'd been bouncing between OpenCode Zen (free) and OpenCode Go ($10/mo) for months. Neither was bad. Both had the same flaw: I'd hit the subscription cap before the month ended. OpenCode Go runs on a $60/month usage budget split across three rolling windows — $12 per 5 hours, $30 per week, $60 per month. Three weeks in, every time, like clockwork.
 
 When Go worked, it was great. Fast models, responsive CLI, solid output. I forgot I was paying per month. Then the cap hit and I was either squeezing by on the free tier or debating an upgrade I didn't need. The subscription model made sure I never got too comfortable.
 
