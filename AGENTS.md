@@ -1,0 +1,81 @@
+# AI Usage Context
+
+Reference for writing about my AI setup. Keeps story details consistent across posts.
+
+## Current Setup
+
+| Layer | Tool | Notes |
+|-------|------|-------|
+| Primary environment | **Warp Terminal** (Oz platform) | Agents run inline in shell. Native child-agent orchestration via `run_agents` |
+| AI router | **9router** (fork of decolua/9router) | Hono API server, port 20128. OpenAI-compatible endpoint |
+| Tunnel | **Cloudflare Tunnel** + Caddy | Managed as macOS `launchd` service. Public HTTPS for Warp agents |
+| MCP servers | kubectl, duckdb, firecrawl, lean-ctx, metabase, serena | Shared across all agents |
+| Shell | zsh (macOS) | |
+
+## Previous Tooling
+
+| Tool | Status | Notes |
+|------|--------|-------|
+| OpenCode CLI (Go) | Still used occasionally | $10/mo subscription. Full-screen TUI |
+| OpenCode Zen | Previously used | Free tier |
+| GitHub Copilot | Abandoned | Privacy concerns (prompt data for training) |
+| `/delegate` system | Replaced by Warp Oz | Custom multi-agent DAG on OpenCode — now native in Warp |
+
+## Routing Architecture
+
+- **Provider model**: Multi-account, multi-provider routing via `~/.ai/combos.json`
+- **Fallback tiers**: Subscription → cheap API ($0.2/1M) → free tier
+- **Token compression**: RTK (Reduce Token Kitchen) / headroom proxy — 20-40% fewer tokens transparently
+- **Auth**: Proactive OAuth token refresh before every request
+- **Model-level rate limiting**: Per-model lock keys in SQLite
+
+### Combo Tiers
+
+| Combo | Cost | Strategy |
+|-------|------|----------|
+| Cheap | Lowest | round-robin across budget models |
+| Almost-Free | Near zero | Mostly free-tier models |
+| Fast-Coder | Moderate | Fast inference priority |
+| Architect | Higher | Strong reasoning models |
+| Premium | Highest | Best available |
+| General | Adaptive | Nests Cheap → Almost-Free → Medium |
+
+## Agent Roles
+
+Defined in `~/.agents/`. Tool-agnostic — same skills work in OpenCode and Warp.
+
+- **Planner** — design, architecture, research before coding
+- **Coder** — implement changes in git worktrees
+- **Reviewer** — review code, enforce standards
+- **Tester** — write and validate tests
+- **Analyzer** — debug, trace, root cause
+
+## Infrastructure
+
+- **9router runtime state**: `~/.9router/` (SQLite DB, PID files, auth tokens, logs)
+- **Tunnel**: Dedicated repo `local-tunnel` — 5 files (Caddyfile, config.yml, plist, setup.sh, README)
+- **Domain**: Personal domain on Cloudflare (free tier)
+
+## Cost
+
+- ~$10/mo opencode Go subscription
+- Yearly domain registration
+- Everything else free (Cloudflare tunnel, Gemini free tier, Groq free tier, etc.)
+- No Warp subscription
+
+## Key Repos
+
+| Repo | Purpose |
+|------|---------|
+| [github.com/vianhanif/9router](https://github.com/vianhanif/9router) | AI router (forked + customized) |
+| [github.com/vianhanif/local-tunnel](https://github.com/vianhanif/local-tunnel) | Cloudflare tunnel setup |
+| [github.com/vianhanif/opencode-environment-bootstrap](https://github.com/vianhanif/opencode-environment-bootstrap) | Workstation provisioning |
+| [github.com/vianhanif/opencode-session-viewer](https://github.com/vianhanif/opencode-session-viewer) | Session forensics |
+| [github.com/vianhanif/opencode-tree](https://github.com/vianhanif/opencode-tree) | Worktree isolation (experiment, not in use) |
+
+## Writing Style Notes
+
+- **Names**: "Warp" (not "Warp Terminal" on second reference), "9router" (lowercase), "Oz" (Warp's orchestration platform), "MCP" (Model Context Protocol)
+- **Terms**: "ADE" (Agentic Development Environment), "TUI" (terminal UI), "launchd" (not launchctl, except as the command)
+- **Tone**: Technical but approachable. First-person narrative. Real problems, real solutions.
+- **Avoid**: Exaggeration, marketing language, superlatives without evidence
