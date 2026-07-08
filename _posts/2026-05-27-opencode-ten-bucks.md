@@ -20,7 +20,7 @@ I remember one specific moment: debugging a production issue, had four tmux pane
 
 I felt trapped. The best coding AI I'd used required me to step out of my environment to reach it. That's when I started looking more seriously at alternatives.
 
-I built tools to paper over the gaps. Git worktree isolation scripts, environment bootstrap from a single curl command, even a custom `/delegate` system for multi-agent orchestration. (Full story in [The Tools I Built Around OpenCode](./2026-06-03-tools-i-built-around-opencode.md).) They worked. But every tool was a bolt-on. The architecture had a ceiling I couldn't raise from the outside.
+I built tools to paper over the gaps. Git worktree isolation scripts, environment bootstrap from a single curl command, even a custom `/delegate` system for multi-agent orchestration. (Full story in [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/).) They worked. But every tool was a bolt-on. The architecture had a ceiling I couldn't raise from the outside.
 
 A colleague put it to me this way: OpenCode is an appliance. It works out of the box. You pay, you use, it delivers. But you own nothing inside it. I was trying to turn an appliance into a chassis — something I could swap components in and out of. The chassis analogy stuck. OpenCode was the best appliance I'd used. But I could feel the difference between using a tool and owning the stack.
 
@@ -32,6 +32,6 @@ I didn't want a smarter chatbot. I wanted an environment where agents were nativ
 
 That's not what OpenCode was built for. I knew it. But the TUI wall was a clue I couldn't ignore: the architecture of the tool was constraining how I could work. The ceiling wasn't the model quality. It was the interface itself.
 
-That realization sent me back to reconsider tools I'd dismissed — including the one I talk about in [Warp Tried to Sell Me AI Again](./2026-05-20-warp-tried-to-sell-me-ai.md). [The Tools I Built Around OpenCode](./2026-06-03-tools-i-built-around-opencode.md) covers everything I bolted onto OpenCode while trying to make it into what I needed.
+That realization sent me back to reconsider tools I'd dismissed — including the one I talk about in [Warp Tried to Sell Me AI Again](/posts/warp-tried-to-sell-me-ai/). [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/) covers everything I bolted onto OpenCode while trying to make it into what I needed.
 
 > *Thanks to [Aries Maulana](https://github.com/ariesmaulana) for sharing OpenCode Go with me.*

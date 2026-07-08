@@ -20,7 +20,7 @@ It took six months to get here. The Hono server starts in 200ms. Routing config 
 
 The entire runtime footprint fits in one directory.
 
-[I rebuilt the router from a 200MB Next.js monolith to a 2.5MB CLI](./2026-06-17-what-i-changed-in-9router.md). [I built a tunnel when I discovered Warp's Oz agents couldn't reach localhost](./2026-06-24-the-tunnel.md). [I migrated the agent system from OpenCode's bolt-on delegate to Warp's native orchestration](./2026-07-01-warp-came-back-around.md). Each layer was built because the previous one had a wall I couldn't go through.
+[I rebuilt the router from a 200MB Next.js monolith to a 2.5MB CLI](/posts/what-i-changed-in-9router/). [I built a tunnel when I discovered Warp's Oz agents couldn't reach localhost](/posts/the-tunnel/). [I migrated the agent system from OpenCode's bolt-on delegate to Warp's native orchestration](/posts/warp-came-back-around/). Each layer was built because the previous one had a wall I couldn't go through.
 
 Things broke. OAuth tokens expired mid-request. cloudflared crashed after macOS sleep. Model-level rate limits hit shared accounts. Each failure taught me where to reinforce: proactive refresh, launchd KeepAlive, per-model lock keys in the database.
 
@@ -38,7 +38,7 @@ OpenCode is an appliance. This is a chassis. One works out of the box. The other
 
 What started with a rate-limit error and a refusal to accept that a subscription should control when I can code became something larger. Six posts, four infrastructure layers, two tool migrations, zero subscriptions that lock me in. Every layer is mine to own, swap, or replace.
 
-**The best AI development environment is the one you can take apart and rebuild.** That was the thesis of [Why I Left GitHub Copilot](./2026-05-13-why-i-left-github-copilot.md). Six posts later, I mean it more than I did then.
+**The best AI development environment is the one you can take apart and rebuild.** That was the thesis of [Why I Left GitHub Copilot](/posts/why-i-left-github-copilot/). Six posts later, I mean it more than I did then.
 
 And if I decide tomorrow that Warp isn't the right shell, or 9router isn't the right router, or I want to switch from OpenAI-compatible to Anthropic-native — nothing else breaks.
 
@@ -49,15 +49,15 @@ That's the ceiling a custom ADE buys you. Not a better subscription. A better ce
 
 This post is the end of a six-month story. Here's how to read it:
 
-1. **[Why I Left GitHub Copilot](./2026-05-13-why-i-left-github-copilot.md)** — The privacy problem that started everything
-2. **[Warp Tried to Sell Me AI Again](./2026-05-20-warp-tried-to-sell-me-ai.md)** — The subscription wall
-3. **[OpenCode: The $10/mo TUI](./2026-05-27-opencode-ten-bucks.md)** — Finding a tool that fit the budget
-4. **[The Tools I Built Around OpenCode](./2026-06-03-tools-i-built-around-opencode.md)** — Building the gaps closed
-5. **[The Router My Colleague Showed Me](./2026-06-10-the-router-my-colleague-showed-me.md)** — Discovering 9router
-6. **[What I Changed in 9router](./2026-06-17-what-i-changed-in-9router.md)** — Forking and customizing the router
-7. **[The Tunnel](./2026-06-24-the-tunnel.md)** — Making local AI reachable from the internet
-8. **[Warp Came Back Around](./2026-07-01-warp-came-back-around.md)** — The platform caught up
-9. **[This Is My ADE](./2026-07-08-this-is-my-ade.md)** — You are here
+1. **[Why I Left GitHub Copilot](/posts/why-i-left-github-copilot/)** — The privacy problem that started everything
+2. **[Warp Tried to Sell Me AI Again](/posts/warp-tried-to-sell-me-ai/)** — The subscription wall
+3. **[OpenCode: The $10/mo TUI](/posts/opencode-ten-bucks/)** — Finding a tool that fit the budget
+4. **[The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/)** — Building the gaps closed
+5. **[The Router My Colleague Showed Me](/posts/the-router-my-colleague-showed-me/)** — Discovering 9router
+6. **[What I Changed in 9router](/posts/what-i-changed-in-9router/)** — Forking and customizing the router
+7. **[The Tunnel](/posts/the-tunnel/)** — Making local AI reachable from the internet
+8. **[Warp Came Back Around](/posts/warp-came-back-around/)** — The platform caught up
+9. **[This Is My ADE](/posts/this-is-my-ade/)** — You are here
 
 Start from Post 1 for the full arc, or jump to any post that interests you — each one has enough context to stand alone.
 

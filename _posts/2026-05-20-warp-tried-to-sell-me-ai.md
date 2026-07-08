@@ -38,4 +38,4 @@ I walked away.
 
 ---
 
-See [Why I Left GitHub Copilot](./2026-05-13-why-i-left-github-copilot.md) for what sent me searching. See [OpenCode: The $10/mo TUI](./2026-05-27-opencode-ten-bucks.md) for what I found instead.
+See [Why I Left GitHub Copilot](/posts/why-i-left-github-copilot/) for what sent me searching. See [OpenCode: The $10/mo TUI](/posts/opencode-ten-bucks/) for what I found instead.

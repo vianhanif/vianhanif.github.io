@@ -38,6 +38,6 @@ The monorepo was the first thing I cracked open. Next.js monolith, routing engin
 
 I was supposed to be customizing. I ended up refactoring.
 
-See [The Tools I Built Around OpenCode](./2026-06-03-tools-i-built-around-opencode.md) for what led here. See [What I Changed in 9router](./2026-06-17-what-i-changed-in-9router.md) for what happened next.
+See [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/) for what led here. See [What I Changed in 9router](/posts/what-i-changed-in-9router/) for what happened next.
 
 *Thanks to [Mahardicka Nurachman](https://github.com/m4har) and [Valerian Dwi Purnomo](https://github.com/valeriandwi) for showing me 9router.*

@@ -36,4 +36,4 @@ I didn't leave Copilot because it stopped working. I left because I stopped trus
 
 The search led me to two places: a $10/month TUI, and a terminal that came back around two years later with a completely different pitch. Neither was what I expected.
 
-See [Warp Tried to Sell Me AI Again](./2026-05-20-warp-tried-to-sell-me-ai.md) for what came next — and how I almost didn't give Warp a second chance. For the record, [OpenCode](./2026-05-27-opencode-ten-bucks.md) came before Warp did, and it taught me more about what I actually needed from an AI coding tool.
+See [Warp Tried to Sell Me AI Again](/posts/warp-tried-to-sell-me-ai/) for what came next — and how I almost didn't give Warp a second chance. For the record, [OpenCode](/posts/opencode-ten-bucks/) came before Warp did, and it taught me more about what I actually needed from an AI coding tool.

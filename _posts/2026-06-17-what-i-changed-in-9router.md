@@ -40,4 +40,4 @@ The entire operational state lives in `~/.9router/`: a SQLite database with prov
 
 I didn't plan any of this. Each change came from a specific failure — rate limit at midnight, slow startup every edit, token expiry mid-request, locked account on a Friday deploy. The router became what the failures demanded.
 
-See [how I found 9router in the first place](./2026-06-10-the-router-my-colleague-showed-me.md) and [why it needed a tunnel to be useful](./2026-06-24-the-tunnel.md). [Warp Came Back Around](./2026-07-01-warp-came-back-around.md) is where all this finally clicked.
+See [how I found 9router in the first place](/posts/the-router-my-colleague-showed-me/) and [why it needed a tunnel to be useful](/posts/the-tunnel/). [Warp Came Back Around](/posts/warp-came-back-around/) is where all this finally clicked.
