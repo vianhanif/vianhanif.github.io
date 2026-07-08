@@ -25,13 +25,13 @@ Same pattern everywhere: leave one locked-in tool, find another.
 
 The best AI development environment is the one you can take apart and rebuild. That realization sent me somewhere unexpected.
 
+#AIDevelopment #DeveloperTools #Privacy #OpenSource #TechStack
+
 ---
 
 # Comment (First Comment)
 
-Full story on Medium — with links to the original blog posts:
-
-→ https://medium.com/@vianhanif/why-i-stopped-trusting-ai-subscriptions
+Full story on Medium → https://medium.com/@vianhanif/why-i-stopped-trusting-ai-subscriptions
 
 ---
 

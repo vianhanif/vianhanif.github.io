@@ -29,13 +29,13 @@ I forked it that weekend. And then I couldn't stop.
 
 The router became what the failures demanded.
 
+#AI #OpenSource #DevOps #DeveloperTools #Programming
+
 ---
 
 # Comment (First Comment)
 
-Full story on Medium — with links to the original blog posts:
-
-→ https://medium.com/@vianhanif/i-built-my-own-ai-routing-layer
+Full story on Medium → https://medium.com/@vianhanif/i-built-my-own-ai-routing-layer
 
 ---
 

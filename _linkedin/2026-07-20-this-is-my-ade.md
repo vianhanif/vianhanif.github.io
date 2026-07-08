@@ -33,13 +33,13 @@ OpenCode is an appliance. This is a chassis. One works out of the box. The other
 
 That's the ceiling a custom ADE buys you. Not a better subscription. A better ceiling.
 
+#AIDevelopment #DeveloperTools #OpenSource #Infrastructure #Automation
+
 ---
 
 # Comment (First Comment)
 
-Full story on Medium — with links to the original blog posts:
-
-→ https://medium.com/@vianhanif/this-is-my-ade
+Full story on Medium → https://medium.com/@vianhanif/this-is-my-ade
 
 ---
 

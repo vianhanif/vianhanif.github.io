@@ -16,13 +16,13 @@ status: draft
 
 [Key insight - one sentence that closes the teaser and makes people want more]
 
+[3-5 relevant hashtags, e.g. #AI #OpenSource #DeveloperTools #Programming #DevOps]
+
 ---
 
 # Comment (First Comment)
 
-Full story on Medium — with links to the original blog posts:
-
-→ https://medium.com/@[username]/[slug]
+Full story on Medium → https://medium.com/@[username]/[slug]
 
 ---
 
@@ -30,5 +30,6 @@ Full story on Medium — with links to the original blog posts:
 
 - [ ] Post text-only (no links in main body)
 - [ ] CTA: teaser ends with a hook
+- [ ] Hashtags at the bottom of post body (3-5, no spaces between)
 - [ ] Post the comment immediately after publishing post
 - [ ] Wait 10-15 minutes before engaging with comments
