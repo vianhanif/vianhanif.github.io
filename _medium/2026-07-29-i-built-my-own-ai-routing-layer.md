@@ -1,6 +1,6 @@
 ---
 title: "I Built My Own AI Routing Layer"
-date: 2026-07-30
+date: 2026-07-29
 linked_posts:
   - /posts/tools-i-built-around-opencode/
   - /posts/the-router-my-colleague-showed-me/
@@ -43,11 +43,12 @@ ai, open-source, developer-tools, devops, router, programming
 
 ## Publish Timing
 → Blog series: all 9 posts published July 9, 2026
-→ Medium: 2026-07-30 (3 weeks after first Medium post)
+→ LinkedIn: Jul 9, Jul 14, Jul 20 (5-day stagger)
+→ Medium: Jul 24, Jul 29, Aug 3 (same cadence, day after each LinkedIn post)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
+- [ ] Schedule Medium: Jul 29 (day after second LinkedIn post Jul 14)
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: technical deep-dives often perform well behind paywall

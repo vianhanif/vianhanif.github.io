@@ -1,6 +1,6 @@
 ---
 title: "This Is My ADE"
-date: 2026-08-06
+date: 2026-08-03
 linked_posts:
   - /posts/the-tunnel/
   - /posts/warp-came-back-around/
@@ -45,11 +45,12 @@ ade, developer-tools, ai, infrastructure, orchestration, devops
 
 ## Publish Timing
 → Blog series: all 9 posts published July 9, 2026
-→ Medium: 2026-08-06 (3 weeks after second Medium post)
+→ LinkedIn: Jul 9, Jul 14, Jul 20 (5-day stagger)
+→ Medium: Jul 24, Jul 29, Aug 3 (same cadence, day after each LinkedIn post)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
+- [ ] Schedule Medium: Aug 3 (day after third LinkedIn post Jul 20)
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: this is the capstone story, may perform well behind paywall

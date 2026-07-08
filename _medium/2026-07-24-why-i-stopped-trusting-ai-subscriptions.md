@@ -1,6 +1,6 @@
 ---
 title: "Why I Stopped Trusting AI Subscriptions"
-date: 2026-07-23
+date: 2026-07-24
 linked_posts:
   - /posts/why-i-left-github-copilot/
   - /posts/warp-tried-to-sell-me-ai/
@@ -37,11 +37,12 @@ ai, copilot, developer-tools, subscriptions, privacy, indie-hacking
 
 ## Publish Timing
 → Blog series: all 9 posts published July 9, 2026
-→ Medium: 2026-07-23 (2 weeks after blog publish)
+→ LinkedIn: Jul 9, Jul 14, Jul 20 (5-day stagger)
+→ Medium: Jul 24, Jul 29, Aug 3 (same cadence, day after each LinkedIn post)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
+- [ ] Schedule Medium: Jul 24 (day after first LinkedIn post Jul 9)
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Keep Medium-specific intro natural; the first paragraph serves as the hook
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
