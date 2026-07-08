@@ -63,6 +63,12 @@ collections:
   drafted:
     output: true
     permalink: /drafted/:title/
+  linkedin:
+    output: true
+    permalink: /linkedin/:title/
+  medium:
+    output: true
+    permalink: /medium/:title/
 
 future: true
 
@@ -83,6 +89,20 @@ defaults:
       path: _drafted
     values:
       layout: post
+      comments: false
+      toc: false
+      sitemap: false
+  - scope:
+      path: _linkedin
+    values:
+      layout: page
+      comments: false
+      toc: false
+      sitemap: false
+  - scope:
+      path: _medium
+    values:
+      layout: page
       comments: false
       toc: false
       sitemap: false
