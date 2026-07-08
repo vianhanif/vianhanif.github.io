@@ -27,6 +27,8 @@ These are **prep files** — structured notes with copy-ready content and publis
 
 **Scheduling**: [Fedica](https://fedica.com/) — schedule LinkedIn posts and comments in advance.
 
+LinkedIn + Medium publish **same day** per topic group (dates match).
+
 ### Content Flow
 
 ```
@@ -35,7 +37,7 @@ LinkedIn (short teaser, no external links in body)
                      └─ canonical → Blog (full breakdown)
 ```
 
-3 LinkedIn posts → 3 Medium posts (one set per topic group).
+3 LinkedIn posts → 3 Medium posts (one set per topic group, same-day per group).
 
 ## Directory Layout
 

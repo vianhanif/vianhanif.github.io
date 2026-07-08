@@ -119,8 +119,9 @@ All projects live under `~/Documents/alvian/`:
    - `_linkedin/` — 3 short teaser posts, one per topic group, grouped by story arc
    - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
 4. Commit and push — pipeline auto-deploys
-5. **Manual**: Post LinkedIn text + comment first. Then Medium post (publish timing staggered 2-4 weeks after each blog group)
-   - **Medium import**: https://medium.com/p/import — paste content here, set canonical URL to your blog post, publish
+5. **Schedule via Fedica**: https://fedica.com/
+   - LinkedIn post (text-only, no links) + comment with Medium link — schedule same day as Medium
+6. **Manual**: Medium post — use https://medium.com/p/import, paste content, set canonical URL to your blog post, publish on same date as LinkedIn
 
 ### Publishing orchestration rule
 
@@ -131,7 +132,7 @@ Every AI-assisted writing session MUST:
 4. Fill in: teaser text for LinkedIn, expanded story for Medium, inline links back to blog posts
 5. Use `_linkedin/` and `_medium/` templates for structure
 
-**Do NOT post to LinkedIn or Medium on behalf of the user. Generate prep files only — the post/comment action is manual.**
+**Do NOT post to LinkedIn or Medium directly. Generate prep files only — scheduling and posting is through Fedica + manual Medium import.**
 
 ### Post conventions
 
