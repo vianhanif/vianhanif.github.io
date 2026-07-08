@@ -22,7 +22,7 @@ I was surprised. And a little frustrated I hadn't seen it coming. But mostly —
 
 Two things pulled me back.
 
-**Custom provider support.** Warp wasn't locked to its own AI anymore. You could point it at any OpenAI-compatible endpoint — including 9router. My custom fork with tiered fallback, token compression, and my entire cost architecture (I wrote up those changes in [What I Changed in 9router](/posts/what-i-changed-in-9router/)). Warp would handle the orchestration. 9router would handle the routing.
+**Custom provider support.** Warp wasn't locked to its own AI anymore. You could point it at any OpenAI-compatible endpoint — including [9router](https://github.com/vianhanif/9router). My custom fork with tiered fallback, token compression, and my entire cost architecture (I wrote up those changes in [What I Changed in 9router](/posts/what-i-changed-in-9router/)). Warp would handle the orchestration. 9router would handle the routing.
 
 **Native orchestration.** The `run_agents` primitive. Not a bolt-on protocol over a tool system, but a first-class runtime where a lead agent spawns children, messages them, collects results, re-delegates. This was what `/delegate` tried to be, without the sequential-chain limitation.
 
