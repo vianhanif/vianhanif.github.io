@@ -27,7 +27,7 @@ Six agent types — planner, coder, reviewer, tester, analyzer, brain — with d
 
 The first time I ran a four-agent chain and watched it complete without intervention, I felt relief I hadn't expected. The system worked. It was janky, bolt-on, and held together by annotation parsing, but it worked.
 
-I also built a **[session-viewer](https://github.com/vianhanif/opencode-session-viewer)** — a timeline renderer for OpenCode conversations. It showed agent actions, file changes, provider switches, token consumption per step. Useful for debugging why an agent went off course. Purely diagnostic. It told me what happened after the fact. It couldn't shape the flow.
+I also built a **[session-viewer](https://github.com/vianhanif/opencode-session-viewer)** — a Go CLI that queries OpenCode's local SQLite database and surfaces session metadata. It lists recent sessions (with agent, model, and timestamp), shows full message history, todo status, and forensic tool-usage stats per session. Useful for auditing what happened after the fact. It never shaped the flow — purely diagnostic.
 
 All four tools were bolt-on solutions. They worked, but they hit hard limits.
 
