@@ -45,7 +45,9 @@ Full story on Medium → https://alvian.medium.com/this-is-my-ade
 
 # Notes
 
-- [ ] Post text-only (no links in main body)
-- [ ] CTA: teaser ends with a hook
-- [ ] Post the comment immediately after publishing post
-- [ ] Wait 10-15 minutes before engaging with comments
+- [ ] Schedule on Fedica: https://fedica.com/
+  - Post text-only (no links in main body)
+  - CTA: teaser ends with a hook
+  - Comment: "Full story on Medium → https://alvian.medium.com/this-is-my-ade"
+  - Schedule comment to post immediately after post goes live
+  - Wait 10-15 minutes before engaging with comments
