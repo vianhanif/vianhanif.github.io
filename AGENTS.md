@@ -107,6 +107,7 @@ All projects live under `~/Documents/alvian/`:
 - `future: false` — posts dated in the future do NOT render in production. This is by design: draft posts can have their target publish date in frontmatter without going live.
 - Pipeline: GitHub Actions (`workflows/pages-deploy.yml`) triggers on push to `main`/`master`. Builds with `bundle exec jekyll build`, runs htmlproofer, deploys to GitHub Pages.
 - Local preview: `bundle exec jekyll serve --future` (needs `--future` flag to see posts with future dates).
+- **Important**: `drafted.md` filters `site.drafted` to only posts with `date <= site.time`. Without this filter, the page generates links to future-dated drafts that Jekyll won't render, causing htmlproofer to fail with broken internal links. Keep this filter when iterating over `site.drafted`.
 
 ### Publishing flow
 
