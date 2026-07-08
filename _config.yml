@@ -3,10 +3,10 @@ theme: jekyll-theme-chirpy
 lang: en
 timezone: Asia/Jakarta
 
-title: "Vianhanif"
-tagline: "Building tools, AI routing, and custom ADEs"
+title: "vian's notes"
+tagline: "Learning in public, one post at a time"
 description: >-
-  Stories about building tools, AI, and custom development environments.
+  Stories about building tools and figuring things out [ps aux]
 
 url: "https://vianhanif.github.io"
 
