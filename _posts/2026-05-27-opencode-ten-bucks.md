@@ -35,3 +35,7 @@ That's not what OpenCode was built for. I knew it. But the TUI wall was a clue I
 That realization sent me back to reconsider tools I'd dismissed — including the one I talk about in [Warp Tried to Sell Me AI Again](/posts/warp-tried-to-sell-me-ai/). [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/) covers everything I bolted onto OpenCode while trying to make it into what I needed.
 
 > *Thanks to [Aries Maulana](https://github.com/ariesmaulana) for sharing OpenCode Go with me.*
+
+---
+
+**Sources:** [OpenCode Go documentation](https://opencode.ai/docs/go/) ($10/month, $60/month usage budget across three rolling windows: $12/5h, $30/week, $60/month)

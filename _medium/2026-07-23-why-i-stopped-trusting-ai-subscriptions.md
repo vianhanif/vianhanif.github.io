@@ -46,3 +46,11 @@ ai, copilot, developer-tools, subscriptions, privacy, indie-hacking
 - [ ] Keep Medium-specific intro natural; the first paragraph serves as the hook
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: storytelling content often performs well behind paywall
+
+## Sources (link these inline when posting)
+
+- GitHub Copilot data policy announcement (Mar 25, 2026): https://github.blog/news-insights/company-news/updates-to-github-copilot-interaction-data-usage-policy/
+- GitHub changelog & opt-out details: https://github.blog/changelog/2026-03-25-updates-to-our-privacy-statement-and-terms-of-service-how-we-use-your-data/
+- Warp pricing (Build plan $20/mo, BYOK): https://www.warp.dev/pricing
+- Warp pricing announcement (Build plan intro): https://www.warp.dev/blog/warp-new-pricing-flexibility-byok
+- OpenCode Go docs ($60/month usage budget): https://opencode.ai/docs/go/

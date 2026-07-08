@@ -53,3 +53,8 @@ ade, developer-tools, ai, infrastructure, orchestration, devops
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: this is the capstone story, may perform well behind paywall
+
+## Sources (link these inline when posting)
+
+- Warp pricing (Free plan includes BYOK, Build plan optional): https://www.warp.dev/pricing
+- Warp pricing announcement: https://www.warp.dev/blog/warp-new-pricing-flexibility-byok

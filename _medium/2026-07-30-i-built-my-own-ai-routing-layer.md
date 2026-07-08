@@ -51,3 +51,8 @@ ai, open-source, developer-tools, devops, router, programming
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: technical deep-dives often perform well behind paywall
+
+## Sources (link these inline when posting)
+
+- OpenCode Go docs ($60/month usage budget, $12/5h, $30/week): https://opencode.ai/docs/go/
+- Warp pricing (Free plan, BYOK, Build plan): https://www.warp.dev/pricing

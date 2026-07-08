@@ -39,3 +39,7 @@ I walked away.
 ---
 
 See [Why I Left GitHub Copilot](/posts/why-i-left-github-copilot/) for what sent me searching. See [OpenCode: The $10/mo TUI](/posts/opencode-ten-bucks/) for what I found instead.
+
+---
+
+**Sources:** [Warp pricing page](https://www.warp.dev/pricing) (Build plan $20/mo, 1,500 credits/month) · [Warp pricing announcement](https://www.warp.dev/blog/warp-new-pricing-flexibility-byok) (December 2025 — Build plan intro, BYOK support)
