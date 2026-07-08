@@ -1,6 +1,6 @@
 ---
 title: "This Is My ADE"
-date: 2026-07-22
+date: 2026-08-06
 linked_posts:
   - /posts/the-tunnel/
   - /posts/warp-came-back-around/
@@ -44,12 +44,12 @@ For the final post in the series — the full ADE story from start to finish: [T
 ade, developer-tools, ai, infrastructure, orchestration, devops
 
 ## Publish Timing
-→ Blog series: 2026-06-24 to 2026-07-08
-→ Medium: 2026-07-22 (2 weeks after last blog publish in this group)
+→ Blog series: all 9 posts published July 9, 2026
+→ Medium: 2026-08-06 (3 weeks after second Medium post)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — last blog in group was July 8
+- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: this is the capstone story, may perform well behind paywall

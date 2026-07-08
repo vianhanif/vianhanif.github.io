@@ -1,6 +1,6 @@
 ---
 title: "Why I Stopped Trusting AI Subscriptions"
-date: 2026-06-10
+date: 2026-07-23
 linked_posts:
   - /posts/why-i-left-github-copilot/
   - /posts/warp-tried-to-sell-me-ai/
@@ -36,12 +36,12 @@ For the full story of why I left Copilot and what that search set in motion: [Wh
 ai, copilot, developer-tools, subscriptions, privacy, indie-hacking
 
 ## Publish Timing
-→ Blog series: 2026-05-13 to 2026-05-27
-→ Medium: 2026-06-10 (2 weeks after last blog publish in this group)
+→ Blog series: all 9 posts published July 9, 2026
+→ Medium: 2026-07-23 (2 weeks after blog publish)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — last blog in group was May 27
+- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Keep Medium-specific intro natural; the first paragraph serves as the hook
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)

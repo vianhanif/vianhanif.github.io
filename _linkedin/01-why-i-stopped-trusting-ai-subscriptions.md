@@ -1,6 +1,6 @@
 ---
 title: "Why I Stopped Trusting AI Subscriptions"
-date: 2026-05-13
+date: 2026-07-09
 linked_posts:
   - /posts/why-i-left-github-copilot/
   - /posts/warp-tried-to-sell-me-ai/

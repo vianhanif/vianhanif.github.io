@@ -1,6 +1,6 @@
 ---
 title: "I Built My Own AI Routing Layer"
-date: 2026-07-01
+date: 2026-07-30
 linked_posts:
   - /posts/tools-i-built-around-opencode/
   - /posts/the-router-my-colleague-showed-me/
@@ -42,12 +42,12 @@ For how I discovered 9router in the first place and the moment I knew I had to f
 ai, open-source, developer-tools, devops, router, programming
 
 ## Publish Timing
-→ Blog series: 2026-06-03 to 2026-06-17
-→ Medium: 2026-07-01 (2 weeks after last blog publish in this group)
+→ Blog series: all 9 posts published July 9, 2026
+→ Medium: 2026-07-30 (3 weeks after first Medium post)
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — last blog in group was June 17
+- [ ] Wait 2-4 weeks after blog publish (SEO best practice) — blogs went live July 9
 - [ ] This is original Medium content, not a cross-post — no canonical URL needed
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: technical deep-dives often perform well behind paywall
