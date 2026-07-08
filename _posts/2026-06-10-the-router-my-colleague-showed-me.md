@@ -34,9 +34,9 @@ I forked it that weekend.
 
 And then I couldn't stop.
 
-The monorepo was the first thing I cracked open. Next.js monolith, routing engine and dashboard tangled together. I wanted to understand what I was actually running. Turns out, the best way to understand something is to try to take it apart.
+The monorepo was the first thing I tackled. Next.js monolith, routing engine and dashboard tangled together. I wanted to understand what I was actually running.
 
-I was supposed to be customizing. I ended up refactoring.
+So the monorepo split became the first change after forking: the API server (Hono) got its own workspace, the dashboard (Next.js) another, the CLI got esbuild bundling. The best way to understand something is to take it apart.
 
 See [The Tools I Built Around OpenCode](/posts/tools-i-built-around-opencode/) for what led here. See [What I Changed in 9router](/posts/what-i-changed-in-9router/) for what happened next.
 
