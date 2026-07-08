@@ -1,5 +1,6 @@
 ---
 title: "How I Used AI Agents to Write These Blog Posts"
+layout: page
 ---
 
 Two drafts. Both had good material buried under structural problems. One was too long — six episodes in 3,000 words. The other needed to stand alone. I ran them through an AI editorial pipeline.
