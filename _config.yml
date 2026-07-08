@@ -85,6 +85,7 @@ defaults:
       layout: post
       comments: false
       toc: false
+      sitemap: false
   - scope:
       path: ""
       type: tabs
