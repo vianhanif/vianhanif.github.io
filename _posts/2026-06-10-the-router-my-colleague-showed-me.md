@@ -4,7 +4,7 @@ date: 2026-06-10
 tags: [9router, router, ai, provider]
 ---
 
-I was halfway through debugging a stubborn auth issue when two colleagues dropped a link in Slack. No preamble. Just: *"you should check this out."*
+I first noticed it in passing. Colleagues had it open during work — a dashboard I didn't recognize, a dropdown with more providers than I'd ever seen. I didn't ask right away. Just filed it away as something to look into.
 
 It was [9router](https://github.com/vianhanif/9router).
 

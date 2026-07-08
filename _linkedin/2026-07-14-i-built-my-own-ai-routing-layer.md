@@ -11,11 +11,9 @@ status: draft
 
 # LinkedIn Post (Text-Only, Teaser)
 
-A colleague dropped a link in Slack: 9router. 40+ providers. Fallback chains. Token compression.
+I'd spotted it a few weeks earlier. Colleagues had a dashboard open — 40+ providers, fallback chains, something I hadn't seen before. Filed it away as interesting. Didn't ask.
 
-My first thought: this is too much.
-
-I closed the tab. Went back to my work.
+Then the subscription cap hit again.
 
 A week later: 1am. Deploy waiting. OpenCode Go had hit its monthly cap. Staring at a rate-limit error.
 

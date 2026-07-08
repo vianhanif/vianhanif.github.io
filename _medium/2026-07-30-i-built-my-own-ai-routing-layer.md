@@ -12,9 +12,9 @@ status: draft
 
 ## Content to Copy
 
-A colleague dropped a link in Slack: 9router. 40+ providers. Fallback chains. Token compression.
+I'd spotted it a few weeks earlier. Colleagues had a dashboard open — more providers than I'd seen anywhere, fallback chains, format translation. Filed it away as interesting. Didn't ask right away.
 
-My first thought: this is too much. I closed the tab.
+Then the subscription cap hit again.
 
 A week later: 1am. Deploy waiting. OpenCode Go had hit its monthly cap. The rate-limit error stared back at me. The fallback providers existed — I'd been treating them like a joke. A backup for emergencies. Something I'd get around to someday.
 
