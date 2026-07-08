@@ -147,4 +147,5 @@ Every AI-assisted writing session MUST:
 - **Terms**: "ADE" (Agentic Development Environment), "TUI" (terminal UI), "launchd" (not launchctl, except as the command)
 - **Tone**: Technical but approachable. First-person narrative. Real problems, real solutions. "Conversational, personal story — like explaining what happened to a friend."
 - **Length**: ~400-600 words per post unless the topic requires more.
-- **Avoid**: Exaggeration, marketing language, superlatives without evidence
+|- **Avoid**: Exaggeration, marketing language, superlatives without evidence
+|- **Source facts**: Any claim about a tool, company, pricing, policy, or date MUST include a source URL. Official docs preferred. Add as a **Sources** footnote at end of blog posts and a **Sources** section in Medium prep Notes.
