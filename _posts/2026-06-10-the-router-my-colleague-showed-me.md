@@ -6,7 +6,7 @@ tags: [9router, router, ai, provider]
 
 I was halfway through debugging a stubborn auth issue when two colleagues dropped a link in Slack. No preamble. Just: *"you should check this out."*
 
-It was 9router.
+It was [9router](https://github.com/vianhanif/9router).
 
 I clicked through the GitHub repo. Readme. Screenshots. A dashboard with 40+ providers in a dropdown. Fallback chains. Format translation. Token compression.
 
