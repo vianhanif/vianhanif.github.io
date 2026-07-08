@@ -50,10 +50,27 @@ Defined in `~/.agents/`. Tool-agnostic — same skills work in OpenCode and Warp
 - **Tester** — write and validate tests
 - **Analyzer** — debug, trace, root cause
 
+## Directory Structure
+
+All projects live under `~/Documents/alvian/`:
+
+```
+~/Documents/alvian/
+├── .ai/
+│   └── writings/        # Blog posts (_posts/), AGENTS.md, Jekyll config
+├── 9router/            # AI router fork (monorepo: Hono server, Next.js dashboard, CLI)
+├── local-tunnel/       # Cloudflare tunnel setup (standalone, 5 files)
+├── opencode-environment-bootstrap/  # Workstation provisioning
+├── opencode-session-viewer/        # Session forensics (Go)
+└── opencode-tree/      # Worktree isolation experiment (not in use)
+```
+
+**Rule**: When working on any project, `cd ~/Documents/alvian/<project>` first.
+
 ## Infrastructure
 
 - **9router runtime state**: `~/.9router/` (SQLite DB, PID files, auth tokens, logs)
-- **Tunnel**: Dedicated repo `local-tunnel` — 5 files (Caddyfile, config.yml, plist, setup.sh, README)
+- **Tunnel**: `~/Documents/alvian/local-tunnel/` — 5 files (Caddyfile, config.yml, plist, setup.sh, README)
 - **Domain**: Personal domain on Cloudflare (free tier)
 
 ## Cost
