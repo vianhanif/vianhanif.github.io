@@ -8,7 +8,7 @@ I typed `http://localhost:20128` into Warp's custom provider field. Clicked Save
 
 Silent rejection. Not "connection refused" — the UI wouldn't even accept a localhost address. Curl worked fine, but Warp's Oz agents don't run on my machine. They live in an isolated context that can't see localhost.
 
-My routing layer from the [9router fork](./posts/what-i-changed-in-9router/) was ready. Invisible.
+My routing layer from the [9router fork](/posts/what-i-changed-in-9router/) was ready. Invisible.
 
 ### A Wrong Turn
 
@@ -90,4 +90,4 @@ After: Warp agents hit `https://api.mydomain.com/v1`. Every request lands on my 
 
 Infrastructure should be boring. The tunnel is.
 
-I wrote about how Warp uses this endpoint in [Warp Came Back Around](./posts/warp-came-back-around/).
+I wrote about how Warp uses this endpoint in [Warp Came Back Around](/posts/warp-came-back-around/).

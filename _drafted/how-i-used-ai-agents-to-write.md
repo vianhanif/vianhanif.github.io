@@ -1,6 +1,5 @@
 ---
 title: "How I Used AI Agents to Write These Blog Posts"
-date: 2026-07-15
 tags: [meta, ai, workflow, agents, warp]
 ---
 
