@@ -60,6 +60,11 @@ collections:
   tabs:
     output: true
     sort_by: order
+  drafted:
+    output: true
+    permalink: /drafted/:title/
+
+future: false
 
 defaults:
   - scope:
@@ -74,6 +79,12 @@ defaults:
       path: _drafts
     values:
       comments: false
+  - scope:
+      path: _drafted
+    values:
+      layout: post
+      comments: false
+      toc: false
   - scope:
       path: ""
       type: tabs
