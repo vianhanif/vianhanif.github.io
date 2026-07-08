@@ -8,7 +8,7 @@ I hit send on a prompt. Watched the spinner. Started calculating — was I past 
 
 The spinner stopped. Code appeared. No error.
 
-The request had routed through 9router's fallback chain — from my paid subscription, through a cheap API, to a free provider. Compressed by the headroom proxy. Delivered in under a second. I didn't notice the provider swap. The router handled it silently.
+The request had routed through [9router](https://github.com/vianhanif/9router)'s fallback chain — from my paid subscription, through a cheap API, to a free provider. Compressed by the headroom proxy. Delivered in under a second. I didn't notice the provider swap. The router handled it silently.
 
 That's when I realized the stack had become invisible.
 
