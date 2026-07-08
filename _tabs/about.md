@@ -8,4 +8,4 @@ I build tools, break things, and write about the intersection of AI, infrastruct
 
 Currently exploring multi-agent orchestration, AI routing with [9router](https://github.com/decolua/9router), and building custom agentic development environments on top of [Warp Terminal](https://www.warp.dev).
 
-Most of my work lives on [GitHub](https://github.com/vianhanif). I'm based in Jakarta.
+Most of my work lives on [GitHub](https://github.com/vianhanif). I'm based in Depok, West Java.
