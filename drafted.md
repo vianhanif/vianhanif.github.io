@@ -9,6 +9,11 @@ sitemap: false
   {% for post in site.drafted reversed %}
 - **{{ post.title }}** — {{ post.content | strip_html | truncatewords: 30 }}
   *Scheduled for {{ post.date | date: "%B %-d, %Y" }}*
+  {% if post.date <= site.time %}
+    [Read preview →]({{ post.url | relative_url }})
+  {% else %}
+    *(preview available after {{ post.date | date: "%B %-d, %Y" }})*
+  {% endif %}
   {% endfor %}
 {% else %}
 Nothing drafted yet.
