@@ -5,7 +5,7 @@ linked_posts:
   - /posts/why-i-left-github-copilot/
   - /posts/warp-tried-to-sell-me-ai/
   - /posts/opencode-ten-bucks/
-medium_post: https://medium.com/@vianhanif/why-i-stopped-trusting-ai-subscriptions
+medium_post: https://alvian.medium.com/why-i-stopped-trusting-ai-subscriptions
 status: draft
 ---
 
@@ -31,7 +31,7 @@ The best AI development environment is the one you can take apart and rebuild. T
 
 # Comment (First Comment)
 
-Full story on Medium → https://medium.com/@vianhanif/why-i-stopped-trusting-ai-subscriptions
+Full story on Medium → https://alvian.medium.com/why-i-stopped-trusting-ai-subscriptions
 
 ---
 

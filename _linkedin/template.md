@@ -4,7 +4,7 @@ date: 2026-07-08
 linked_posts:
   - /posts/[slug-1]/
   - /posts/[slug-2]/
-medium_post: https://medium.com/@[username]/[slug]
+medium_post: https://[username].medium.com/[slug]
 status: draft
 ---
 
@@ -22,7 +22,7 @@ status: draft
 
 # Comment (First Comment)
 
-Full story on Medium → https://medium.com/@[username]/[slug]
+Full story on Medium → https://[username].medium.com/[slug]
 
 ---
 

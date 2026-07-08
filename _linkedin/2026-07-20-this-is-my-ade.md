@@ -5,7 +5,7 @@ linked_posts:
   - /posts/the-tunnel/
   - /posts/warp-came-back-around/
   - /posts/this-is-my-ade/
-medium_post: https://medium.com/@vianhanif/this-is-my-ade
+medium_post: https://alvian.medium.com/this-is-my-ade
 status: draft
 ---
 
@@ -39,7 +39,7 @@ That's the ceiling a custom ADE buys you. Not a better subscription. A better ce
 
 # Comment (First Comment)
 
-Full story on Medium → https://medium.com/@vianhanif/this-is-my-ade
+Full story on Medium → https://alvian.medium.com/this-is-my-ade
 
 ---
 

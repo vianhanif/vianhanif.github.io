@@ -5,7 +5,7 @@ linked_posts:
   - /posts/tools-i-built-around-opencode/
   - /posts/the-router-my-colleague-showed-me/
   - /posts/what-i-changed-in-9router/
-medium_post: https://medium.com/@vianhanif/i-built-my-own-ai-routing-layer
+medium_post: https://alvian.medium.com/i-built-my-own-ai-routing-layer
 status: draft
 ---
 
@@ -35,7 +35,7 @@ The router became what the failures demanded.
 
 # Comment (First Comment)
 
-Full story on Medium → https://medium.com/@vianhanif/i-built-my-own-ai-routing-layer
+Full story on Medium → https://alvian.medium.com/i-built-my-own-ai-routing-layer
 
 ---
 
