@@ -28,15 +28,15 @@ The monorepo was the first thing I tackled — a Next.js monolith with the routi
 
 But the split was just the starting point. Daily use taught me what a router actually needs: tiered fallback so the next provider picks up when one hits its limit, multiple accounts per provider in round-robin so a single rate-limit error doesn't block everything, token compression that cuts 20-40% off every request transparently.
 
-You can read the full breakdown of every change I made to the router — the combo system, the headroom proxy rebuild, the OAuth refresh that killed a recurring failure mode — here: [What I Changed in 9router](https://vianhanif.github.io/posts/what-i-changed-in-9router/).
+You can read the full breakdown of every change I made to the router — the combo system, the headroom proxy rebuild, the OAuth refresh that killed a recurring failure mode — here: [What I Changed in 9router](https://vianhanif.link/posts/what-i-changed-in-9router/).
 
 Before 9router, I'd also built a set of tools to paper over OpenCode's limits: a worktree isolation system, an environment bootstrap script, a custom `/delegate` command that let me chain agents together with dependency tracking. They worked. But every one of them was a bolt-on solution held together by annotation parsing and hope.
 
-The whole story of what I built around OpenCode and why I eventually hit a ceiling I couldn't raise from the outside: [The Tools I Built Around OpenCode](https://vianhanif.github.io/posts/tools-i-built-around-opencode/).
+The whole story of what I built around OpenCode and why I eventually hit a ceiling I couldn't raise from the outside: [The Tools I Built Around OpenCode](https://vianhanif.link/posts/tools-i-built-around-opencode/).
 
 The router became what the failures demanded. Every change — the split, the fallback tiers, the combo system — came from a specific problem I hit at 1am on a deadline. Rate limits. Token expiry. Locked accounts. Each failure told me where to reinforce.
 
-For how I discovered 9router in the first place and the moment I knew I had to fork it: [The Router My Colleague Showed Me](https://vianhanif.github.io/posts/the-router-my-colleague-showed-me/).
+For how I discovered 9router in the first place and the moment I knew I had to fork it: [The Router My Colleague Showed Me](https://vianhanif.link/posts/the-router-my-colleague-showed-me/).
 
 ## Tags for Medium
 ai, open-source, developer-tools, devops, router, programming

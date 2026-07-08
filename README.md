@@ -1,6 +1,6 @@
 # vian's notes
 
-Personal blog — [vianhanif.github.io](https://vianhanif.github.io). Built with Jekyll + Chirpy, hosted on GitHub Pages.
+Personal blog — [vianhanif.link](https://vianhanif.link). Built with Jekyll + Chirpy, hosted on GitHub Pages.
 
 ## Writing Workflow
 

@@ -13,7 +13,7 @@ How to set it:
    1. Import or paste your post draft into the Medium editor.
    2. Click the three-dot menu (...) in the top right and select More settings.
    3. Scroll down and click to expand Advanced Settings.
-   4. Check the box for "This story was originally published elsewhere" and paste your exact vianhanif.github.io article URL. [5, 6] 
+   4. Check the box for "This story was originally published elsewhere" and paste your exact vianhanif.link article URL. [5, 6] 
 
 ## 3. Fixing the LinkedIn Pipeline
 LinkedIn’s algorithm penalizes external links in the main text box, meaning very few people will see your post if you just drop your blog link there. Use this workaround: [1] 

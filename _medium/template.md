@@ -14,7 +14,7 @@ status: draft
 
 [Write an expanded version of the LinkedIn teaser story. 3-5 paragraphs. More narrative depth than LinkedIn but still a single flowing story, not a multi-part series. Naturally link back to the blog posts for the full breakdown using inline HTTPS URLs.]
 
-[→ Full story: https://vianhanif.github.io/posts/[slug-1]/]
+[→ Full story: https://vianhanif.link/posts/[slug-1]/]
 
 ## Tags for Medium
 [tag-1], [tag-2], [developer-tools], [technical]
