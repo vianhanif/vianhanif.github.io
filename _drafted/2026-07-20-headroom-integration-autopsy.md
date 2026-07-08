@@ -1,7 +1,6 @@
 ---
 title: "The Headroom Debacle: When Good Ideas Go Silent"
-date: 2026-07-20
-tags: [9router, technical, postmortem]
+layout: page
 ---
 
 So, I spent a weekend building a feature that did absolutely nothing.

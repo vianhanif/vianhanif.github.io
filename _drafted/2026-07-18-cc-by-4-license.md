@@ -1,7 +1,6 @@
 ---
 title: "CC BY 4.0: The License I Use for Everything Here"
-date: 2026-07-18
-tags: [meta, licenses, open-source]
+layout: page
 ---
 
 Every post on this blog has a little badge at the bottom that says "CC BY 4.0." I put it there deliberately, and I want to explain what it means and why I chose it.
