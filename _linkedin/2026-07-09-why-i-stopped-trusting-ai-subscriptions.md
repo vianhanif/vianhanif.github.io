@@ -25,7 +25,7 @@ Same pattern everywhere: leave one locked-in tool, find another.
 
 The best AI development environment is the one you can take apart and rebuild. That realization sent me somewhere unexpected.
 
-#AIDevelopment #DeveloperTools #Privacy #OpenSource #TechStack
+#AIDevelopment #DeveloperTools #Privacy
 
 ---
 

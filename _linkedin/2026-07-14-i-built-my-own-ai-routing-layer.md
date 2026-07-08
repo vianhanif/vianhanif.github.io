@@ -29,7 +29,7 @@ I forked it that weekend. And then I couldn't stop.
 
 The router became what the failures demanded.
 
-#AI #OpenSource #DevOps #DeveloperTools #Programming
+#AI #OpenSource #DevOps
 
 ---
 
