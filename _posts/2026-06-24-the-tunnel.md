@@ -12,7 +12,7 @@ My routing layer from the [9router fork](/posts/what-i-changed-in-9router/) was 
 
 ### A Wrong Turn
 
-I'd tried [local-tunnel](https://github.com/vianif/local-tunnel) before — simple, but URLs rotate on every restart. Unusable for anything permanent.
+I'd tried [local-tunnel](https://github.com/vianhanif/local-tunnel) before — simple, but URLs rotate on every restart. Unusable for anything permanent.
 
 Cloudflare Quick Tunnel was too easy to skip. No account, no config:
 
