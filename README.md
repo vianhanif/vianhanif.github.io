@@ -25,9 +25,9 @@ _medium/      # Expanded story version with inline links back to blog
 
 These are **prep files** — structured notes with copy-ready content and publishing checklists. Posting is manual.
 
-**Scheduling**: [Fedica](https://fedica.com/) — schedule LinkedIn posts and comments in advance.
+**Order matters**: Publish Medium first (to get the URL), then schedule LinkedIn via Fedica with the Medium link in the comment.
 
-LinkedIn + Medium publish **same day** per topic group (dates match).
+LinkedIn + Medium publish **same day** per topic group.
 
 ### Content Flow
 

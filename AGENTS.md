@@ -119,9 +119,9 @@ All projects live under `~/Documents/alvian/`:
    - `_linkedin/` — 3 short teaser posts, one per topic group, grouped by story arc
    - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
 4. Commit and push — pipeline auto-deploys
-5. **Schedule via Fedica**: https://fedica.com/
+5. **Manual**: Medium post — use https://medium.com/p/import, paste content, set canonical URL to your blog post, publish first (need the URL)
+6. **Schedule via Fedica**: https://fedica.com/
    - LinkedIn post (text-only, no links) + comment with Medium link — schedule same day as Medium
-6. **Manual**: Medium post — use https://medium.com/p/import, paste content, set canonical URL to your blog post, publish on same date as LinkedIn
 
 ### Publishing orchestration rule
 
