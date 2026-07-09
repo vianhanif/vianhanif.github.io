@@ -32,7 +32,7 @@ But the real win isn't reliability. It's interchangeability. I can swap 9router 
 
 If you're starting today: fix routing before infrastructure. Tiered fallback changes your cost structure immediately. Add the tunnel only when you need remote access. Everything else follows from those two decisions.
 
-I've probably spent 40 hours on this stack. Some people would pay $20/month for ChatGPT Plus and never think about it again. That's a valid choice — the subscription is cheaper than their time. But every hour I spent on infrastructure unlocked capabilities the subscription model can't offer: zero-cost fallback, transparent token compression, parallel agent orchestration, complete provider interchangeability.
+I've probably spent 80 hours on this stack. That's two working weeks, scattered across six months of nights and weekends. Some people would pay $20/month for ChatGPT Plus and never think about it again. That's a valid choice — the subscription is cheaper than their time. But every hour I spent on infrastructure unlocked capabilities the subscription model can't offer: zero-cost fallback, transparent token compression, parallel agent orchestration, complete provider interchangeability.
 
 ---
 
