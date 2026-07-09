@@ -92,7 +92,7 @@ All projects live under `~/Documents/alvian/`:
 
 ## Writing & Publishing Workflow
 
-### File locations
+### Drafted vs Published
 
 | Directory | Purpose |
 |-----------|---------|
@@ -101,6 +101,13 @@ All projects live under `~/Documents/alvian/`:
 | `_linkedin/` | Short teaser post + first-comment link to Medium. 3 items, one per topic group |
 | `_medium/` | Expanded story per LinkedIn topic with inline links back to blog. 3 items. Original content — no canonical URL |
 | `_drafts/` | Jekyll-native drafts dir (not used — use `_drafted/` instead) |
+
+**State criteria**
+
+| State | Requirements |
+|-------|--------------|
+| `_drafted/` | Initial writing. Author may not have reviewed. Facts may be unverified. Placeholder claims allowed. NOT ready for syndication. |
+| `_posts/` | Reviewed and confirmed by author. Every factual claim has a source link (official docs, blog post, website). No unverified assumptions. No vague notes without a 2nd-source reference. Ready for syndication prep. |
 
 **Draft posts go in `_drafted/`**, not `_drafts/`. The `_drafted/` directory is a custom Jekyll collection defined in `_config.yml` — it has `output: true` so drafts are previewable at `/drafted/:title/` without being indexed or on the main feed.
 
