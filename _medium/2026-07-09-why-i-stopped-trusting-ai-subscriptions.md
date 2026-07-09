@@ -32,6 +32,8 @@ That's when I realized the best AI development environment isn't the one with th
 
 For the full story of why I left Copilot and what that search set in motion: [Why I Left GitHub Copilot](https://vianhanif.link/posts/why-i-left-github-copilot/).
 
+*Update (March 2026): GitHub later added an explicit opt-out toggle in Copilot settings. You can disable "Allow GitHub to use my data for AI model training" — future interaction data won't be used after you opt out. Still defaults to opt-out, not opt-in, but the option exists now for those who stayed.*
+
 ## Tags for Medium
 ai, copilot, developer-tools, subscriptions, privacy, indie-hacking
 
