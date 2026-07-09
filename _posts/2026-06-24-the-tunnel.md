@@ -90,6 +90,6 @@ After: Warp agents hit `https://api.mydomain.com/v1`. Every request lands on my 
 
 ~$3/day in API costs to ~$0 (domain is $10/year). Iteration from 3-5 seconds to under 1 second. Stopped thinking about rate limits.
 
-Infrastructure should be boring. The tunnel is.
+Infrastructure should be boring. The tunnel is.<span class="ellipsis-tooltip" data-tip="Ellipsis: 'boring' carries over from the first sentence">ⓘ</span>
 
 I wrote about how Warp uses this endpoint in [Warp Came Back Around](/posts/warp-came-back-around/).
