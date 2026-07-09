@@ -43,3 +43,4 @@ Full story on Medium → https://alvian.medium.com/why-i-stopped-trusting-ai-sub
   - Comment: "Full story on Medium → https://alvian.medium.com/why-i-stopped-trusting-ai-subscriptions"
   - Schedule comment to post immediately after post goes live
   - Wait 10-15 minutes before engaging with comments
+- **Addendum**: GitHub later introduced an explicit opt-out in Copilot settings ("Allow GitHub to use my data for AI model training"), stating future data won't be used after opting out. Still opt-out not opt-in, but if commenters ask — mention it exists now. Noted in full blog post.

@@ -46,6 +46,7 @@ ai, copilot, developer-tools, subscriptions, privacy, indie-hacking
 - [ ] Keep Medium-specific intro natural; the first paragraph serves as the hook
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: storytelling content often performs well behind paywall
+- **Update**: GitHub later added explicit opt-out toggle ("Allow GitHub to use my data for AI model training") — future data won't be used after opting out. Worth mentioning in comments if readers ask. Noted in the blog post addendum.
 
 ## Sources (link these inline when posting)
 
