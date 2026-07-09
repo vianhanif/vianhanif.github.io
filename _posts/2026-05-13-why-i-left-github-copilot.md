@@ -36,7 +36,7 @@ I didn't leave Copilot because it stopped working. I left because I stopped trus
 
 The search led me to two places: a $10/month TUI, and a terminal that came back around two years later with a completely different pitch. Neither was what I expected.
 
-> **Update (March 2026):** In March 2026, GitHub introduced an explicit AI model training opt-out for Copilot Free, Pro, and Pro+ users. You can now disable "Allow GitHub to use my data for AI model training" directly in your Copilot settings. GitHub states that your future Copilot interaction data won't be used for model training after you opt out. The feature exists now — it's still opt-out rather than opt-in, which I still think is the wrong default, but if you stayed on Copilot this removes the original concern.
+> **Update (March 2026):** The March 25 announcement included the opt-out toggle mentioned above. GitHub later clarified the specific label: "Allow GitHub to use my data for AI model training" in Settings > Copilot > Privacy. GitHub also confirmed that future interaction data won't be used after you opt out. Still opt-out rather than opt-in, which I still think is the wrong default, but if you stayed on Copilot this addresses the original concern.
 
 See [Warp Tried to Sell Me AI Again](/posts/warp-tried-to-sell-me-ai/) for what came next — and how I almost didn't give Warp a second chance. For the record, [OpenCode](/posts/opencode-ten-bucks/) came before Warp did, and it taught me more about what I actually needed from an AI coding tool.
 
