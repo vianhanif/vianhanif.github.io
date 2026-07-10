@@ -1,6 +1,6 @@
 ---
 title: "Medium First or LinkedIn First: An SEO Question"
-date: 2026-07-21
+date: 2026-09-15
 tags: [writing, seo, syndication, medium, linkedin]
 layout: page
 ---

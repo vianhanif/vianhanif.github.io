@@ -1,6 +1,6 @@
 ---
 title: "CC BY 4.0: The License I Use for Everything Here"
-date: 2026-07-18
+date: 2026-08-30
 tags: [personal, writing, meta]
 layout: page
 ---

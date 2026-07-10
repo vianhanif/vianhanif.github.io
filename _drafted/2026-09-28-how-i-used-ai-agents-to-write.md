@@ -1,6 +1,6 @@
 ---
-title: "How I Used AI Agents to Write These Blog Posts"
-date: 2026-07-15
+title: "How I Used AI Agents As My Editorial Pipeline"
+date: 2026-09-28
 tags: [agents, writing, workflow, ade]
 layout: page
 ---

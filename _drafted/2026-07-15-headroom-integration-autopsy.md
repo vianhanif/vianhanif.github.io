@@ -1,6 +1,6 @@
 ---
 title: "The Headroom Debacle: When Good Ideas Go Silent"
-date: 2026-07-20
+date: 2026-07-15
 tags: [9router, postmortem, technical]
 layout: page
 ---
