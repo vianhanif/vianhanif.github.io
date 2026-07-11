@@ -6,7 +6,7 @@ tags: [cloudflare, caddy, tunnel, infrastructure]
 
 I typed `http://localhost:20128` into Warp's custom provider field. Clicked Save. The field turned red.
 
-Silent rejection. Not "connection refused" — the UI wouldn't even accept a localhost address. Curl worked fine, but Warp's Oz agents don't run on my machine. They live in an isolated context that can't see localhost.
+Silent rejection. Not "connection refused" — the UI wouldn't even accept a localhost address. curl worked fine, but Warp's Oz agents don't run on my machine. They live in an isolated context that can't see localhost.
 
 My routing layer from the [9router fork](/posts/what-i-changed-in-9router/) was ready. Invisible.
 
@@ -88,8 +88,8 @@ Before the tunnel: running prompts twice. Once in the IDE, once locally. Burning
 
 After: Warp agents hit `https://api.mydomain.com/v1`. Every request lands on my local server. The tunnel disappears.
 
-~$3/day in API costs to ~$0 (domain is $10/year). Iteration from 3-5 seconds to under 1 second. Stopped thinking about rate limits.
+API costs dropped from ~$3/day to ~$0 (domain is $10/year). Iteration time went from 3-5 seconds to under 1 second. Stopped thinking about rate limits.
 
-Infrastructure should be boring. The tunnel is.<span class="ellipsis-tooltip" data-tip="Ellipsis: 'boring' carries over from the first sentence">ⓘ</span>
+Infrastructure should be boring. The tunnel is.
 
 I wrote about how Warp uses this endpoint in [Warp Came Back Around](/posts/warp-came-back-around/).
