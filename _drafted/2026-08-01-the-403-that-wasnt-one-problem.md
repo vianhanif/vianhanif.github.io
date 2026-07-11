@@ -7,7 +7,9 @@ layout: page
 
 My Warp agent stopped talking to 9router.
 
-The set-up: Warp has a custom LLM route pointed at my Cloudflare tunnel — `https://9router.vianhanif.link/v1/chat/completions`. It had been working. Then one day, every request bounced with:
+Quick background: 9router is my AI routing layer — a Hono server that proxies LLM requests through fallback providers. Warp agents are Oz agents running in the terminal; they send chat completion requests through a Cloudflare tunnel to my local 9router instance.
+
+The setup: Warp has a custom LLM route pointed at my Cloudflare tunnel — `https://9router.vianhanif.link/v1/chat/completions`. It had been working. Then one day, every request bounced with:
 
 ```
 POST "https://9router.vianhanif.link/v1/chat/completions": 403 Forbidden
@@ -49,7 +51,7 @@ Debug logs still showed nothing. But now I knew the tunnel was healthy — curl 
 
 Cloudflare's WAF and Bot Management inspect incoming requests and decide what to let through. Curl gets a pass. Warp's agent — with its unusual User-Agent, programmatic headers, and cloud-egress IP — triggers a block.
 
-The fix was a WAF skip rule:
+The fix was a Cloudflare Custom WAF Skip rule:
 
 ```
 (http.host eq "9router.vianhanif.link" and starts_with(http.request.uri.path, "/v1/"))
@@ -59,14 +61,18 @@ Set to Skip → All Remaining Rules. This tells Cloudflare to bypass WAF, Bot Ma
 
 That fixed it.
 
-## The Cleaner Fix: API Key at the Source
-
-After the debugging session, I switched to the cleaner solution: 9router already has an API key feature built in. In the 9router dashboard → Settings → toggle **Require API Key**. Generate a key and add it to Warp's LLM route config. No WAF bypass needed. The tunnel stays wide open to everyone — Cloudflare security layer stays intact — and only authenticated requests get through at the application level. It's the right place to do auth anyway.
-
 ## Two Bugs, One Meltdown
 
 The first bug was infrastructure rot: a tunnel held together by luck, with three conflicting processes and a broken launchd service. This alone would have eventually killed the tunnel, and I would have blamed Cloudflare, cloudflared, or bad luck.
 
 The second bug was Cloudflare's own security blocking a legitimate client. This was invisible as long as the tunnel was down — both curl and Warp failed together. It only surfaced after I fixed the tunnel, because curl worked and Warp didn't. If I'd stopped at "tunnel fixed, problem solved," I'd have missed half the issue.
 
+After the debugging session, I switched to a cleaner solution: 9router already has an API key feature built in. Toggle it on in the dashboard, generate a key, add it to Warp's LLM route config. No WAF bypass needed. The tunnel stays open to everyone, Cloudflare security stays intact, and only authenticated requests get through at the application level. The right place to do auth anyway.
+
 The lesson: a 403 at the application layer doesn't mean the application threw it. The infrastructure between your client and your server has more authority to say "no" than your server code does.
+
+## Sources
+
+- Cloudflare Custom WAF Skip rules: https://developers.cloudflare.com/waf/custom-rules/skip/
+- cloudflared tunnel docs: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/
+- 9router: https://github.com/decolua/9router
