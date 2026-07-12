@@ -19,7 +19,7 @@ Every request hit an endpoint that didn't exist in the version I was running. Th
 
 Tracing it back, I found a version mismatch, a fail-open pattern that hid the error, and a provider gap that would've limited the feature anyway even if everything else was right. I ended up gutting the whole integration.
 
-The thing that actually worked? Already in the codebase. I just wasn't using it.
+The thing that actually worked? Already running in 9router — RTK was doing token compression just fine. Headroom was meant to augment it, not replace it.
 
 Full postmortem with the complete autopsy.
 

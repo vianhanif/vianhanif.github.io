@@ -46,7 +46,7 @@ I evaluated six approaches. Fixed the URL? The endpoint doesn't exist in my vers
 
 I removed it. Gutted the integration code, pulled the service, deleted the routes. The only remaining sign is a toggle on the dashboard marked "inactive" with a note explaining why.
 
-The thing that actually works — already in the codebase — is RTK compression. Inline token compression, no network calls, no proxy, no 2.5GB of dependencies. It was there the whole time. I just wasn't using it.
+RTK compression was already running in 9router — inline token compression, no network calls, no proxy. Headroom was meant to fold into that existing token-saving toolkit as a second layer. But the integration never worked. RTK was already doing the job.
 
 ## What Stuck With Me
 

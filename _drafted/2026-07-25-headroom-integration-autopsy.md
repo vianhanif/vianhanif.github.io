@@ -75,9 +75,9 @@ Option E—the proxy route—also failed because 9router's providers use custom 
 
 ## What Actually Works
 
-RTK compression, which was already in the codebase, actually does the job. It compresses tool message content in-line—no ML models, no network calls, zero extra latency. Works for OpenAI tool content, Claude tool results, and several other formats.
+RTK compression was already doing the job — compressing tool message content in-line with no ML models, no network calls, zero extra latency. Headroom was meant to fold into 9router's existing token-saving toolkit as a second compression layer. But the integration never worked.
 
-That's what I should have been using all along.
+The existing RTK setup didn't need replacing. It needed augmenting — and Headroom wasn't the right tool for that.
 
 ## The Cleanup
 
