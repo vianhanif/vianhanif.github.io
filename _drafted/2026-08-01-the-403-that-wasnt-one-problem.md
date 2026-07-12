@@ -7,7 +7,7 @@ layout: page
 
 My Warp agent stopped talking to 9router.
 
-Quick background: 9router is my AI routing layer — a Hono server that proxies LLM requests through fallback providers. Warp agents are Oz agents running in the terminal; they send chat completion requests through a Cloudflare tunnel to my local 9router instance.
+Quick background: 9router is my AI routing layer — a Hono server that proxies LLM requests through fallback providers. It runs locally via a Cloudflare tunnel. Warp agents (Oz agents in the terminal) send chat completion requests through that tunnel to reach it.
 
 The setup: Warp has a custom LLM route pointed at my Cloudflare tunnel — `https://9router.vianhanif.link/v1/chat/completions`. It had been working. Then one day, every request bounced with:
 
@@ -69,7 +69,7 @@ The second bug was Cloudflare's own security blocking a legitimate client. This 
 
 After the debugging session, I switched to a cleaner solution: 9router already has an API key feature built in. Toggle it on in the dashboard, generate a key, add it to Warp's LLM route config. No WAF bypass needed. The tunnel stays open to everyone, Cloudflare security stays intact, and only authenticated requests get through at the application level. The right place to do auth anyway.
 
-The lesson: a 403 at the application layer doesn't mean the application threw it. The infrastructure between your client and your server has more authority to say "no" than your server code does.
+The lesson: a 403 at the application layer doesn't mean your application threw it. The infrastructure between your client and your server has more authority to say "no" than your server code does.
 
 ## Sources
 
