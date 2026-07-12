@@ -73,6 +73,6 @@ The lesson: a 403 at the application layer doesn't mean your application threw i
 
 ## Sources
 
-- Cloudflare Custom WAF Skip rules: https://developers.cloudflare.com/waf/custom-rules/skip/
-- cloudflared tunnel docs: https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/
-- 9router: https://github.com/decolua/9router
+- [Cloudflare Custom WAF Skip rules](https://developers.cloudflare.com/waf/custom-rules/skip/)
+- [cloudflared tunnel docs](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/)
+- [9router](https://github.com/decolua/9router)

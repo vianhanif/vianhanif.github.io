@@ -135,11 +135,11 @@ The code's committed. The feature's gone. And now you know about the weekend I b
 
 ## Sources
 
-- Headroom GitHub: https://github.com/headroomlabs-ai/headroom
-- Headroom proxy `/v1/compress` endpoint: https://headroomlabs-ai.github.io/headroom/proxy/
-- Headroom install docs (Python >= 3.10, pip install headroom-ai[proxy]): https://headroom-docs.vercel.app/docs/installation
-- headroom-ai on PyPI: https://pypi.org/project/headroom-ai/
-- Upstream 9router: https://github.com/decolua/9router
-- RTK (Rust Token Killer): https://github.com/rtk-ai/rtk
-- OpenCode: https://github.com/opencode-ai/opencode
-- Groq API docs: https://console.groq.com/docs
+- [Headroom GitHub](https://github.com/headroomlabs-ai/headroom)
+- [Headroom proxy `/v1/compress` endpoint](https://headroomlabs-ai.github.io/headroom/proxy/)
+- [Headroom install docs](https://headroom-docs.vercel.app/docs/installation) (Python >= 3.10, pip install headroom-ai[proxy])
+- [headroom-ai on PyPI](https://pypi.org/project/headroom-ai/)
+- [Upstream 9router](https://github.com/decolua/9router)
+- [RTK (Rust Token Killer)](https://github.com/rtk-ai/rtk)
+- [OpenCode](https://github.com/opencode-ai/opencode)
+- [Groq API docs](https://console.groq.com/docs)
