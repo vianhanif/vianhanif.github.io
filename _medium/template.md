@@ -21,11 +21,13 @@ status: draft
 
 ## Publish Timing
 → Blog series: [date range of blog posts covered]
-→ Medium: [2 weeks after last blog publish in this group]
+→ Medium: D-0 (same day as blog publish)
+→ LinkedIn: D+1
 
 ## Notes
 
-- [ ] Wait 2-4 weeks after blog publish (SEO best practice)
-- [ ] This is original Medium content, not a cross-post — no canonical URL needed
+- [ ] Post Medium same day as blog — use canonical URL pointing to blog post
+- [ ] Schedule LinkedIn via Fedica for D+1 (next day)
+- [ ] This is original Medium content, not a cross-post
 - [ ] Ensure all links use full HTTPS URLs (Medium strips relative paths)
 - [ ] Consider paywall: storytelling content often performs well behind paywall

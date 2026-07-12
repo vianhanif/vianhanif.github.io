@@ -26,10 +26,11 @@ Full story on Medium → https://[username].medium.com/[slug]
 
 ---
 
-# Notes
+## Notes
 
-- [ ] Post text-only (no links in main body)
-- [ ] CTA: teaser ends with a hook
-- [ ] Hashtags at the bottom of post body (3-5, no spaces between)
-- [ ] Post the comment immediately after publishing post
-- [ ] Wait 10-15 minutes before engaging with comments
+- [ ] Schedule via Fedica for D+1 (blog/Medium publish day + 1)
+  - Post text-only (no links in main body)
+  - CTA: teaser ends with a hook
+  - Comment: "Full story on Medium → https://[username].medium.com/[slug]"
+  - Schedule comment to post immediately after LinkedIn post goes live
+  - Wait 10-15 minutes before engaging with comments

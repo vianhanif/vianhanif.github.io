@@ -124,9 +124,9 @@ All posts live in `_posts/`. Jekyll automatically filters future-dated posts fro
    - `_linkedin/` — 3 short teaser posts, one per topic group, grouped by story arc
    - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
 4. Commit and push — pipeline auto-deploys
-5. **Manual**: Medium post — use https://medium.com/p/import, paste content, set canonical URL to your blog post, publish first (need the URL)
-6. **Schedule via Fedica**: https://fedica.com/
-   - LinkedIn post (text-only, no links) + comment with Medium link — schedule same day as Medium
+5. **Publish Medium** (D-0, same day as blog) — use https://medium.com/p/import, paste content, set canonical URL to your blog post, publish
+6. **Schedule LinkedIn via Fedica** (D+1, one day after blog/Medium) — https://fedica.com/
+   - Post text-only teaser + comment with Medium link — schedule for next day
 
 ### Publishing orchestration rule
 
