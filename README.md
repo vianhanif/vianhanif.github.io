@@ -42,6 +42,7 @@ LinkedIn (short teaser, no external links in body)
 | Path | Purpose |
 |------|---------|
 | `_posts/` | Published/Drafted blog posts (filtered by date) |
+| `_linkedin/` | LinkedIn post text + comment link templates |
 | `_medium/` | Medium syndication prep with inline link strategy |
 | `_tabs/` | About, Archives, Categories, Tags pages |
 | `_data/` | YAML config for contact, social sharing |
