@@ -41,7 +41,7 @@ I dispatched one child agent per post, each pulling from the content map and sou
 
 I ran this draft through the same pipeline. One cold-read scored it 95%. Another gave it 70%. The gap itself was the diagnosis — the story read clean on the surface but lacked the texture of its own failures. Three more review rounds later, I'd added the fabricated-story catch in Phase 2 and the discarded 10-section restructure in Phase 3 — concrete moments that prove the pipeline isn't magic. The agents didn't write any of those. They told me where drafts were missing. I filled the gaps.
 
-I packaged the pipeline into a reusable skill at `~/.agents/writer/`. Next time I need to write, I type `/writer`. The same structure — research, draft, cold-read, iterate, sign-off — runs without rebuilding the process from scratch. The process became the product.
+I packaged the pipeline into a reusable skill at `~/.agents/skills/writer/`. Next time I need to write, I type `/writer`. The same structure — research, draft, cold-read, iterate, sign-off — runs without rebuilding the process from scratch. The process became the product.
 
 ## The Insight
 
