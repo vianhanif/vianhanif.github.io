@@ -60,9 +60,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-  drafted:
-    output: true
-    permalink: /drafted/:title/
   linkedin:
     output: true
     permalink: /linkedin/:title/
@@ -85,13 +82,6 @@ defaults:
       path: _drafts
     values:
       comments: false
-  - scope:
-      path: _drafted
-    values:
-      layout: post
-      comments: false
-      toc: false
-      sitemap: false
   - scope:
       path: _linkedin
     values:
