@@ -97,31 +97,29 @@ All projects live under `~/Documents/alvian/`:
 | Directory | Purpose |
 |-----------|---------|
 | `_posts/` | Published posts (live on site) |
-| `_drafted/` | Draft posts staged for future publication |
 | `_linkedin/` | Short teaser post + first-comment link to Medium. 3 items, one per topic group |
 | `_medium/` | Expanded story per LinkedIn topic with inline links back to blog. 3 items. Original content — no canonical URL |
-| `_drafts/` | Jekyll-native drafts dir (not used — use `_drafted/` instead) |
 
 **State criteria**
 
 | State | Requirements |
 |-------|--------------|
-| `_drafted/` | Initial writing. Author may not have reviewed. Facts may be unverified. Placeholder claims allowed. NOT ready for syndication. |
-| `_posts/` | Reviewed and confirmed by author. Every factual claim has a source link (official docs, blog post, website). No unverified assumptions. No vague notes without a 2nd-source reference. Ready for syndication prep. |
+| Drafted | Post has `date > site.time`. Author may not have reviewed. Placeholder claims allowed. NOT ready for syndication. |
+| Published | Post has `date <= site.time`. Reviewed and confirmed by author. Every factual claim has a source link. Ready for syndication prep. |
 
-**Draft posts go in `_drafted/`**, not `_drafts/`. The `_drafted/` directory is a custom Jekyll collection defined in `_config.yml` — it has `output: true` so drafts are previewable at `/drafted/:title/` without being indexed or on the main feed.
+All posts live in `_posts/`. Jekyll automatically filters future-dated posts from the home feed via custom layout overrides, while keeping them previewable at their permalink URL.
 
 ### Config
 
-- `future: false` — posts dated in the future do NOT render in production. This is by design: draft posts can have their target publish date in frontmatter without going live.
+- `future: true` — future-dated posts are generated as static files. This allows access at specific URLs while they are still in "draft" status.
 - Pipeline: GitHub Actions (`workflows/pages-deploy.yml`) triggers on push to `main`/`master`. Builds with `bundle exec jekyll build`, runs htmlproofer, deploys to GitHub Pages.
 - Local preview: `bundle exec jekyll serve --future` (needs `--future` flag to see posts with future dates).
-- **Important**: `drafted.md` filters `site.drafted` to only posts with `date <= site.time`. Without this filter, the page generates links to future-dated drafts that Jekyll won't render, causing htmlproofer to fail with broken internal links. Keep this filter when iterating over `site.drafted`.
+- **Important**: `drafted.md` filters `site.posts` to only posts with `date > site.time`. Keep this filter when iterating over `site.posts`.
 
 ### Publishing flow
 
-1. Draft written and pushed to `_drafted/YYYY-MM-DD-title.md`
-2. On publish day, move file from `_drafted/` → `_posts/` (update frontmatter if needed, keep same date)
+1. Draft written and pushed to `_posts/YYYY-MM-DD-title.md` with a future date
+2. On publish day, update `date` frontmatter to current date (or remove date frontmatter if default behavior applies)
 3. **AI generates**:
    - `_linkedin/` — 3 short teaser posts, one per topic group, grouped by story arc
    - `_medium/` — 3 expanded-story versions matching each LinkedIn post, with inline links to blog originals
@@ -133,7 +131,7 @@ All projects live under `~/Documents/alvian/`:
 ### Publishing orchestration rule
 
 Every AI-assisted writing session MUST:
-1. Check if the drafted post will be published (asked or implied by user)
+1. Check if the post will be published (asked or implied by user)
 2. If yes, determine the topic group it belongs to (subscription story, router story, or ADE story)
 3. Generate or update the corresponding `_linkedin/` and `_medium/` prep files for that topic group
 4. Fill in: teaser text for LinkedIn, expanded story for Medium, inline links back to blog posts
@@ -143,9 +141,9 @@ Every AI-assisted writing session MUST:
 
 ### Post conventions
 
-- **Date in filename**: `YYYY-MM-DD-title.md` (both `_drafted/` and `_posts/`)
+- **Date in filename**: `YYYY-MM-DD-title.md` (all in `_posts/`)
 - **Frontmatter**: `title`, `date`, `tags` (array). Optional: `toc`, `comments`, `image`.
-- **Permalinks**: Published posts at `/posts/:title/`, drafted posts at `/drafted/:title/`
+- **Permalinks**: Published posts at `/posts/:title/` (future-dated posts also render at this permalink).
 - **Series**: Posts often reference each other. Use absolute paths like `[text](/posts/other-post-title/)`.
 - **Tags**: Keep consistent. Existing tags: `9router`, `warp`, `oz`, `orchestration`, `agents`, `run_agents`, `ade`, `technical`, `postmortem`, `personal`, `tunnel`, `opencode`, `router`.
 

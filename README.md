@@ -6,13 +6,11 @@ Personal blog — [vianhanif.link](https://vianhanif.link). Built with Jekyll + 
 
 ### 1. Draft → Publish
 
-```
-_drafted/2026-08-01-title.md   # Write here first
-         ↓
-_posts/2026-08-01-title.md      # Move here on publish day
-```
+All posts live in `_posts/`. Visibility controlled by `date` frontmatter:
+- **Draft**: `date` in the future — hidden from main feed, visible at permalink and `/drafted/` page
+- **Published**: `date` ≤ today — visible everywhere
 
-`_drafted/` is a custom Jekyll collection — drafts are previewable at `/drafted/:title/` but excluded from the main feed and sitemap. Move the file to `_posts/` when it's live.
+Write a post with a future date → on publish day, update `date` to today (or remove it).
 
 ### 2. Syndication Prep
 
@@ -43,8 +41,7 @@ LinkedIn (short teaser, no external links in body)
 
 | Path | Purpose |
 |------|---------|
-| `_posts/` | Published blog posts |
-| `_drafted/` | Drafts, previewable offline, excluded from sitemap |
+| `_posts/` | Published/Drafted blog posts (filtered by date) |
 | `_linkedin/` | LinkedIn post text + comment link templates |
 | `_medium/` | Medium syndication prep with inline link strategy |
 | `_tabs/` | About, Archives, Categories, Tags pages |
