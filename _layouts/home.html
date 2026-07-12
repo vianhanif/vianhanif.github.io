@@ -100,9 +100,18 @@ layout: default
  
  
  {% endfor %}
+
+ {% if posts.size == 0 %}
+ 
+ 
+ 
+ No posts to display yet.
+ 
+ 
+ {% endif %}
  
  
 
-{% if paginator.total_pages > 1 %}
+{% if paginator.total_pages > 1 and posts.size > 0 %}
  {% include post-paginator.html %}
 {% endif %}

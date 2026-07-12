@@ -1,0 +1,24 @@
+---
+layout: page
+# The Category layout
+---
+
+{% include lang.html %}
+
+{% assign filtered = page.posts | where_exp: 'item', 'item.date <= site.time' %}
+
+ 
+ 
+ {{ page.title }}
+ {{ filtered | size }} 
+ 
+
+ {% for post in filtered %}
+ 
+ {{ post.title }} 
+ 
+ {% include datetime.html date=post.date class='text-muted small text-nowrap' lang=lang %}
+ 
+ {% endfor %}
+ 
+ 
