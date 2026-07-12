@@ -41,9 +41,11 @@ I dispatched one child agent per post, each pulling from the content map and sou
 
 I ran this draft through the same pipeline. One cold-read scored it 95%. Another gave it 70%. The gap itself was the diagnosis — the story read clean on the surface but lacked the texture of its own failures. Three more review rounds later, I'd added the fabricated-story catch in Phase 2 and the discarded 10-section restructure in Phase 3 — concrete moments that prove the pipeline isn't magic. The agents didn't write any of those. They told me where drafts were missing. I filled the gaps.
 
+I packaged the pipeline into a reusable skill at `~/.agents/writer/`. Next time I need to write, I type `/writer`. The same structure — research, draft, cold-read, iterate, sign-off — runs without rebuilding the process from scratch. The process became the product.
+
 ## The Insight
 
-The AI wasn't my ghostwriter. It was my editorial team. Review → revise → review → restructure. Each phase used a different agent configuration, but I was the one making the calls — what to keep, what to cut, where the structure still needed work. I didn't use AI to write faster. I used it to write more deliberately. I swapped the "before" of my original draft (which rambled for 3,000 words about AI tooling) with the "after" of a 9-part series where each post has a single, sharp focus. 
+The AI wasn't my ghostwriter. It was my editorial team. I had the raw content — my own experience, my own stories. The AI didn't write them. It asked the right questions about them. Review → revise → review → restructure. Each phase used a different agent configuration, but I was the one making the calls — what to keep, what to cut, where the structure still needed work. I didn't use AI to write faster. I used it to write more deliberately. I swapped the "before" of my original draft (which rambled for 3,000 words about AI tooling) with the "after" of a 9-part series where each post has a single, sharp focus. 
 
 ## The Series
 
