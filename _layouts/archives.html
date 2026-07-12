@@ -1,0 +1,36 @@
+---
+layout: page
+# The Archives of posts.
+---
+
+{% include lang.html %}
+
+{% assign df_strftime_m = site.data.locales[lang].df.archives.strftime | default: '/ %m' %}
+{% assign df_dayjs_m = site.data.locales[lang].df.archives.dayjs | default: '/ MM' %}
+
+{% assign published = site.posts | where_exp: 'item', 'item.date <= site.time' %}
+
+ 
+ {% for post in published %}
+ {% assign cur_year = post.date | date: '%Y' %}
+
+ {% if cur_year != last_year %}
+ {% unless forloop.first %} {% endunless %}
+
+ {{ cur_year }} 
+ {{ ' ' }}
+
+ {% assign last_year = cur_year %}
+ {% endif %}
+
+ 
+ {% assign ts = post.date | date: '%s' %}
+ {{ post.date | date: '%d' }} 
+ 
+ {{ post.date | date: df_strftime_m }}
+ 
+ {{ post.title }} 
+ 
+
+ {% if forloop.last %} {% endif %}
+ {% endfor %}
