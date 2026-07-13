@@ -35,9 +35,17 @@ sitemap: false
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.post-header .hdr-badge, .post-row .badge {
+.post-header .hdr-badge, .post-row .pill {
   min-width: 90px;
   text-align: center;
+}
+.pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.5;
 }
 </style>
 
@@ -59,17 +67,22 @@ sitemap: false
 {%- if medium_count > 0 -%}{%- assign md_status = "Ready" -%}{%- else -%}{%- assign md_status = "Pending" -%}{%- endif -%}
 {%- if linkedin_count > 0 and medium_count > 0 -%}{%- assign writer_status = "Done" -%}{%- else -%}{%- assign writer_status = "Pending" -%}{%- endif -%}
 {%- if post.date > site.time -%}{%- assign post_status = "Draft" -%}{%- else -%}{%- assign post_status = "Published" -%}{%- endif -%}
+{%- if post_status == "Published" -%}{%- assign ps_clr = "#198754" -%}{%- else -%}{%- assign ps_clr = "#ffc107" -%}{%- endif -%}
+{%- if li_status == "Ready" -%}{%- assign li_clr = "#0d6efd" -%}{%- else -%}{%- assign li_clr = "#6c757d" -%}{%- endif -%}
+{%- if md_status == "Ready" -%}{%- assign md_clr = "#0d6efd" -%}{%- else -%}{%- assign md_clr = "#6c757d" -%}{%- endif -%}
+{%- if writer_status == "Done" -%}{%- assign wr_clr = "#198754" -%}{%- else -%}{%- assign wr_clr = "#6c757d" -%}{%- endif -%}
+{%- assign ps_txt = "white" -%}
+{%- assign li_txt = "white" -%}
+{%- assign md_txt = "white" -%}
+{%- assign wr_txt = "white" -%}
+{%- if post_status == "Draft" -%}{%- assign ps_txt = "#212529" -%}{%- endif -%}
 <div class="post-row">
   <span class="date">{{ post.date | date: "%d %B %Y" }}</span>
   <span class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-  {%- capture ps_bg -%}{%- if post_status == "Published" -%}bg-success{%- else -%}bg-warning text-dark{%- endif -%}{%- endcapture -%}
-  <span class="badge rounded-pill {{ ps_bg }}">{{ post_status }}</span>
-  {%- capture li_bg -%}{%- if li_status == "Ready" -%}bg-primary{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
-  <span class="badge rounded-pill {{ li_bg }}">{{ li_status }}</span>
-  {%- capture md_bg -%}{%- if md_status == "Ready" -%}bg-primary{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
-  <span class="badge rounded-pill {{ md_bg }}">{{ md_status }}</span>
-  {%- capture wr_bg -%}{%- if writer_status == "Done" -%}bg-success{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
-  <span class="badge rounded-pill {{ wr_bg }}">{{ writer_status }}</span>
+  <span class="pill" style="background:{{ ps_clr }};color:{{ ps_txt }}">{{ post_status }}</span>
+  <span class="pill" style="background:{{ li_clr }};color:{{ li_txt }}">{{ li_status }}</span>
+  <span class="pill" style="background:{{ md_clr }};color:{{ md_txt }}">{{ md_status }}</span>
+  <span class="pill" style="background:{{ wr_clr }};color:{{ wr_txt }}">{{ wr_status }}</span>
 </div>
 {%- endfor -%}
 </div>
