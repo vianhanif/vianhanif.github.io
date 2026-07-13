@@ -6,32 +6,50 @@ sitemap: false
 ---
 
 <style>
-.post-row {
+.post-header, .post-row {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 8px 0;
-  border-bottom: 1px solid var(--border-color, #e0e0e0);
   font-size: 0.9rem;
 }
-.post-row .date {
-  min-width: 85px;
-  color: var(--text-muted-color, #888);
-  font-family: monospace;
+.post-header {
+  border-bottom: 2px solid var(--border-color, #ccc);
+  font-weight: 700;
+  color: var(--text-muted-color, #666);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+.post-row {
+  border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+.post-header .hdr-date, .post-row .date {
+  min-width: 140px;
+}
+.post-header .hdr-title, .post-row .title {
+  flex: 1;
 }
 .post-row .title {
-  flex: 1;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.post-row .badge {
-  min-width: 70px;
+.post-header .hdr-badge, .post-row .badge {
+  min-width: 90px;
   text-align: center;
 }
 </style>
 
 <div style="margin-top: 1rem;">
+<div class="post-header">
+  <span class="hdr-date">Date</span>
+  <span class="hdr-title">Title</span>
+  <span class="hdr-badge">Post Status</span>
+  <span class="hdr-badge">LinkedIn</span>
+  <span class="hdr-badge">Medium</span>
+  <span class="hdr-badge">Writer</span>
+</div>
 {%- for post in site.posts -%}
 {%- assign linkedins = site.linkedin | where_exp: "item", "item.linked_posts contains post.url" -%}
 {%- assign mediums = site.medium | where_exp: "item", "item.linked_posts contains post.url" -%}
@@ -42,12 +60,16 @@ sitemap: false
 {%- if linkedin_count > 0 and medium_count > 0 -%}{%- assign writer_status = "Done" -%}{%- else -%}{%- assign writer_status = "Pending" -%}{%- endif -%}
 {%- if post.date > site.time -%}{%- assign post_status = "Draft" -%}{%- else -%}{%- assign post_status = "Published" -%}{%- endif -%}
 <div class="post-row">
-  <span class="date">{{ post.date | date: "%Y-%m-%d" }}</span>
+  <span class="date">{{ post.date | date: "%d %B %Y" }}</span>
   <span class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-  <span class="badge {% if post_status == 'Published' %}bg-primary{% else %}bg-secondary{% endif %}">{{ post_status }}</span>
-  <span class="badge {% if li_status == 'Ready' %}bg-success{% else %}bg-secondary{% endif %}">{{ li_status }}</span>
-  <span class="badge {% if md_status == 'Ready' %}bg-success{% else %}bg-secondary{% endif %}">{{ md_status }}</span>
-  <span class="badge {% if writer_status == 'Done' %}bg-success{% else %}bg-secondary{% endif %}">{{ writer_status }}</span>
+  {%- capture ps_bg -%}{%- if post_status == "Published" -%}bg-success{%- else -%}bg-warning text-dark{%- endif -%}{%- endcapture -%}
+  <span class="badge rounded-pill {{ ps_bg }}">{{ post_status }}</span>
+  {%- capture li_bg -%}{%- if li_status == "Ready" -%}bg-primary{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
+  <span class="badge rounded-pill {{ li_bg }}">{{ li_status }}</span>
+  {%- capture md_bg -%}{%- if md_status == "Ready" -%}bg-primary{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
+  <span class="badge rounded-pill {{ md_bg }}">{{ md_status }}</span>
+  {%- capture wr_bg -%}{%- if writer_status == "Done" -%}bg-success{%- else -%}bg-secondary{%- endif -%}{%- endcapture -%}
+  <span class="badge rounded-pill {{ wr_bg }}">{{ writer_status }}</span>
 </div>
 {%- endfor -%}
 </div>
