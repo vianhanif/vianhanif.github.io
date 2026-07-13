@@ -14,7 +14,7 @@ sitemap: false
   --pill-done: #d4edda;
   --pill-text: #1a1a1e;
 }
-[data-mode=dark] {
+.dark {
   --pill-published: #3bbf7a;
   --pill-draft: #d9a84a;
   --pill-ready: #5b92ce;
@@ -91,10 +91,10 @@ sitemap: false
 <div class="post-row">
   <span class="date">{{ post.date | date: "%d %B %Y" }}</span>
   <span class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-  <span class="pill" style="background:{{ ps_clr }}">{{ post_status }}</span>
-  <span class="pill" style="background:{{ li_clr }}">{{ li_status }}</span>
-  <span class="pill" style="background:{{ md_clr }}">{{ md_status }}</span>
-  <span class="pill" style="background:{{ wr_clr }}">{{ wr_status }}</span>
+  <span class="pill" style="background:{{ ps_clr }};">{{ post_status }}</span>
+  <span class="pill" style="background:{{ li_clr }};">{{ li_status }}</span>
+  <span class="pill" style="background:{{ md_clr }};">{{ md_status }}</span>
+  <span class="pill" style="background:{{ wr_clr }};">{{ writer_status }}</span>
 </div>
 {%- endfor -%}
 </div>
