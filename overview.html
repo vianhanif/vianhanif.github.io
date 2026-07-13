@@ -6,6 +6,20 @@ sitemap: false
 ---
 
 <style>
+:root {
+  --pill-published: #2b9a5e;
+  --pill-draft: #b8863a;
+  --pill-ready: #4a7db5;
+  --pill-pending: #6b7280;
+  --pill-done: #2b9a5e;
+}
+[data-mode=dark] {
+  --pill-published: #3bbf7a;
+  --pill-draft: #d9a84a;
+  --pill-ready: #5b92ce;
+  --pill-pending: #8b92a0;
+  --pill-done: #3bbf7a;
+}
 .post-header, .post-row {
   display: flex;
   align-items: center;
@@ -46,6 +60,7 @@ sitemap: false
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.5;
+  color: #fff;
 }
 </style>
 
@@ -67,22 +82,17 @@ sitemap: false
 {%- if medium_count > 0 -%}{%- assign md_status = "Ready" -%}{%- else -%}{%- assign md_status = "Pending" -%}{%- endif -%}
 {%- if linkedin_count > 0 and medium_count > 0 -%}{%- assign writer_status = "Done" -%}{%- else -%}{%- assign writer_status = "Pending" -%}{%- endif -%}
 {%- if post.date > site.time -%}{%- assign post_status = "Draft" -%}{%- else -%}{%- assign post_status = "Published" -%}{%- endif -%}
-{%- if post_status == "Published" -%}{%- assign ps_clr = "#2b9a5e" -%}{%- else -%}{%- assign ps_clr = "#b8863a" -%}{%- endif -%}
-{%- if li_status == "Ready" -%}{%- assign li_clr = "#4a7db5" -%}{%- else -%}{%- assign li_clr = "#6b7280" -%}{%- endif -%}
-{%- if md_status == "Ready" -%}{%- assign md_clr = "#4a7db5" -%}{%- else -%}{%- assign md_clr = "#6b7280" -%}{%- endif -%}
-{%- if writer_status == "Done" -%}{%- assign wr_clr = "#2b9a5e" -%}{%- else -%}{%- assign wr_clr = "#6b7280" -%}{%- endif -%}
-{%- assign ps_txt = "#fff" -%}
-{%- assign li_txt = "#fff" -%}
-{%- assign md_txt = "#fff" -%}
-{%- assign wr_txt = "#fff" -%}
-{%- if post_status == "Draft" -%}{%- assign ps_txt = "#1a1a1e" -%}{%- endif -%}
+{%- if post_status == "Published" -%}{%- assign ps_clr = "var(--pill-published)" -%}{%- else -%}{%- assign ps_clr = "var(--pill-draft)" -%}{%- endif -%}
+{%- if li_status == "Ready" -%}{%- assign li_clr = "var(--pill-ready)" -%}{%- else -%}{%- assign li_clr = "var(--pill-pending)" -%}{%- endif -%}
+{%- if md_status == "Ready" -%}{%- assign md_clr = "var(--pill-ready)" -%}{%- else -%}{%- assign md_clr = "var(--pill-pending)" -%}{%- endif -%}
+{%- if writer_status == "Done" -%}{%- assign wr_clr = "var(--pill-done)" -%}{%- else -%}{%- assign wr_clr = "var(--pill-pending)" -%}{%- endif -%}
 <div class="post-row">
   <span class="date">{{ post.date | date: "%d %B %Y" }}</span>
   <span class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
-  <span class="pill" style="background:{{ ps_clr }};color:{{ ps_txt }}">{{ post_status }}</span>
-  <span class="pill" style="background:{{ li_clr }};color:{{ li_txt }}">{{ li_status }}</span>
-  <span class="pill" style="background:{{ md_clr }};color:{{ md_txt }}">{{ md_status }}</span>
-  <span class="pill" style="background:{{ wr_clr }};color:{{ wr_txt }}">{{ wr_status }}</span>
+  <span class="pill" style="background:{{ ps_clr }}">{{ post_status }}</span>
+  <span class="pill" style="background:{{ li_clr }}">{{ li_status }}</span>
+  <span class="pill" style="background:{{ md_clr }}">{{ md_status }}</span>
+  <span class="pill" style="background:{{ wr_clr }}">{{ wr_status }}</span>
 </div>
 {%- endfor -%}
 </div>
