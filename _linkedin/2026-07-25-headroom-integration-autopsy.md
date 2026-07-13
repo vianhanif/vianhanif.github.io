@@ -1,5 +1,5 @@
 ---
-title: "The Feature That Did Nothing: A Headroom Integration Autopsy"
+title: "Debugging 9router Headroom: The Silent 404 That Masked a Version Mismatch"
 date: 2026-07-25
 linked_posts:
   - /posts/headroom-integration-autopsy/

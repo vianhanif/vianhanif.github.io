@@ -1,5 +1,5 @@
 ---
-title: "The Headroom Debacle: When Good Ideas Go Silent"
+title: "Debugging 9router Headroom: The Silent 404 That Masked a Version Mismatch"
 date: 2026-07-25
 tags: [9router, postmortem, technical]
 layout: page
