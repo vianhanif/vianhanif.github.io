@@ -1,5 +1,5 @@
 ---
-title: "The 403 That Wasn't One Problem: Debugging a Two-Layer Infrastructure Failure"
+title: "The 403 That Wasn't: How Warp, 9router, and Cloudflare Masked Two Separate Failures"
 date: 2026-08-01
 linked_posts:
   - /posts/the-403-that-wasnt-one-problem/

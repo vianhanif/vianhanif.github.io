@@ -1,5 +1,5 @@
 ---
-title: "The 403 That Wasn't One Problem"
+title: "The 403 That Wasn't: How Warp, 9router, and Cloudflare Masked Two Separate Failures"
 date: 2026-08-01
 tags: [warp, 9router, postmortem, technical]
 layout: page
