@@ -67,15 +67,15 @@ sitemap: false
 {%- if medium_count > 0 -%}{%- assign md_status = "Ready" -%}{%- else -%}{%- assign md_status = "Pending" -%}{%- endif -%}
 {%- if linkedin_count > 0 and medium_count > 0 -%}{%- assign writer_status = "Done" -%}{%- else -%}{%- assign writer_status = "Pending" -%}{%- endif -%}
 {%- if post.date > site.time -%}{%- assign post_status = "Draft" -%}{%- else -%}{%- assign post_status = "Published" -%}{%- endif -%}
-{%- if post_status == "Published" -%}{%- assign ps_clr = "#198754" -%}{%- else -%}{%- assign ps_clr = "#ffc107" -%}{%- endif -%}
-{%- if li_status == "Ready" -%}{%- assign li_clr = "#0d6efd" -%}{%- else -%}{%- assign li_clr = "#6c757d" -%}{%- endif -%}
-{%- if md_status == "Ready" -%}{%- assign md_clr = "#0d6efd" -%}{%- else -%}{%- assign md_clr = "#6c757d" -%}{%- endif -%}
-{%- if writer_status == "Done" -%}{%- assign wr_clr = "#198754" -%}{%- else -%}{%- assign wr_clr = "#6c757d" -%}{%- endif -%}
-{%- assign ps_txt = "white" -%}
-{%- assign li_txt = "white" -%}
-{%- assign md_txt = "white" -%}
-{%- assign wr_txt = "white" -%}
-{%- if post_status == "Draft" -%}{%- assign ps_txt = "#212529" -%}{%- endif -%}
+{%- if post_status == "Published" -%}{%- assign ps_clr = "#2b9a5e" -%}{%- else -%}{%- assign ps_clr = "#b8863a" -%}{%- endif -%}
+{%- if li_status == "Ready" -%}{%- assign li_clr = "#4a7db5" -%}{%- else -%}{%- assign li_clr = "#6b7280" -%}{%- endif -%}
+{%- if md_status == "Ready" -%}{%- assign md_clr = "#4a7db5" -%}{%- else -%}{%- assign md_clr = "#6b7280" -%}{%- endif -%}
+{%- if writer_status == "Done" -%}{%- assign wr_clr = "#2b9a5e" -%}{%- else -%}{%- assign wr_clr = "#6b7280" -%}{%- endif -%}
+{%- assign ps_txt = "#fff" -%}
+{%- assign li_txt = "#fff" -%}
+{%- assign md_txt = "#fff" -%}
+{%- assign wr_txt = "#fff" -%}
+{%- if post_status == "Draft" -%}{%- assign ps_txt = "#1a1a1e" -%}{%- endif -%}
 <div class="post-row">
   <span class="date">{{ post.date | date: "%d %B %Y" }}</span>
   <span class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></span>
