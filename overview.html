@@ -7,11 +7,12 @@ sitemap: false
 
 <style>
 :root {
-  --pill-published: #2b9a5e;
-  --pill-draft: #b8863a;
-  --pill-ready: #4a7db5;
-  --pill-pending: #6b7280;
-  --pill-done: #2b9a5e;
+  --pill-published: #d4edda;
+  --pill-draft: #fff3cd;
+  --pill-ready: #cfe2ff;
+  --pill-pending: #e2e3e5;
+  --pill-done: #d4edda;
+  --pill-text: #1a1a1e;
 }
 [data-mode=dark] {
   --pill-published: #3bbf7a;
@@ -19,6 +20,7 @@ sitemap: false
   --pill-ready: #5b92ce;
   --pill-pending: #8b92a0;
   --pill-done: #3bbf7a;
+  --pill-text: #fff;
 }
 .post-header, .post-row {
   display: flex;
@@ -60,7 +62,7 @@ sitemap: false
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.5;
-  color: #fff;
+  color: var(--pill-text);
 }
 </style>
 
