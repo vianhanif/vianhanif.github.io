@@ -8,6 +8,16 @@ layout: default
 {% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true and item.date <= site.time' %}
 {% assign all_published = all_pinned | concat: all_normal %}
 
+{% assign published_size = all_published.size %}
+{% assign published_pages = published_size | divided_by: paginator.per_page %}
+{% assign rem = published_size | modulo: paginator.per_page %}
+{% if rem > 0 %}
+  {% assign published_pages = published_pages | plus: 1 %}
+{% endif %}
+{% if published_pages == 0 %}
+  {% assign published_pages = 1 %}
+{% endif %}
+
 {% assign posts = '' | split: '' %}
 {% assign offset = paginator.page | minus: 1 | times: paginator.per_page %}
 {% for item in all_published offset: offset limit: paginator.per_page %}
@@ -107,6 +117,6 @@ layout: default
 </div>
 <!-- #post-list -->
 
-{% if paginator.total_pages > 1 and posts.size > 0 %}
-  {% include post-paginator.html %}
+{% if published_pages > 1 and posts.size > 0 %}
+  {% include post-paginator.html pages=published_pages %}
 {% endif %}
