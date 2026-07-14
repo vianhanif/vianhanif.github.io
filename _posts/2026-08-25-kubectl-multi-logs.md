@@ -1,5 +1,5 @@
 ---
-title: "kubectl-multi-logs: The Story"
+title: "Stop Watching Five Tabs: A Terminal-First Approach to K8s Logs"
 date: 2026-08-25
 tags: [kubernetes, devtools, golang]
 layout: page
