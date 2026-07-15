@@ -24,7 +24,7 @@ social:
     - https://linkedin.com/in/vianhanif
 
 # theme_mode: # keep empty to enable light/dark toggle; set to 'light' or 'dark' to lock
-avatar: /static/image.jpg
+avatar: /static/image.png
 social_preview_image: /static/social_image.jpeg
 toc: true
 
