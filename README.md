@@ -57,3 +57,30 @@ Push to `main` → GitHub Actions builds with `jekyll build` → deploys to Page
 ## Infrastructure
 
 The blog is a static site. No CMS, no database. Git is the source of truth.
+
+## Theme System
+
+Colors live in `_sass/theme-vars.scss` as a central `$themes` SCSS map. Each theme is a map of key → color value; the `apply-theme()` mixin emits them as `--{key}` CSS custom properties. Files in `_sass/themes/` apply these to theme selectors.
+
+### Current themes
+
+| Theme | Scope | File |
+|-------|-------|------|
+| Dark | `:root[data-bs-theme='dark']` | `_sass/themes/_dark.scss` |
+| Light | `:root` | `_sass/themes/_light.scss` |
+
+Dark is the primary custom theme (Warp true black). Light uses inverted defaults — override any value in the `light:` map entry.
+
+### Adding a new theme
+
+1. Add a `mytheme: (...)` entry to `$themes` in `_sass/theme-vars.scss` with all keys and color values.
+2. Create `_sass/themes/_mytheme.scss`:
+   ```scss
+   @use '../theme-vars' as *;
+
+   :root[data-bs-theme='mytheme'] {
+     @include apply-theme(mytheme);
+   }
+   ```
+3. Add `@forward 'mytheme';` to `_sass/themes/_index.scss`.
+4. Toggle via `<html data-bs-theme="mytheme">`.

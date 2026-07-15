@@ -1,0 +1,227 @@
+@use 'sass:map';
+
+/// Theme color palettes.
+/// Each entry is a theme name -> (key: value) map.
+/// Keys become CSS custom property names (--{key}).
+/// Add a new theme by adding an entry to $themes.
+
+$themes: (
+  dark: (
+    // Framework
+    main-bg: #0B0B0B,
+    mask-bg: #161616,
+    main-border-color: #222222,
+
+    // Text
+    text-color: #F5F5F5,
+    text-muted-color: #9C9C9C,
+    text-muted-highlight-color: #CFCFCF,
+    heading-color: #FFFFFF,
+    label-color: #C4C4C4,
+
+    // Links
+    link-color: #82CFFF,
+    link-hover-color: #A6DEFF,
+    link-underline-color: #60A5FA,
+
+    // Sidebar
+    sidebar-bg: #0D0D0D,
+    sidebar-border-color: #1E1E1E,
+    sidebar-muted-color: #7F7F7F,
+    sidebar-active-color: #FFFFFF,
+    sidebar-hover-bg: #171717,
+    sidebar-btn-bg: #151515,
+    sidebar-btn-color: #9C9C9C,
+    site-title-color: #FFFFFF,
+    site-subtitle-color: #8E8E8E,
+
+    // Topbar
+    topbar-bg: rgba(11,11,11,0.82),
+    topbar-text-color: #F5F5F5,
+    search-border-color: #232323,
+    search-icon-color: #7A7A7A,
+    input-focus-border-color: #82CFFF,
+
+    // Buttons / Cards
+    button-bg: #121212,
+    btn-border-color: #262626,
+    card-bg: #111111,
+    card-header-bg: #161616,
+    card-hover-bg: #1B1B1B,
+
+    // Code
+    kbd-bg-color: #171717,
+    kbd-text-color: #F5F5F5,
+    kbd-wrap-color: #5C5C5C,
+    highlight-bg-color: #151515,
+    highlighter-rouge-color: #CFEBFF,
+    highlight-lineno-color: #666666,
+    inline-code-bg: #191919,
+    code-color: #EDEDED,
+    code-header-text-color: #A3A3A3,
+    code-header-muted-color: #252525,
+    language-border-color: #252525,
+
+    // TOC / Menu
+    toc-highlight: #82CFFF,
+    toc-popup-border-color: #232323,
+    menu-bg: #111111,
+    menu-border-color: #242424,
+    menu-active-color: #FFFFFF,
+    menu-highlight-bg: #1B1B1B,
+
+    // Tags / Categories
+    tag-hover: #1A1A1A,
+    tag-border: #303030,
+    tag-shadow: #090909,
+    dash-color: #343434,
+    categories-border: #343434,
+    categories-hover-bg: #222222,
+    timeline-node-bg: #82CFFF,
+    timeline-color: #2B2B2B,
+
+    // Tables
+    tb-odd-bg: #121212,
+    tb-even-bg: #181818,
+    tb-border-color: #242424,
+
+    // Prompts / Callouts
+    prompt-text-color: #DADADA,
+    prompt-tip-bg: #13261A,
+    prompt-tip-icon-color: #4ADE80,
+    prompt-info-bg: #13273B,
+    prompt-info-icon-color: #82CFFF,
+    prompt-warning-bg: #372A0C,
+    prompt-warning-icon-color: #FACC15,
+    prompt-danger-bg: #3B1717,
+    prompt-danger-icon-color: #FF6B6B,
+
+    // Misc
+    checkbox-color: #7C7C7C,
+    checkbox-checked-color: #82CFFF,
+    footnote-target-bg: #2B67C8,
+    btn-share-color: #8D8D8D,
+    btn-share-hover-color: #FFFFFF,
+    btn-backtotop-color: #E8E8E8,
+    btn-backtotop-border-color: #222222,
+    btn-paginator-text-color: #F5F5F5,
+    btn-paginator-hover-color: #1A1A1A,
+    search-tag-bg: #181818,
+    clipboard-checked-color: #4ADE80,
+    filepath-text-color: #F5F5F5,
+  ),
+
+  light: (
+    // Framework
+    main-bg: #FFFFFF,
+    mask-bg: #FAFAFA,
+    main-border-color: #E8E8E8,
+
+    // Text
+    text-color: #1A1A1A,
+    text-muted-color: #6B6B6B,
+    text-muted-highlight-color: #404040,
+    heading-color: #000000,
+    label-color: #4A4A4A,
+
+    // Links
+    link-color: #2563EB,
+    link-hover-color: #1D4ED8,
+    link-underline-color: #3B82F6,
+
+    // Sidebar
+    sidebar-bg: #F8F8F8,
+    sidebar-border-color: #E8E8E8,
+    sidebar-muted-color: #8A8A8A,
+    sidebar-active-color: #000000,
+    sidebar-hover-bg: #EFEFEF,
+    sidebar-btn-bg: #F0F0F0,
+    sidebar-btn-color: #6B6B6B,
+    site-title-color: #000000,
+    site-subtitle-color: #6B6B6B,
+
+    // Topbar
+    topbar-bg: rgba(255,255,255,0.82),
+    topbar-text-color: #1A1A1A,
+    search-border-color: #E0E0E0,
+    search-icon-color: #8A8A8A,
+    input-focus-border-color: #2563EB,
+
+    // Buttons / Cards
+    button-bg: #F5F5F5,
+    btn-border-color: #E0E0E0,
+    card-bg: #FFFFFF,
+    card-header-bg: #FAFAFA,
+    card-hover-bg: #F5F5F5,
+
+    // Code
+    kbd-bg-color: #F0F0F0,
+    kbd-text-color: #1A1A1A,
+    kbd-wrap-color: #A0A0A0,
+    highlight-bg-color: #F5F5F5,
+    highlighter-rouge-color: #1A56DB,
+    highlight-lineno-color: #999999,
+    inline-code-bg: #F0F0F0,
+    code-color: #1A1A1A,
+    code-header-text-color: #6B6B6B,
+    code-header-muted-color: #E0E0E0,
+    language-border-color: #E0E0E0,
+
+    // TOC / Menu
+    toc-highlight: #2563EB,
+    toc-popup-border-color: #E0E0E0,
+    menu-bg: #FFFFFF,
+    menu-border-color: #E0E0E0,
+    menu-active-color: #000000,
+    menu-highlight-bg: #F5F5F5,
+
+    // Tags / Categories
+    tag-hover: #F0F0F0,
+    tag-border: #D0D0D0,
+    tag-shadow: #E0E0E0,
+    dash-color: #CCCCCC,
+    categories-border: #CCCCCC,
+    categories-hover-bg: #EFEFEF,
+    timeline-node-bg: #2563EB,
+    timeline-color: #D4D4D4,
+
+    // Tables
+    tb-odd-bg: #FAFAFA,
+    tb-even-bg: #F5F5F5,
+    tb-border-color: #E0E0E0,
+
+    // Prompts / Callouts
+    prompt-text-color: #1A1A1A,
+    prompt-tip-bg: #ECFDF5,
+    prompt-tip-icon-color: #059669,
+    prompt-info-bg: #EFF6FF,
+    prompt-info-icon-color: #2563EB,
+    prompt-warning-bg: #FFFBEB,
+    prompt-warning-icon-color: #D97706,
+    prompt-danger-bg: #FEF2F2,
+    prompt-danger-icon-color: #DC2626,
+
+    // Misc
+    checkbox-color: #A0A0A0,
+    checkbox-checked-color: #2563EB,
+    footnote-target-bg: #DBEAFE,
+    btn-share-color: #8A8A8A,
+    btn-share-hover-color: #000000,
+    btn-backtotop-color: #1A1A1A,
+    btn-backtotop-border-color: #E0E0E0,
+    btn-paginator-text-color: #1A1A1A,
+    btn-paginator-hover-color: #F0F0F0,
+    search-tag-bg: #F5F5F5,
+    clipboard-checked-color: #059669,
+    filepath-text-color: #1A1A1A,
+  ),
+);
+
+/// Apply a theme's color values as CSS custom properties on the current scope.
+@mixin apply-theme($name) {
+  $theme: map.get($themes, $name);
+
+  @each $key, $value in $theme {
+    --#{$key}: #{$value};
+  }
+}

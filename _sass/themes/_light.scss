@@ -1,0 +1,5 @@
+@use '../theme-vars' as *;
+
+:root {
+  @include apply-theme(light);
+}
