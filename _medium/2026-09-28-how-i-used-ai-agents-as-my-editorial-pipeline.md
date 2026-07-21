@@ -2,7 +2,7 @@
 title: "How I Used AI Agents As My Editorial Pipeline"
 date: 2026-09-28
 linked_posts:
-  - /posts/how-i-used-ai-agents-to-write/
+  - /posts/how-i-used-ai-agents-as-my-editorial-pipeline/
   - /posts/this-is-my-ade/
   - /posts/tools-i-built-around-opencode/
 status: draft
@@ -31,7 +31,7 @@ No single agent produced a publishable post. The pipeline as a whole did — bec
 
 The process became the product. I packaged the pipeline into a reusable skill invocable via `/writer` — the same structure, ready for any future draft. And it's replicable for any future writing, not just this one series.
 
-If you want the full breakdown — the specific prompts, the failure anecdotes, the pipeline eating its own tail: [How I Used AI Agents As My Editorial Pipeline](https://vianhanif.link/posts/how-i-used-ai-agents-to-write/).
+If you want the full breakdown — the specific prompts, the failure anecdotes, the pipeline eating its own tail: [How I Used AI Agents As My Editorial Pipeline](https://vianhanif.link/posts/how-i-used-ai-agents-as-my-editorial-pipeline/).
 
 If you're more interested in the stack behind it — the routing, the tunnel, the agent orchestration — that's the series itself: [Why I Left GitHub Copilot](https://vianhanif.link/posts/why-i-left-github-copilot/).
 

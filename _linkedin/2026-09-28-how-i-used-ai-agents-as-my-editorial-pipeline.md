@@ -2,7 +2,7 @@
 title: "How I Used AI Agents As My Editorial Pipeline"
 date: 2026-09-29
 linked_posts:
-  - /posts/how-i-used-ai-agents-to-write/
+  - /posts/how-i-used-ai-agents-as-my-editorial-pipeline/
   - /posts/this-is-my-ade/
   - /posts/tools-i-built-around-opencode/
 medium_post: https://alvian.medium.com/how-i-used-ai-agents-as-my-editorial-pipeline

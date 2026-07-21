@@ -2,7 +2,7 @@
 title: "Why I Need Analytics for My Personal Blog"
 date: 2026-10-07
 linked_posts:
-  - /posts/why-analytics-matter/
+  - /posts/part-1-why-i-need-analytics-for-my-personal-blog/
 medium_post:
 status: draft
 ---

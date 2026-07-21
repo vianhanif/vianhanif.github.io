@@ -2,7 +2,7 @@
 title: "The 403 That Wasn't: How Warp, 9router, and Cloudflare Masked Two Separate Failures"
 date: 2026-08-01
 linked_posts:
-  - /posts/the-403-that-wasnt-one-problem/
+  - /posts/the-403-that-wasnt-how-warp-9router-and-cloudflare-masked-two-separate-failures/
 status: draft
 ---
 
@@ -48,7 +48,7 @@ After the debugging session, I switched to a cleaner solution: 9router already h
 
 The lesson: a 403 at the application layer doesn't mean your application threw it. The infrastructure between your client and your server has more authority to say "no" than your server code does.
 
-→ Full story: https://vianhanif.link/posts/the-403-that-wasnt-one-problem/
+→ Full story: https://vianhanif.link/posts/the-403-that-wasnt-how-warp-9router-and-cloudflare-masked-two-separate-failures/
 
 ## Tags for Medium
 Postmortem, 9router, Cloudflare, Developer Tools, Technical, Debugging

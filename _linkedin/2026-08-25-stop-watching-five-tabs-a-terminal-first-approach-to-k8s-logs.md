@@ -2,7 +2,7 @@
 title: "Stop Watching Five Tabs: A Terminal-First Approach to K8s Logs"
 date: 2026-08-25
 linked_posts:
-  - /posts/kubectl-multi-logs/
+  - /posts/stop-watching-five-tabs-a-terminal-first-approach-to-k8s-logs/
 status: draft
 ---
 
@@ -28,7 +28,7 @@ The tool that gets out of the way is the one you actually use.
 
 # Comment (First Comment)
 
-Full story → https://vianhanif.link/posts/kubectl-multi-logs/
+Full story → https://vianhanif.link/posts/stop-watching-five-tabs-a-terminal-first-approach-to-k8s-logs/
 
 ---
 
@@ -37,6 +37,6 @@ Full story → https://vianhanif.link/posts/kubectl-multi-logs/
 - [ ] Post text-only (no links in main body)
 - [ ] Schedule via Fedica for D+1
 - [ ] CTA: teaser ends with hook
-- [ ] Comment: "Full story → https://vianhanif.link/posts/kubectl-multi-logs/"
+- [ ] Comment: "Full story → https://vianhanif.link/posts/stop-watching-five-tabs-a-terminal-first-approach-to-k8s-logs/"
 - [ ] Schedule comment to post immediately after LinkedIn post goes live
 - [ ] Wait 10-15 minutes before engaging with comments

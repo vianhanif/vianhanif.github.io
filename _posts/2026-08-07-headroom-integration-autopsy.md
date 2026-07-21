@@ -1,6 +1,6 @@
 ---
 title: "Debugging 9router Headroom: The Silent 404 That Masked a Version Mismatch"
-date: 2026-07-25
+date: 2026-08-07
 tags: [9router, postmortem, technical]
 layout: page
 ---

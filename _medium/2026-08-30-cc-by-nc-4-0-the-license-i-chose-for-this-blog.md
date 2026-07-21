@@ -2,7 +2,7 @@
 title: "CC BY-NC 4.0: The License I Chose for This Blog"
 date: 2026-08-30
 linked_posts:
-  - /posts/cc-by-nc-4-license/
+  - /posts/cc-by-nc-4-0-the-license-i-chose-for-this-blog/
 status: draft
 ---
 
@@ -26,7 +26,7 @@ There's also the Medium angle. I cross-post some stories there, and I might enab
 
 Is NC fuzzy? Absolutely. Company newsletters, Patreon creators, ad-supported blogs — all gray. But a fuzzy line is better than no line. It signals intent and forces a conversation.
 
-[→ Full story: https://vianhanif.link/posts/cc-by-nc-4-license/]
+[→ Full story: https://vianhanif.link/posts/cc-by-nc-4-0-the-license-i-chose-for-this-blog/]
 
 ## Tags for Medium
 Creative Commons, blogging, licensing, open-web, meta

@@ -2,7 +2,7 @@
 title: "CC BY-NC 4.0: The License I Chose for This Blog"
 date: 2026-08-30
 linked_posts:
-  - /posts/cc-by-nc-4-license/
+  - /posts/cc-by-nc-4-0-the-license-i-chose-for-this-blog/
 medium_post: https://vianhanif.medium.com/cc-by-nc-4-0-the-license-i-chose-for-this-blog
 status: draft
 ---

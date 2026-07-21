@@ -2,7 +2,7 @@
 title: "The 403 That Wasn't: How Warp, 9router, and Cloudflare Masked Two Separate Failures"
 date: 2026-08-01
 linked_posts:
-  - /posts/the-403-that-wasnt-one-problem/
+  - /posts/the-403-that-wasnt-how-warp-9router-and-cloudflare-masked-two-separate-failures/
 status: draft
 ---
 
@@ -28,7 +28,7 @@ A 403 at the application layer doesn't mean your application threw it. The infra
 
 # Comment (First Comment)
 
-Full story → https://vianhanif.link/posts/the-403-that-wasnt-one-problem/
+Full story → https://vianhanif.link/posts/the-403-that-wasnt-how-warp-9router-and-cloudflare-masked-two-separate-failures/
 
 ---
 

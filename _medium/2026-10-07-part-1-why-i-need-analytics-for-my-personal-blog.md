@@ -2,7 +2,7 @@
 title: "Why I Need Analytics for My Personal Blog"
 date: 2026-10-07
 linked_posts:
-  - /posts/why-analytics-matter/
+  - /posts/part-1-why-i-need-analytics-for-my-personal-blog/
 status: draft
 ---
 
@@ -20,7 +20,7 @@ So I'm building it: a privacy-first analytics system for my Jekyll blog. Public 
 
 This is the first post in a series where I design, build, and deploy the system. If you run a personal site and have felt the same tension between wanting signals and protecting privacy, I think you'll find something useful here.
 
-→ Full story: https://vianhanif.link/posts/why-analytics-matter/
+→ Full story: https://vianhanif.link/posts/part-1-why-i-need-analytics-for-my-personal-blog/
 
 ## Tags for Medium
 

@@ -2,7 +2,7 @@
 title: "Your PID File Is a Lie: What Cloudflare Tunnel Taught Me About Process Supervision"
 date: 2026-08-15
 linked_posts:
-  - /posts/the-server-that-lived-in-my-sight/
+  - /posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/
 status: draft
 ---
 
@@ -26,7 +26,7 @@ I never found the actual cause of the crashes. Unhandled rejection? Environment 
 
 The lesson: what you can't see will break in production. And checking `ps aux` won't save you — the process was running. Just the wrong one.
 
-→ Full story: https://vianhanif.link/posts/the-server-that-lived-in-my-sight/
+→ Full story: https://vianhanif.link/posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/
 
 ## Tags for Medium
 Postmortem, DevOps, Node.js, Cloudflare, Developer Tools, Technical, Debugging

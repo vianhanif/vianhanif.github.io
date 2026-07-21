@@ -2,7 +2,7 @@
 title: "Your PID File Is a Lie: What Cloudflare Tunnel Taught Me About Process Supervision"
 date: 2026-08-15
 linked_posts:
-  - /posts/the-server-that-lived-in-my-sight/
+  - /posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/
 status: draft
 ---
 
@@ -28,7 +28,7 @@ The wrong server lived right in my sight the whole time, and the difference betw
 
 # Comment (First Comment)
 
-Full story → https://vianhanif.link/posts/the-server-that-lived-in-my-sight/
+Full story → https://vianhanif.link/posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/
 
 ---
 
@@ -37,6 +37,6 @@ Full story → https://vianhanif.link/posts/the-server-that-lived-in-my-sight/
 - [ ] Post text-only (no links in main body)
 - [ ] Schedule via Fedica for D+1 (blog/Medium publish day + 1)
 - [ ] CTA: teaser ends with a hook
-- [ ] Comment: "Full story → https://vianhanif.link/posts/the-server-that-lived-in-my-sight/"
+- [ ] Comment: "Full story → https://vianhanif.link/posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/"
 - [ ] Schedule comment to post immediately after LinkedIn post goes live
 - [ ] Wait 10-15 minutes before engaging with comments

@@ -2,7 +2,7 @@
 title: "Stop Watching Five Tabs: A Terminal-First Approach to K8s Logs"
 date: 2026-08-25
 linked_posts:
-  - /posts/kubectl-multi-logs/
+  - /posts/stop-watching-five-tabs-a-terminal-first-approach-to-k8s-logs/
 status: draft
 ---
 
@@ -34,7 +34,7 @@ One morning a deployment went sideways. I ran it with `-s 30m -e`, watched the e
 
 The tool that gets out of the way is the one you actually use.
 
-→ Full story: https://vianhanif.link/posts/kubectl-multi-logs/
+→ Full story: https://vianhanif.link/posts/stop-watching-five-tabs-a-terminal-first-approach-to-k8s-logs/
 
 ## Tags for Medium
 Kubernetes, DevOps, Go, Developer Tools, K8s, CLI, Technical, Debugging
