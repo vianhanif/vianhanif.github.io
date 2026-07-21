@@ -82,7 +82,7 @@ The wrong content isn't permanent. It's what happens when you build a memory sys
 
 The most honest version of this story isn't about failure. It's about discovering that building LLM memory isn't just storing data — it's defining what counts as context. The wrong content taught me that. And it's already being replaced.
 
-**The PR** is at https://github.com/vianhanif/9router/pull/8 — still open while I validate the behavior in production-like use before merging.
+**The PR** is at [https://github.com/vianhanif/9router/pull/8](https://github.com/vianhanif/9router/pull/8) — still open while I validate the behavior in production-like use before merging.
 
 ---
 
