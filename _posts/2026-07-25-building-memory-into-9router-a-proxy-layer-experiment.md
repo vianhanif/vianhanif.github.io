@@ -90,5 +90,5 @@ The most honest version of this story isn't about failure. It's about discoverin
 - [Hermes Agent — Nous Research](https://github.com/nousresearch/hermes-agent)
 - [Warp — Agentic Development Environment](https://github.com/warpdotdev/warp)
 - [OpenCode — AI Coding Agent](https://github.com/anomalyco/opencode)
-|- [9router — my fork](https://github.com/vianhanif/9router)
-|- [Memory middleware PR #8](https://github.com/vianhanif/9router/pull/8)
+- [9router — my fork](https://github.com/vianhanif/9router)
+- [Memory middleware PR #8](https://github.com/vianhanif/9router/pull/8)
