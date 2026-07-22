@@ -5,7 +5,7 @@ tags: [llm, memory, 9router, tooling, follow-up]
 layout: post
 ---
 
-Three weeks ago I [published a post about building memory into 9router](posts/building-memory-into-9router-a-proxy-layer-experiment/). The system worked — load, inject, extract — but I already knew it wasn't going to stay that way.
+Three weeks ago I [published a post about building memory into 9router](/posts/building-memory-into-9router-a-proxy-layer-experiment/). The system worked — load, inject, extract — but I already knew it wasn't going to stay that way.
 
 The flat files had problems. Not theoretical problems. Problems I could see in my own `MEMORY.md` after two weeks of actual use: a wall of unrelated facts, half of them from sessions I'd forgotten, no way to tell which ones still mattered.
 
@@ -187,13 +187,13 @@ The PR for the upgrade is still in progress — I'm running it daily and finding
 
 ### Timeline
 
-- **July 25:** [Published the original post](posts/building-memory-into-9router-a-proxy-layer-experiment/) about the flat-file memory system
+- **July 25:** [Published the original post](/posts/building-memory-into-9router-a-proxy-layer-experiment/) about the flat-file memory system
 - **August 1-3:** Designed and implemented the SQLite upgrade (schema, tools, decay, consolidation)
 - **August 4-17:** Daily use across Warp, OpenCode, and CLI sessions. This post documents what happened.
 - **August 18:** This post. The system is working. Still finding edge cases. Still improving.
 
 ### Sources
-- [Part 1: Building Memory Into 9router](posts/building-memory-into-9router-a-proxy-layer-experiment/)
+- [Part 1: Building Memory Into 9router](/posts/building-memory-into-9router-a-proxy-layer-experiment/)
 - [9router — my fork](https://github.com/vianhanif/9router)
 - [Hermes Agent — Nous Research](https://github.com/nousresearch/hermes-agent)
 - [Memory middleware PR #8](https://github.com/vianhanif/9router/pull/8)
