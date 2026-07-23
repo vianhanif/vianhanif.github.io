@@ -11,6 +11,9 @@ on:
 
   workflow_dispatch:
 
+  schedule:
+    - cron: '0 18 * * *' # Daily at 01:00 WIB = 18:00 UTC
+
 permissions:
   contents: read
   pages: write
