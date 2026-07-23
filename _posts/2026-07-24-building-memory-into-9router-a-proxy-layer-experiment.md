@@ -1,6 +1,6 @@
 ---
 title: "Building Memory Into 9router: A Proxy-Layer Experiment"
-date: 2026-07-25
+date: 2026-07-24
 tags: [llm, memory, 9router, tooling]
 layout: post
 ---

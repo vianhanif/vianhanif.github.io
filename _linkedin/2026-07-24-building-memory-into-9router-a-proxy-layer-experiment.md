@@ -1,6 +1,6 @@
 ---
 title: "Building Memory Into 9router: A Proxy-Layer Experiment"
-date: 2026-07-25
+date: 2026-07-24
 linked_posts:
   - /posts/building-memory-into-9router-a-proxy-layer-experiment/
 medium_post: https://medium.com/p/import
