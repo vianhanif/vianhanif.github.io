@@ -63,24 +63,19 @@ But why 5? Pure guess. I skimmed a few conversations, saw extraction typically f
 
 ## The Wrong Content
 
-The pipeline worked. 79 tests passed. Load, inject, extract — all green. The problem wasn't the plumbing. It was what the system chose to store.
+The pipeline worked. 79 tests passed. Load, inject, extract — all green. The problem wasn't the plumbing — it was what the system chose to store.
 
-When I peeked at the stored content, it was a self-referential time capsule. Documentation of the memory system itself — sitting where project context was meant to grow. Same for `USER.md`: preferences about nothing.
+When I peeked at the stored content, it was a self-referential time capsule. Documentation of the memory system itself — sitting where real project context was meant to grow. Same for `USER.md`: preferences about nothing. That made sense once I thought about it. The pipeline had only ever seen development traffic: test prompts, debug logs, configuration checkers. It had never been used for actual work. Of course it stored nothing useful about my actual projects.
 
-"the stored memory is likely from early code testing only." That was generous. The pipeline wasn't broken. It just stored the wrong things — it had only seen development traffic: test prompts, debug logs, configuration checkers. Of course it stored nothing useful about my actual projects. It had never been used for actual work.
-
-This isn't free. Every request now carries a memory payload, which means every response consumes context window budget for memory injection. I'm tracking token usage on the memory file — currently ~500 tokens loaded per session, roughly 0.4% of a 128K context window. Negligible for now, but if it grows beyond a comfortable margin, I'll add a sliding window that keeps only the most recent and most referenced entries.
-
+This isn't free. Every request now carries a memory payload, consuming context window budget for injection. I'm tracking token usage — currently ~500 tokens per session, roughly 0.4% of a 128K context window. Negligible for now, but if it grows beyond a comfortable margin, I'll add a sliding window that keeps only the most recent and most referenced entries.
 
 ## The Path Forward
 
 As of today, the system is in active testing. The duplicate tool declaration is fixed, the cascade is stable, and the state tracker is climbing with actual successful stores. The wrong content is being replaced with real project context, session by session.
 
-**The tradeoff:** All memory lives on my machine in plain markdown files under `~/.9router/memory/`. No encryption at rest. No sync across machines. For my single-machine local-tools workflow, that's acceptable — the risk surface is my laptop, which is already the attack vector for everything else. For a team deployment or multi-device setup, this would need proper secrets management and remote storage. I've noted the gap but haven't solved it yet.
+The tradeoff is real: all memory lives in plain markdown under `~/.9router/memory/`. No encryption, no multi-device sync. For my single-machine workflow, that's acceptable — but team deployment would need proper secrets management and remote storage.
 
-The wrong content isn't permanent. It's what happens when you build a memory system before you've given it real memories to store. Now I'm using it for actual work, and the entries are accumulating — session by session, real project context replacing the self-referential content. The pipeline works, the bugs are dead, and the tracker is climbing.
-
-The most honest version of this story isn't about failure. It's about discovering that building LLM memory isn't just storing data — it's defining what counts as context. The wrong content taught me that. And it's already being replaced.
+The wrong content isn't permanent. It's what happens when you build a memory system before you've given it real memories to store. Now I'm using it for actual work, and the entries are accumulating — real project context pushing out the self-referential noise. The pipeline works, the bugs are dead, and the tracker is climbing.
 
 **The PR** is at [https://github.com/vianhanif/9router/pull/8](https://github.com/vianhanif/9router/pull/8) — still open while I validate the behavior in production-like use before merging.
 
