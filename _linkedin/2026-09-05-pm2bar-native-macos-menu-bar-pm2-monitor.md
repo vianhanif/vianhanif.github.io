@@ -1,5 +1,5 @@
 ---
-title: "PM2Bar: When pm2 list Is Too Many Keystrokes"
+title: "PM2Bar: Get `pm2 list` Visibility Without the Terminal"
 date: 2026-09-05
 linked_posts:
   - /posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/

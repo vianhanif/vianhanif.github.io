@@ -1,5 +1,5 @@
 ---
-title: "PM2Bar: When `pm2 list` Is Too Many Keystrokes"
+title: "PM2Bar: Get `pm2 list` Visibility Without the Terminal"
 date: 2026-09-05
 tags: [pm2, macos, appkit, tooling]
 layout: page
