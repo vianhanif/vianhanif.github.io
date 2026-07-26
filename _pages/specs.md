@@ -6,4 +6,4 @@ permalink: /specs/
 
 # Specification Index
 
-- [PTY Service — Implementation Plan](/specs/pty-service-plan/
+- [PTY Service — Implementation Plan](/specs/pty-service-plan/)
