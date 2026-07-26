@@ -1,6 +1,7 @@
+{% assign previous = site.data.locales[include.lang].post.button.previous %}
+{% assign next = site.data.locales[include.lang].post.button.next %}
 {% assign published_posts = site.posts | where_exp: 'post', 'post.date <= site.time' %}
 
-{% comment %} Find current post index {% endcomment %}
 {% assign current_index = -1 %}
 {% for post in published_posts %}
   {% if post.url == page.url %}
@@ -10,24 +11,21 @@
 {% endfor %}
 
 {% if current_index != -1 %}
-  {% assign prev_post = published_posts[current_index | minus: 1] %}
-  {% assign next_post = published_posts[current_index | plus: 1] %}
+  {% assign prev_index = current_index | minus: 1 %}
+  {% assign next_index = current_index | plus: 1 %}
 
-  {% assign previous = site.data.locales[include.lang].post.button.previous %}
-  {% assign next = site.data.locales[include.lang].post.button.next %}
-
-  <div class="post-navigation d-flex justify-content-between mt-4">
-    {% if prev_post %}
-      <a href="{{ prev_post.url | relative_url }}" class="btn btn-outline-primary btn-sm">
-        {{ previous }}<br>{{ prev_post.title }}
+  <div class="post-navigation d-flex justify-content-between">
+    {% if prev_index >= 0 %}
+      <a href="{{ published_posts[prev_index].url | relative_url }}" class="btn btn-outline-primary btn-sm">
+        {{ previous }}<br>{{ published_posts[prev_index].title }}
       </a>
     {% else %}
       <span class="btn btn-outline-secondary btn-sm disabled">{{ previous }}</span>
     {% endif %}
 
-    {% if next_post %}
-      <a href="{{ next_post.url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
-        {{ next }}<br>{{ next_post.title }}
+    {% if next_index < published_posts.size %}
+      <a href="{{ published_posts[next_index].url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
+        {{ next }}<br>{{ published_posts[next_index].title }}
       </a>
     {% else %}
       <span class="btn btn-outline-secondary btn-sm disabled">{{ next }}</span>
