@@ -17,7 +17,7 @@
   <div class="post-navigation d-flex justify-content-between">
     <a
       href="{% if older_index < published_posts.size %}{{ published_posts[older_index].url | relative_url }}{% else %}#{% endif %}"
-      class="btn btn-outline-primary btn-sm"
+      class="btn btn-outline-primary"
     >
       {{ previous }}<br>
       <span>{% if older_index < published_posts.size %}{{ published_posts[older_index].title }}{% else %}-{% endif %}</span>
@@ -25,7 +25,7 @@
 
     <a
       href="{% if newer_index >= 0 %}{{ published_posts[newer_index].url | relative_url }}{% else %}#{% endif %}"
-      class="btn btn-outline-primary btn-sm text-end"
+      class="btn btn-outline-primary text-end"
     >
       {{ next }}<br>
       <span>{% if newer_index >= 0 %}{{ published_posts[newer_index].title }}{% else %}-{% endif %}</span>
