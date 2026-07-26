@@ -3,7 +3,6 @@
 {% assign published_posts = site.posts | where_exp: 'post', 'post.date <= site.time' %}
 
 {% assign current_index = -1 %}
-{% assign post_count = published_posts.size %}
 {% for post in published_posts %}
   {% if post.url == page.url %}
     {% assign current_index = forloop.index0 %}
@@ -12,40 +11,24 @@
 {% endfor %}
 
 {% if current_index != -1 %}
-  {% assign has_older = false %}
-  {% if current_index < post_count | minus: 1 %}
-    {% assign has_older = true %}
-  {% endif %}
-  {% assign has_newer = false %}
-  {% if current_index > 0 %}
-    {% assign has_newer = true %}
-  {% endif %}
+  {% assign prev_index = current_index | minus: 1 %}
+  {% assign next_index = current_index | plus: 1 %}
 
   <div class="post-navigation d-flex justify-content-between">
-    {% if has_older %}
-      {% assign older_post = published_posts[current_index | plus: 1] %}
-      <a href="{{ older_post.url | relative_url }}" class="btn btn-outline-primary btn-sm">
-        {{ previous }}<br>
-        <span>{{ older_post.title }}</span>
+    {% if next_index < published_posts.size %}
+      <a href="{{ published_posts[next_index].url | relative_url }}" class="btn btn-outline-primary btn-sm">
+        {{ previous }}<br>{{ published_posts[next_index].title }}
       </a>
     {% else %}
-      <span class="btn btn-outline-secondary btn-sm disabled">
-        {{ previous }}<br>
-        <span>-</span>
-      </span>
+      <span class="btn btn-outline-secondary btn-sm disabled">{{ previous }}</span>
     {% endif %}
 
-    {% if has_newer %}
-      {% assign newer_post = published_posts[current_index | minus: 1] %}
-      <a href="{{ newer_post.url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
-        {{ next }}<br>
-        <span>{{ newer_post.title }}</span>
+    {% if prev_index >= 0 %}
+      <a href="{{ published_posts[prev_index].url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
+        {{ next }}<br>{{ published_posts[prev_index].title }}
       </a>
     {% else %}
-      <span class="btn btn-outline-secondary btn-sm disabled text-end">
-        {{ next }}<br>
-        <span>-</span>
-      </span>
+      <span class="btn btn-outline-secondary btn-sm disabled">{{ next }}</span>
     {% endif %}
   </div>
 {% endif %}
