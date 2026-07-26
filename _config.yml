@@ -69,6 +69,9 @@ collections:
   pages:
     output: true
     permalink: /:title/
+  specs:
+    output: true
+    permalink: /specs/:title/
 
 future: true
 
@@ -88,12 +91,16 @@ defaults:
   - scope:
       path: _linkedin
     values:
-      layout: page
+      comments: false
+  - scope:
+      path: _medium
+    values:
       comments: false
       toc: false
       sitemap: false
   - scope:
-      path: _medium
+      path: ""
+      type: specs
     values:
       layout: page
       comments: false
