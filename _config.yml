@@ -66,6 +66,9 @@ collections:
   medium:
     output: true
     permalink: /medium/:title/
+  pages:
+    output: true
+    permalink: /:title/
 
 future: true
 
