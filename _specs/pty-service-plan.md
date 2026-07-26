@@ -4,8 +4,6 @@ title: PTY Service — Implementation Plan
 permalink: /specs/pty-service-plan/
 ---
 
-# PTY Service — Implementation Plan
-
 ## Overview
 A PTY (pseudo-terminal) service as shared infrastructure for AI agents: a non-UI server running shell commands as session events, with a CLI client for visualization and interaction.
 
