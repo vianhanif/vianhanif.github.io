@@ -3,6 +3,7 @@
 {% assign published_posts = site.posts | where_exp: 'post', 'post.date <= site.time' %}
 
 {% assign current_index = -1 %}
+{% assign post_count = published_posts.size %}
 {% for post in published_posts %}
   {% if post.url == page.url %}
     {% assign current_index = forloop.index0 %}
@@ -10,30 +11,41 @@
   {% endif %}
 {% endfor %}
 
-<div class="post-navigation d-flex justify-content-between">
-  {% if current_index != -1 and current_index < published_posts.size | minus: 1 %}
-    {% assign older = published_posts[current_index | plus: 1] %}
-    <a href="{{ older.url | relative_url }}" class="btn btn-outline-primary btn-sm">
-      {{ previous }}<br>
-      <span>{{ older.title }}</span>
-    </a>
-  {% else %}
-    <a href="#" class="btn btn-outline-primary btn-sm">
-      {{ previous }}<br>
-      <span>-</span>
-    </a>
+{% if current_index != -1 %}
+  {% assign has_older = false %}
+  {% if current_index < post_count | minus: 1 %}
+    {% assign has_older = true %}
+  {% endif %}
+  {% assign has_newer = false %}
+  {% if current_index > 0 %}
+    {% assign has_newer = true %}
   {% endif %}
 
-  {% if current_index != -1 and current_index > 0 %}
-    {% assign newer = published_posts[current_index | minus: 1] %}
-    <a href="{{ newer.url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
-      {{ next }}<br>
-      <span>{{ newer.title }}</span>
-    </a>
-  {% else %}
-    <a href="#" class="btn btn-outline-primary btn-sm text-end">
-      {{ next }}<br>
-      <span>-</span>
-    </a>
-  {% endif %}
-</div>
+  <div class="post-navigation d-flex justify-content-between">
+    {% if has_older %}
+      {% assign older_post = published_posts[current_index | plus: 1] %}
+      <a href="{{ older_post.url | relative_url }}" class="btn btn-outline-primary btn-sm">
+        {{ previous }}<br>
+        <span>{{ older_post.title }}</span>
+      </a>
+    {% else %}
+      <span class="btn btn-outline-secondary btn-sm disabled">
+        {{ previous }}<br>
+        <span>-</span>
+      </span>
+    {% endif %}
+
+    {% if has_newer %}
+      {% assign newer_post = published_posts[current_index | minus: 1] %}
+      <a href="{{ newer_post.url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
+        {{ next }}<br>
+        <span>{{ newer_post.title }}</span>
+      </a>
+    {% else %}
+      <span class="btn btn-outline-secondary btn-sm disabled text-end">
+        {{ next }}<br>
+        <span>-</span>
+      </span>
+    {% endif %}
+  </div>
+{% endif %}
