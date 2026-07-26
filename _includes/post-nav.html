@@ -11,26 +11,24 @@
 {% endfor %}
 
 {% if current_index != -1 %}
-  {% assign prev_index = current_index | minus: 1 %}
-  {% assign next_index = current_index | plus: 1 %}
+  {% assign older_index = current_index | plus: 1 %}
+  {% assign newer_index = current_index | minus: 1 %}
 
   <div class="post-navigation d-flex justify-content-between">
-{% if next_index < published_posts.size %}
-      <a href="{{ published_posts[next_index].url | relative_url }}" class="btn btn-outline-primary btn-sm">
-        {{ previous }}<br>
-        <span>{{ published_posts[next_index].title }}</span>
-      </a>
-    {% else %}
-      <span class="btn btn-outline-secondary btn-sm disabled">{{ previous }}</span>
-    {% endif %}
+    <a
+      href="{% if older_index < published_posts.size %}{{ published_posts[older_index].url | relative_url }}{% else %}#{% endif %}"
+      class="btn btn-outline-primary btn-sm"
+    >
+      {{ previous }}<br>
+      <span>{% if older_index < published_posts.size %}{{ published_posts[older_index].title }}{% else %}-{% endif %}</span>
+    </a>
 
-{% if prev_index >= 0 %}
-      <a href="{{ published_posts[prev_index].url | relative_url }}" class="btn btn-outline-primary btn-sm text-end">
-        {{ next }}<br>
-        <span>{{ published_posts[prev_index].title }}</span>
-      </a>
-    {% else %}
-      <span class="btn btn-outline-secondary btn-sm disabled">{{ next }}</span>
-    {% endif %}
+    <a
+      href="{% if newer_index >= 0 %}{{ published_posts[newer_index].url | relative_url }}{% else %}#{% endif %}"
+      class="btn btn-outline-primary btn-sm text-end"
+    >
+      {{ next }}<br>
+      <span>{% if newer_index >= 0 %}{{ published_posts[newer_index].title }}{% else %}-{% endif %}</span>
+    </a>
   </div>
 {% endif %}
