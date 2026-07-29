@@ -19,7 +19,7 @@ It worked for the first week. Then the content started turning against itself.
 
 **Problem one: noise.** Every request carried the full memory payload — all 38 entries, including the ones from three weeks ago about a Jekyll theme I'd since abandoned and a Docker configuration I'd deleted. The LLM was reading all of it. Most of it was irrelevant to whatever I was actually working on.
 
-**Problem two: lossy truncation.** When `MEMORY.md` hit its 2200-character limit, `appendEntry()` just sliced the string at the limit. Which entries survived depended on insertion order. Important decisions got cut mid-sentence because some trivial observation happened to be written first.
+**Problem two: lossy truncation — worse than I thought.** When `MEMORY.md` hit its 2200-character limit, `appendEntry()` built the new string (`current + separator + entry`), checked the length, and sliced: `newContent.slice(0, 2200)`. Which entries survived depended on insertion order, sure. But there was a nastier bug I only caught three weeks later: when `currentContent` was already at the 2200-char cap, the slice returned the *exact same content* — the new entry was discarded entirely. And `saveMemoryFile` wrote it back without change. The `STORED` log fired. The file never moved. I'd been experiencing false-positive storage for weeks and had no idea.
 
 **Problem three: no agency.** The LLM could store memories (via `store_memory` tool or `MEMORY_SUGGEST` markers) but couldn't read them individually, search for a specific one, update a stale one, or delete a wrong one. It got the entire file dumped into context whether it needed all of it or not. That's not memory — that's an information firehose.
 
