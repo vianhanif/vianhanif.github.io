@@ -11,11 +11,9 @@ freshness through incremental synchronization, and exposes human-readable organi
 understanding through APIs consumable by humans and AI agents.
 
 ## MVP Boundary
-- **LLM**: OpenAI-compatible API only (no 9router). Swiftide's `OpenAIFuncNode` for
-  embeddings + completions.
+- **LLM**: OpenAI-compatible API only (no 9router). Swiftide's `OpenAIFuncNode` for embeddings + completions.
 - **Data Source**: Metabase DB (Postgres/MySQL) as the primary ingestion source.
-- **No MCP/UI**: Pure ingestion pipeline + context query API. Agent integration after
-  core retrieval works.
+- **No MCP/UI**: Pure ingestion pipeline + context query API. Agent integration after core retrieval works.
 - **Single Connector**: Metabase-only. Connector abstraction defined but only one impl.
 
 ## Core Concepts
@@ -57,31 +55,36 @@ Connector {
 MVP ships one connector: **Metabase Connector** (queries Metabase DB directly via SQL).
 
 Future connectors: Confluence, GitHub, Slack, S3, Postgres, REST.
-
 ## Architecture
+- **Structure**: Modular monorepo to maintain shared `KnowledgeObject` definitions and enable atomic commits across ingestion and API layers.
+- **Repository Organization**:
+  ```text
+  /knowledge-platform (Go API + Scheduler + Connectors)
+  /knowledge-ingestion (Rust/Swiftide pipeline)
+  ```
 
 ```
 +-------------------+    +-------------------+    +------------------+
 |   Metabase DB     |    |   Core APIs       |    |   Documents      |
 +-------------------+    +-------------------+    +------------------+
-          |                      |                       |
-          +----------------------+-----------------------+
-                                 |
-                         [Connectors]
+         |                      |                       |
+         +----------------------+-----------------------+
+                                |
+                         [Connectors] (in /connectors)
                      Discover / Read / Sync
-                                 |
+                                |
                          [Normalizer]
                      -> KnowledgeObject
-                                 |
+                                |
                      +-----------+-----------+
                      |                       |
               [Ingestion Pipeline]    [Scheduler]
               chunk -> embed -> store  cron/webhook
                      |                       |
                      +-----------+-----------+
-                                 |
+                                |
                     Vector DB + Metadata
-                                 |
+                                |
                      +-----------+-----------+
                      |                       |
               [Context Builder]     [Search API]
@@ -89,7 +92,7 @@ Future connectors: Confluence, GitHub, Slack, S3, Postgres, REST.
               group -> summarize    + keyword + filter)
                      |                       |
                      +-----------+-----------+
-                                 |
+                                |
                      +-----------+-----------+
                      |                       |
                   REST API               MCP Server
@@ -97,6 +100,16 @@ Future connectors: Confluence, GitHub, Slack, S3, Postgres, REST.
               Internal Apps           AI Agents
 ```
 
+## Repository Strategy
+- **Modular Monorepo** (`knowledge-platform`): All code in one repo.
+- **Organization**:
+  - `/pkg`: Domain models (`KnowledgeObject`), shared logic.
+  - `/connectors`: Isolated implementations.
+  - `/services`: Deployable units (`ingestion`, `api`, `scheduler`).
+- **Deployment Strategy**: 
+  - Follows `core` repo patterns: `base.Dockerfile` (builder image), `Dockerfile` (runtime), and `deployment/helm_chart/` for infrastructure (following `core/deployment/` conventions).
+  - Use environment-specific configs (`values_staging.yaml`, `values_production.yaml`) to manage per-service deployment overrides.
+- **CI/CD**: `.gitlab-ci.yml` template approach for standardized testing, linting, and multi-service image builds.
 ## Where Vector DB Fits
 
 ### The Problem
@@ -257,8 +270,7 @@ No manual `curl` in production.
 - Rate limiting, cost tracking for LLM-based pipeline nodes
 
 ## Alternatives & Considerations
-- **Rust vs Go**: Swiftide saves pipeline dev time. Keep API layer language-agnostic;
-  a thin Go proxy is viable if the Rust boundary becomes friction.
+- **Polyglot Stack**: Swiftide (Rust) for the ingestion pipeline — it's the core dependency. API, scheduler, and connectors in Go. Shared `KnowledgeObject` types via protobuf or a thin interop layer.
 - **Qdrant vs pgvector**: Qdrant preferred for MVP (native hybrid search, filtering,
   no schema coupling). Migrate to pgvector only if operational simplicity demands it.
 - **Embedding model**: OpenAI `text-embedding-3-small`. For cost-sensitive pipelines,
