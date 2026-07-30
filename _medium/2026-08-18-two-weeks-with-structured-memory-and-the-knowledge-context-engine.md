@@ -28,7 +28,7 @@ Flat files were a prototype, not a foundation. They were information firehoses t
 
 ### Why Swiftide?
 
-I realized that building a memory-injection API was small, but building a knowledge ingestion pipeline was huge. I pivoted to use the Rust framework Swiftide for the heavy lifting—chunking, embedding, and indexing. By offloading this to a mature framework, I can keep my API layer clean and LLM-agnostic, allowing me to swap the processing layer later if my infrastructure needs evolve.
+I found Swiftide from a random LinkedIn post and wanted to try building something with it. Chunking, embedding, and indexing are solved problems I'd rather not reinvent. If Swiftide works, great. If not, the API boundary lets me swap it out.
 
 ### The Impact on 9router
 
