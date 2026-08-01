@@ -23,20 +23,23 @@ Every request to a protected endpoint must include an API key. The key identifie
 ## Sync Lifecycle
 
 ```
-User                 kbase-api         go-task-orbit      kbase-flow-swiftide
+User                 kbase-api         orbit bus           kbase-flow-swiftide
  |                       |                       |                         |
  |-- POST /sources ----->|                       |                         |
  |  {type, config}       |                       |                         |
  |<-- 201 {source_id} ---|                       |                         |
  |                       |                       |                         |
  |-- POST /sources/      |                       |                         |
- |   {id}/sync --------->|-- Publish task ------->|                         |
- |                       |  {task, knowledge_key,  |                         |
- |                       |   source, source_id,    |                         |
- |                       |   version}             |                         |
- |                       |                       |-- poll Redis Streams ---->|
- |                       |                       |                         |-- enrich -> dedup
+ |   {id}/sync -------->|-- Publish task ------->|                         |
+ |                       |  {topic, sync_id,     |                         |
+ |                       |   source_id,          |                         |
+ |                       |   object_type,        |                         |
+ |                       |   version}            |                         |
+ |                       |                       |-- poll HTTP /internal/ -->|
+ |                       |                       |   orbit/tasks             |
+ |                       |                       |                         |-- fetch object
  |                       |                       |                         |-- chunk -> embed -> store
+ |                       |                       |                         |-- ack (receipt handle)
  |-- GET /sources/       |                       |                         |
  |   {id}/status ------->|                       |                         |
  |<-- 200 {status,       |                       |                         |
@@ -45,6 +48,9 @@ User                 kbase-api         go-task-orbit      kbase-flow-swiftide
  |-- GET /context?q=...->|--- Qdrant query ------|                         |
  |<-- 200 synthesized ---|                       |                         |
 ```
+
+Transport: `memory` (dev), `redis` (Redis Streams), `sqs` (Floci.io or AWS).
+The orbit bus is transparent to callers — callers only interact with the REST API.
 
 ### Register a Source
 
@@ -106,8 +112,9 @@ Immediately trigger a sync for a registered source. The sync runs asynchronously
 1. kbase-api reads the source config and connector type
 2. Connector reads data from the source system via its configured API
 3. Data is normalized into `KnowledgeObject`s
-4. A lightweight task `{task: "knowledge.sync", knowledge_key, source, source_id, version}` is published to go-task-orbit (Redis Streams transport)
-5. kbase-flow-swiftide consumes the task, loads the latest KnowledgeObject from store, runs the ingestion pipeline, then upserts chunks to Qdrant
+4. `KnowledgeObject` JSON is stored in `sync_state.payload` for worker retrieval
+5. A lightweight task `{topic, sync_id, source_id, object_type, version}` is published to the orbit bus (configurable: memory / redis / sqs)
+6. kbase-flow-swiftide polls the orbit HTTP endpoint, fetches the stored object, runs the ingestion pipeline, then acks the task
 
 **Full vs incremental:**
 - **Full sync** (MVP): Reads all records from the source. Used on first registration or on `POST /reindex`.

@@ -59,32 +59,32 @@ type KnowledgeChunk struct {
 }
 ```
 
-### Task Payload (go-task-orbit)
+### Task Payload (orbit Task)
 
-Lightweight reference — worker loads latest state from store:
+Published to the transport as JSON. `MessageReceipt` is internal-only
+(not serialized). Worker fetches full object from the store via the
+object endpoint.
 
 ```json
 {
-  "task": "knowledge.sync",
-  "knowledge_key": "claim-policy",
-  "source": "metabase",
-  "source_id": "dashboard:claims-001",
-  "version": 3,
+  "topic": "knowledge.sync",
   "sync_id": "sync-uuid",
-  "operation": "upsert"
+  "source_id": "dashboard:claims-001",
+  "object_type": "knowledge",
+  "version": 3
 }
 ```
 
 ## Tech Stack
-- **Language**: Go 1.22+
-- **HTTP Router**: chi or standard `net/http` with middleware
+- **Language**: Go 1.24+
+- **HTTP Router**: chi v5
 - **Qdrant Client**: `qdrant/go-client`
 - **Embedding / Completion**: Abstract `EmbeddingProvider` / `CompletionProvider` interfaces. MVP via OpenAI-compatible API.
 - **HTTP Client**: `net/http` (stdlib) for Metabase REST API calls
-- **Task Runtime**: `go-task-orbit/ringq` for async task scheduling and execution
-- **Transport**: `go-task-orbit/transport/redisstreams` for durable cross-service queue; `go-task-orbit/transport/memory` for in-process dev
-- **Redis Client**: `redis/go-redis` v9
-- **Config**: `spf13/viper` or env-based
+- **Task Bus**: Internal `orbit` package. Supports three transports: `memory` (in-process dev), `redis` (Redis Streams), `sqs` (Floci.io or AWS SQS).
+- **Redis Client**: `redis/go-redis` v9 (for Redis Streams transport)
+- **SQS Client**: `github.com/aws/aws-sdk-go-v2/service/sqs` (for SQS transport)
+- **Config**: env-based via stdlib `os`
 - **sql-dock**: Internal Go module at `internal/dock/`. Thin DB abstraction wrapping `database/sql` with driver switching (sqlite, postgres, mysql) and auto-migrations.
 
 ## Directory Structure
@@ -95,38 +95,34 @@ Lightweight reference — worker loads latest state from store:
 ├── /internal
 │   ├── /api               # HTTP handlers, middleware, routes
 │   │   ├── /handler       # Request handlers
-│   │   ├── /middleware    # Auth, logging, rate limit
+│   │   │   ├── context.go      # GET /context, GET /search
+│   │   │   ├── health.go       # GET /healthz, GET /readyz
+│   │   │   ├── orbit.go       # Orbit task endpoints (internal)
+│   │   │   ├── orbit_object.go # Orbit object endpoint (internal)
+│   │   │   ├── search.go       # GET /search (raw Qdrant results)
+│   │   │   └── sources.go      # POST/GET /sources, POST /sources/{id}/sync
+│   │   ├── /middleware    # Auth (X-API-Key + Bearer), logging
 │   │   └── /router        # Route definitions
 │   ├── /connectors        # Source implementations
-│   │   ├── metabase.go    # Metabase Connector
-│   │   └── connector.go   # Interface definition
+│   │   ├── connector.go   # Interface: Pull, Watch, Capabilities, Health
+│   │   └── metabase.go    # Metabase Connector (REST API)
 │   ├── /contextbuilder    # Rank → Merge → Group → Truncate → StructuredContext
-│   ├── /renderer          # StructuredContext → LLM synthesis (provider adapter)
-│   ├── /pipeline          # Ingestion lifecycle: enrich → dedup → version → chunk
-│   ├── /orbit             # go-task-orbit wrapper (pipeline setup, topic routing)
+│   ├── /renderer          # StructuredContext → LLM synthesis
+│   ├── /pipeline          # Ingestion: marshal KnowledgeObject, store payload, publish task
+│   ├── /orbit             # Task bus — memory / Redis Streams / SQS transport
+│   │   ├── bus.go         # TasksProvider interface, InMemoryBus, RedisStreamsBus, SQSBus
+│   │   └── sqs.go         # SQSBus: Publish, ReceiveTasks, AckTask, CreateQueue
 │   ├── /scheduler         # Cron-based sync triggers
-│   ├── /qdrant            # Qdrant client wrapper
-│   ├── /models            # KnowledgeObject, KnowledgeChunk, DTOs
+│   ├── /qdrant            # Qdrant gRPC client wrapper
+│   ├── /models            # KnowledgeObject, KnowledgeChunk, DTOs, Task
+│   ├── /embeddings        # EmbeddingProvider interface + OpenAI impl
 │   ├── /config            # Env parsing, config struct
-│   ├── /dock              # sql-dock: DB abstraction (driver switching, migrations)
+│   ├── /dock              # DB abstraction: driver switching, auto-migrations
+│   │   └── /migrations    # 001_init.sql, 002_add_payload.sql
 │   └── /store             # Typed store impl (Source, SyncState repos)
-├── /pkg                   # Public shared types (if any)
-├── /proto                  # Protobuf definitions for KnowledgeObject
 ├── /deploy
-│   ├── Dockerfile                        # Multi-stage: builder + scratch
-│   └── /helm_chart
-│       ├── Chart.yaml
-│       ├── values.yaml                   # Default values
-│       ├── values.staging.yaml
-│       ├── values.production.yaml
-│       └── /templates
-│           ├── deployment.yaml
-│           ├── service.yaml
-│           ├── configmap.yaml
-│           ├── secret.yaml               # References external secrets
-│           ├── hpa.yaml
-│           ├── pdb.yaml
-│           └── pvc.yaml
+│   ├── Dockerfile         # Multi-stage: golang builder + alpine runtime
+│   └── Dockerfile         # (legacy /helm_chart removed)
 ├── .gitlab-ci.yml
 ├── go.mod
 ├── go.sum
@@ -155,10 +151,24 @@ Lightweight reference — worker loads latest state from store:
 
 ### Scheduler & Task Runtime
 - Cron-based (embedded cron)
-- Every 60m triggers `Watch()` on registered connectors
-- Publishes sync tasks to go-task-orbit **Pipeline** (Redis Streams transport)
-- go-task-orbit handles: retries, DLQ, idempotency, bounded concurrency
+- Every interval triggers `Watch()` on registered connectors
+- Publishes sync tasks to the orbit task bus (configurable transport)
+- Task payload stored as JSON in `sync_state.payload` for worker retrieval
+- Transport modes:
+  - `memory` (default): in-process ring buffer — no external deps
+  - `redis`: Redis Streams — durable across restarts
+  - `sqs`: Floci.io or AWS SQS — for AWS deployment target
 - Sync status and source registrations stored in SQLite
+
+### Internal Orbit Endpoints
+Used by kbase-flow-swiftide to consume tasks from the bus:
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET    | /internal/orbit/tasks | Poll pending tasks (returns list + receipt handles) |
+| POST   | /internal/orbit/tasks/ack | Acknowledge tasks (delete from SQS) |
+| POST   | /internal/orbit/queues | Create a named queue |
+| GET    | /internal/orbit/objects/{sync_id} | Fetch stored KnowledgeObject JSON |
 
 ## Endpoints
 | Method | Path | Purpose |
@@ -181,22 +191,31 @@ Lightweight reference — worker loads latest state from store:
 | KBASE_PORT | 8080 | HTTP listen port |
 | KBASE_QDRANT_HOST | localhost | Qdrant gRPC host |
 | KBASE_QDRANT_PORT | 6334 | Qdrant gRPC port |
-| KBASE_EMBEDDING_PROVIDER | openai | Embedding provider: `openai` (MVP), `ollama` |
+| KBASE_EMBEDDING_PROVIDER | openai | Embedding provider: `openai` |
 | KBASE_EMBEDDING_API_KEY | — | API key for embedding provider |
 | KBASE_EMBEDDING_MODEL | text-embedding-3-small | Embedding model |
-| KBASE_COMPLETION_PROVIDER | openai | Completion provider: `openai` (MVP), `claude`, `gemini`, `ollama` |
+| KBASE_EMBEDDING_BASE_URL | — | Override endpoint (e.g. https://api.openai.com/v1) |
+| KBASE_COMPLETION_PROVIDER | openai | Completion provider: `openai` |
 | KBASE_COMPLETION_API_KEY | — | API key for completion provider |
 | KBASE_COMPLETION_MODEL | gpt-4o-mini | Model for context synthesis |
-| KBASE_COMPLETION_BASE_URL | — | Override endpoint (e.g. https://api.openai.com/v1) |
+| KBASE_COMPLETION_BASE_URL | — | Override endpoint |
 | KBASE_METABASE_API_URL | — | Metabase instance base URL |
+| KBASE_METABASE_USERNAME | — | Metabase login username |
+| KBASE_METABASE_PASSWORD | — | Metabase login password |
 | KBASE_METABASE_API_KEY | — | Metabase API key |
 | KBASE_SCHEDULE_INTERVAL | 60m | Sync interval |
-| KBASE_ORBIT_TRANSPORT | memory | Transport: `memory` (dev), `redisstreams` (staging/prod) |
-| KBASE_ORBIT_REDIS_URL | localhost:6379 | Redis URL for Redis Streams transport |
+| KBASE_ORBIT_TRANSPORT | memory | Transport: `memory`, `redis`, `sqs` |
+| KBASE_ORBIT_REDIS_URL | redis:6379 | Redis URL for Redis Streams transport |
+| KBASE_ORBIT_SQS_ENDPOINT | http://floci:4566 | SQS endpoint (Floci or AWS) |
+| KBASE_ORBIT_SQS_SOURCE_URL | — | Pre-created SQS queue URL (omit to auto-create) |
+| KBASE_ORBIT_SQS_SOURCE_REGION | us-east-1 | AWS region |
+| KBASE_ORBIT_SQS_SOURCE_KEY | — | AWS access key |
+| KBASE_ORBIT_SQS_SOURCE_SECRET | — | AWS secret key |
 | KBASE_ORBIT_BUFFER_SIZE | 1024 | Ring buffer size |
 | KBASE_ORBIT_CONCURRENCY | 10 | Worker pool size |
 | KBASE_DB_DRIVER | sqlite | DB backend: `sqlite`, `postgres`, `mysql` |
-| KBASE_DB_DSN | — | Connection string or file path |
+| KBASE_DB_DSN | /data/kbase.db | Connection string or file path |
+| KBASE_API_KEY | — | API key for auth (X-API-Key / Bearer) |
 
 ## Hybrid Search
 - **MVP**: Pure vector search via Qdrant cosine similarity
@@ -231,25 +250,28 @@ per-driver upsert logic.
 
 ## Local Dev Setup
 
-Root `docker-compose.yml` in the repository root orchestrates all services
-(kbase-api, kbase-flow-swiftide, redis, qdrant, metabase).
-
-See [company-memory-plan](/specs/company-memory-plan/) for the full compose file.
+Root `docker-compose.yml` in the repository root orchestrates all services.
+Floci.io emulates SQS locally — set `KBASE_ORBIT_TRANSPORT=sqs` to use it.
 
 Key env vars for this service:
 ```
 KBASE_DB_DRIVER=sqlite
 KBASE_DB_DSN=/data/kbase.db
 KBASE_QDRANT_HOST=qdrant
-KBASE_ORBIT_TRANSPORT=memory
+KBASE_ORBIT_TRANSPORT=memory   # or sqs (Floci/AWS)
+KBASE_ORBIT_SQS_ENDPOINT=http://floci:4566
 KBASE_API_KEY=dev-api-key
-KBASE_METABASE_API_URL=http://metabase:3000
-KBASE_METABASE_API_KEY=mb_api_key_secret
-KBASE_COMPLETION_PROVIDER=openai
-KBASE_COMPLETION_API_KEY=sk-dev-key
-KBASE_COMPLETION_MODEL=gpt-4o-mini
+KBASE_METABASE_API_URL=https://reporting-testing.tapinsure.io
+KBASE_METABASE_USERNAME=...
+KBASE_METABASE_PASSWORD=...
 KBASE_EMBEDDING_PROVIDER=openai
-KBASE_EMBEDDING_MODEL=text-embedding-3-small
+KBASE_EMBEDDING_API_KEY=sk-...
+KBASE_EMBEDDING_BASE_URL=https://9router.vianhanif.link/v1
+KBASE_EMBEDDING_MODEL=jina-ai/jina-embeddings-v3
+KBASE_COMPLETION_PROVIDER=openai
+KBASE_COMPLETION_API_KEY=sk-...
+KBASE_COMPLETION_MODEL=General
+KBASE_COMPLETION_BASE_URL=https://9router.vianhanif.link/v1
 ```
 
 Run: `docker compose up --build -d`
@@ -288,7 +310,7 @@ env:
   KBASE_COMPLETION_PROVIDER: "openai"
   KBASE_COMPLETION_MODEL: "gpt-4o-mini"
   KBASE_SCHEDULE_INTERVAL: "60m"
-  KBASE_ORBIT_TRANSPORT: "redisstreams"
+  KBASE_ORBIT_TRANSPORT: "redis"
   KBASE_ORBIT_REDIS_URL: "redis-master:6379"
   KBASE_ORBIT_BUFFER_SIZE: "1024"
   KBASE_ORBIT_CONCURRENCY: "10"
@@ -423,7 +445,13 @@ helm upgrade --install kbase-api ./deploy/helm_chart \
 ```
 
 ## Cross-Repo Contract
-- **KnowledgeObject schema**: Protobuf definitions in `kbase-api/proto/`. kbase-flow-swiftide vendors or submodules this path.
+- **KnowledgeObject schema**: Defined as Go structs in `kbase-api/internal/models/types.go`. kbase-flow-swiftide mirrors the same types in `kbase-flow-swiftide/src/models/mod.rs` with compatible JSON field tags.
 - **Qdrant collection**: `knowledge_objects` — points indexed by `chunk_id`. kbase-api reads; kbase-flow-swiftide writes.
-- **go-task-orbit topics**: kbase-api publishes to `knowledge.sync` / `connector.sync`. kbase-flow-swiftide consumes via Redis Streams.
-- **Task payload**: Lightweight `{task, knowledge_key, source, source_id, version}` — worker loads full state from store.
+- **Orbit task bus**: kbase-api publishes to `knowledge.sync` / `connector.sync` queues. kbase-flow-swiftide polls via HTTP endpoints.
+- **Orbit internal API** (kbase-api → kbase-flow-swiftide):
+  - kbase-api stores KnowledgeObject JSON in `sync_state.payload` during sync
+  - kbase-flow-swiftide polls `GET /internal/orbit/tasks` for pending tasks
+  - kbase-flow-swiftide fetches full object via `GET /internal/orbit/objects/{sync_id}`
+  - kbase-flow-swiftide acks via `POST /internal/orbit/tasks/ack` (receipt handle from poll)
+- **Task payload**: `{topic, sync_id, source_id, object_type, version}` — worker fetches full object from orbit object endpoint.
+- **Transport modes**: `memory` (dev, no deps), `redis` (Redis Streams, durable), `sqs` (Floci.io or AWS, for AWS deployment).
