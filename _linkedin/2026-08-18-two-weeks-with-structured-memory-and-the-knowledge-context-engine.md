@@ -16,7 +16,8 @@ I spent a Saturday sketching out an upgrade, but then hit a pivot: instead of ju
 
 It’s an infrastructure shift:
 - Normalizing disparate data (Metabase, docs, APIs) into canonical Knowledge Objects.
-- Using Swiftide for ingestion pipelines (chunking, embedding, indexing).
+- An orbit task bus (memory / Redis / SQS) connecting a Go API to a Rust embedding pipeline.
+- Local AWS emulation with Floci.io so the whole stack runs in docker compose, no cloud needed.
 - Exposing clean APIs that return "understanding" rather than raw snippets.
 
 Memory is for the past. Context is for operations. I'm moving from patching my AI router's memory layer to building the context engine that powers it.

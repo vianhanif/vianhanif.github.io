@@ -26,9 +26,13 @@ Flat files were a prototype, not a foundation. They were information firehoses t
 - **Context Builder**: The core IP isn't the storage, but the retrieval pipeline that ranks, merges, groups, and truncates retrieved data chunks to synthesize "understanding" for an agent, rather than just returning raw snippets.
 - **Hybrid Search**: By implementing Vector + Keyword + Metadata filtering + Reranking (powered by Qdrant), the engine can answer specific queries that pure semantic search often misses.
 
-### Why Swiftide?
+### The Rust Pipeline: No Swiftide
 
-I found Swiftide from a random LinkedIn post and wanted to try building something with it. Chunking, embedding, and indexing are solved problems I'd rather not reinvent. If Swiftide works, great. If not, the API boundary lets me swap it out.
+I initially integrated Swiftide's Rust pipeline directly. It worked, but it pulled in a large dependency surface for what turned out to be a narrow use case: poll orbit tasks → fetch object → embed → store. The custom Rust implementation is ~300 lines with `reqwest` for HTTP polling and `async-openai` for embeddings — no Swiftide, no cgo, no ceremony.
+
+The **orbit task bus** is the key integration point. The Go API holds sync state in SQLite, publishes task messages to a `knowledge.sync` queue (memory / Redis Streams / SQS), and exposes internal endpoints. The Rust pipeline long-polls `GET /internal/orbit/tasks`, fetches the object at `GET /internal/orbit/objects/{sync_id}`, generates the embedding, and acks via `POST /internal/orbit/tasks/ack`.
+
+For local development, **Floci.io** replaces AWS. It runs as a container alongside the services, emulates SQS on port 4566, and requires no AWS credentials. The full stack — Go API, Rust pipeline, Floci, Redis, Qdrant — runs via `docker compose`.
 
 ### The Impact on 9router
 
