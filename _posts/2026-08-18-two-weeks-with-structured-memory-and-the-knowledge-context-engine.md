@@ -19,7 +19,7 @@ That shift turned a memory system into an **Organizational Context Engine**.
 
 ---
 
-*Update (August 2026): The engine is built. Swiftide was ultimately replaced with a custom Rust pipeline — more on that below.*
+*Update (August 2026): The engine is built. Swiftide was ultimately replaced with a custom Rust pipeline. Post revised with two-week sprint results.*
 
 ## The Architecture
 
@@ -27,8 +27,8 @@ The engine moves beyond memory into a platform that treats company data as a pri
 
 The implementation splits into two services:
 
-- **kbase-api** (Go/chi v5) — REST API, sync state management, orbit task bus (publish/subscribe), Qdrant vector operations.
-- **kbase-flow-swiftide** (Rust) — polls orbit tasks, fetches sync objects, generates embeddings, stores in Qdrant.
+- **beacon-api** (Go/chi v5) — REST API, sync state management, orbit task bus (publish/subscribe), Qdrant vector operations.
+- **beacon-flow-swiftide** (Rust) — polls orbit tasks, fetches sync objects, generates embeddings, stores in Qdrant.
 
 ```
 +-------------------+    +-------------------+    +------------------+
@@ -45,7 +45,7 @@ The implementation splits into two services:
                                  |
                    +-------------+-------------+
                    |                           |
-           [kbase-api]              [Orbit Task Bus]
+           [beacon-api]              [Orbit Task Bus]
            Go / chi v5             memory / redis / sqs
            SQLite sync state       (Floci.io local)
            REST API
@@ -53,7 +53,7 @@ The implementation splits into two services:
                    |               |
                    +---------------+---------------+
                                  |
-                         [kbase-flow-swiftide]
+                         [beacon-flow-swiftide]
                               Rust (custom)
                          orbit poll -> embed -> store
                                  |
@@ -104,8 +104,8 @@ The Knowledge Context Engine decouples this. 9router becomes a *consumer* of thi
 1. **Knowledge Object schema** — define the canonical data model
 2. **Normalizer** — convert Metabase SQL output and Markdown into KnowledgeObjects
 3. **Orbit task bus** — internal pub/sub for sync events (Go publishes, Rust polls)
-4. **kbase-api** — Go/chi v5: sync state in SQLite, orbit endpoints, Qdrant vector ops
-5. **kbase-flow-swiftide** — Rust: custom pipeline, reqwest HTTP polling, async-openai embeddings
+4. **beacon-api** — Go/chi v5: sync state in SQLite, orbit endpoints, Qdrant vector ops
+5. **beacon-flow-swiftide** — Rust: custom pipeline, reqwest HTTP polling, async-openai embeddings
 6. **Context Builder** — rank, merge, group, summarize, expose via REST API
 7. **MCP server** — wrap the APIs for agent consumption
 
@@ -123,6 +123,24 @@ The orbit task bus is the key integration point. The Go side creates a `knowledg
 
 For local development, **Floci.io** replaces AWS. It runs as a container alongside the services, emulates SQS on port 4566, and requires no AWS credentials. The full stack — Go API, Rust pipeline, Floci, Redis, Qdrant — runs via `docker compose`.
 
+### Two-Week Sprint: Rename, E2E, and Memory Hardening
+
+The architecture shipped, but the last two weeks were about stability and tooling — not new surface area.
+
+**KBASE → BEACON rename.** The whole project was renamed to `beacon-platform`. `kbase-api` → `beacon-api`, `kbase-flow-swiftide` → `beacon-flow-swiftide`. Flipped across `docker-compose`, READMEs, config, and env vars. `beacon-console-ui` and `beacon-flow-swiftide` flattened into the monorepo (nested `.git` removed), with a docker embedded resolver added to nginx so the proxy resolves service names at request time instead of racing container startup. Cosmetic rename, yes — but it cleared the kbase/beacon naming confusion that kept surfacing in docs and config.
+
+**E2E tests restructured.** The Playwright suite moved out of `beacon-console-ui/` into a standalone `e2e/` directory with its own `package.json`, tsconfig, and Playwright config. Tests split and covered: `home`, `navigation`, `orbit`, `search` specs plus shared `api-mocks.ts` and `console.ts` fixtures. The old tests were app-embedded; a break in the app broke the tests. Separate suite means the console-ui repo stays clean and the E2E layer can run independently in CI.
+
+**Structured memory hardened in 9router.** The memory middleware went through a rough patch and came out stable:
+
+- **Tool schema violation turned agents off.** `store_memory` was injected as OpenAI-format `{type:"function",function:{...}}` even for Warp/Claude Code (Anthropic `{name, input_schema}`) requests. That corrupted the request before translation and caused upstream agents to abort mid-turn. Fix: detect the request's tool schema from existing tools and inject the native Anthropic or OpenAI definition; skip injection if the schema is unrecognized.
+- **Stream termination was silent.** Truncated upstream streams were closing clean as `[DONE]` when they should have surfaced as errors. Now `stream.js` tracks provider completion, gates `[DONE]` on real EOF, emits structured SSE errors on truncation, and gates memory extraction (`onStreamComplete`) so it never acts on partial content. Abort handling wired for all formats.
+- **Mid-stream stalls ended gracefully.** Stall errors surfaced instead of hanging the turn.
+- **Extraction hint cut 89%.** The memory extraction hint was ~65 lines / ~2900 chars of documentation crammed into the prompt. Compressed to a 5-line / ~320-char instruction that keeps the state-vs-events rule, marker syntax, and format rules. Cuts output token pressure and the abrupt stops caused by running out of completion budget.
+- **Noise removal.** The duplicate store_memory tool injection in nested combos is gone. Material was previously being dropped silently — now multiple `MEMORY_SUGGEST` markers per response are processed, non-streaming extraction works, entries truncate correctly, and skip counts surface in extraction tracking.
+
+That's the story the last two weeks told: less "build more," more "stop the sharp edges." The rename and E2E restructure made the platform*buildable by hand*; the memory fixes made 9router *trustworthy by default*.
+
 ---
 
 ### Timeline
@@ -132,6 +150,7 @@ For local development, **Floci.io** replaces AWS. It runs as a container alongsi
 - **Mid-August:** Discovered Swiftide. Pivoted to the Knowledge Context Engine architecture.
 - **August 18:** This post. The engine is planned. Work begins.
 - **August 2026:** Engine built and verified. Floci.io SQS integration, orbit task bus, Go + Rust split, custom Rust pipeline (Swiftide removed).
+- **August 2026 (late):** Rename to beacon-platform, E2E suite restructured to standalone, 9router memory hardening (tool schema fix, stream termination, hint -89%).
 
 ### Sources
 - [Part 1: Building Memory Into 9router](/posts/building-memory-into-9router-a-proxy-layer-experiment/)
@@ -139,4 +158,4 @@ For local development, **Floci.io** replaces AWS. It runs as a container alongsi
 - [Memory middleware PR #8](https://github.com/vianhanif/9router/pull/8)
 - [Floci.io — local AWS emulator](https://floci.io)
 - [Qdrant vector database](https://qdrant.tech)
-- [kbase-platform repo](https://github.com/vianhanif/kbase-platform)
+- [beacon-platform repo](https://github.com/vianhanif/beacon-platform)
