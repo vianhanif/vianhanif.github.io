@@ -1,6 +1,6 @@
 ---
-title: "From Flat Files to Knowledge Engine: The Plan for Organizational Context"
-date: 2026-08-18
+title: "From Flat Files to a Knowledge Context Engine: Two Weeks of Building Organizational Memory"
+date: 2026-08-30
 tags: [llm, memory, 9router, tooling, follow-up, architecture]
 layout: post
 ---
@@ -15,7 +15,7 @@ Then, I hit a random LinkedIn post about Swiftide.
 
 I started reading the docs, then the architecture, then the pipeline model. It didn't just solve my "how to index memory" problem — it provided the entire ingestion infrastructure I had spent weeks mentally designing. I realized that building a memory-injection API was small; building a knowledge ingestion pipeline was huge. I pivoted: I'd use the Rust framework for the heavy lifting and expose my own clean, LLM-agnostic API.
 
-That shift turned a memory system into an **Organizational Context Engine**.
+That shift turned a memory system into a **Knowledge Context Engine**.
 
 ---
 
@@ -148,7 +148,7 @@ That's the story the last two weeks told: less "build more," more "stop the shar
 - **May 2026:** Initial flat-file memory prototype shipped in 9router.
 - **July 25:** [Published the original post](/posts/building-memory-into-9router-a-proxy-layer-experiment/) documenting the approach.
 - **Mid-August:** Discovered Swiftide. Pivoted to the Knowledge Context Engine architecture.
-- **August 18:** This post. The engine is planned. Work begins.
+- **August 18:** Engine architecture committed; plan sketched.
 - **August 2026:** Engine built and verified. Floci.io SQS integration, orbit task bus, Go + Rust split, custom Rust pipeline (Swiftide removed).
 - **August 2026 (late):** Rename to beacon-platform, E2E suite restructured to standalone, 9router memory hardening (tool schema fix, stream termination, hint -89%).
 

@@ -1,9 +1,9 @@
 ---
-title: "From Flat Files to Knowledge Engine: The Plan for Organizational Context"
-date: 2026-08-18
+title: "From Flat Files to a Knowledge Context Engine: Two Weeks of Building Organizational Memory"
+date: 2026-08-30
 linked_posts:
   - /posts/building-memory-into-9router-a-proxy-layer-experiment/
-  - /posts/2026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine/
+  - /posts/two-weeks-with-structured-memory-and-the-knowledge-context-engine/
 medium_post: https://vianhanif.medium.com/2026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine
 status: draft
 ---
@@ -37,6 +37,6 @@ Full story on Medium → https://vianhanif.medium.com/2026-08-18-two-weeks-with-
 - [ ] Schedule via Fedica for D+1 (blog/Medium publish day + 1)
   - Post text-only (no links in main body)
   - CTA: teaser ends with a hook
-  - Comment: "Full story on Medium → https://vianhanif.medium.com/2026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine"
+  - Comment: "Full story on Medium → https://vianhanif.medium.com/22026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine"
   - Schedule comment to post immediately after LinkedIn post goes live
   - Wait 10-15 minutes before engaging with comments

@@ -1,9 +1,9 @@
 ---
-title: "From Flat Files to Knowledge Engine: The Plan for Organizational Context"
-date: 2026-08-18
+title: "From Flat Files to a Knowledge Context Engine: Two Weeks of Building Organizational Memory"
+date: 2026-08-30
 linked_posts:
   - /posts/building-memory-into-9router-a-proxy-layer-experiment/
-  - /posts/2026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine/
+  - /posts/two-weeks-with-structured-memory-and-the-knowledge-context-engine/
 status: draft
 ---
 
@@ -40,7 +40,7 @@ For local development, **Floci.io** replaces AWS. It runs as a container alongsi
 
 The Knowledge Context Engine decouples this. 9router becomes a *consumer* of this engine rather than the host. I’m keeping 9router lean—using it only to route requests—while delegating heavy knowledge retrieval and organization to this new, independent service. This clears the clutter in 9router, lets the context engine scale independently, and standardizes how agents access company knowledge across my entire stack.
 
-[→ Full story: https://vianhanif.link/posts/2026-08-18-two-weeks-with-structured-memory-and-the-knowledge-context-engine/]
+[→ Full story: https://vianhanif.link/posts/two-weeks-with-structured-memory-and-the-knowledge-context-engine/]
 
 ## Tags for Medium
 [ai, memory, 9router, tooling, architecture, rust]
