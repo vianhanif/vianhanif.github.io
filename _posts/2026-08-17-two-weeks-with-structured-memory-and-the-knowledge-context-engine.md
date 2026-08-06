@@ -1,6 +1,6 @@
 ---
 title: "From Flat Files to a Knowledge Context Engine: Two Weeks of Building Organizational Memory"
-date: 2026-08-30
+date: 2026-08-17
 tags: [llm, memory, 9router, tooling, follow-up, architecture]
 layout: post
 ---

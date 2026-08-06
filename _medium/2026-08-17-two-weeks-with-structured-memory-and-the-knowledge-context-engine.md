@@ -1,6 +1,6 @@
 ---
 title: "From Flat Files to a Knowledge Context Engine: Two Weeks of Building Organizational Memory"
-date: 2026-08-30
+date: 2026-08-17
 linked_posts:
   - /posts/building-memory-into-9router-a-proxy-layer-experiment/
   - /posts/two-weeks-with-structured-memory-and-the-knowledge-context-engine/
