@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "How I Used AI Agents As My Editorial Pipeline"
 date: 2026-09-29
 linked_posts:

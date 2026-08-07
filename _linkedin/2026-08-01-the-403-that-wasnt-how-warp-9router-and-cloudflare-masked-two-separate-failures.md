@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "The 403 That Wasn't: How Warp, 9router, and Cloudflare Masked Two Separate Failures"
 date: 2026-08-01
 linked_posts:

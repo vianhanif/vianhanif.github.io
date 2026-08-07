@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "This Is My ADE"
 date: 2026-07-20
 linked_posts:

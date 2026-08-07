@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "Stop Watching Five Tabs: A Terminal-First Approach to K8s Logs"
 date: 2026-08-25
 linked_posts:

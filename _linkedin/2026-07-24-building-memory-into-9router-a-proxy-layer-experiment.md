@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "Building Memory Into 9router: A Proxy-Layer Experiment"
 date: 2026-07-24
 linked_posts:

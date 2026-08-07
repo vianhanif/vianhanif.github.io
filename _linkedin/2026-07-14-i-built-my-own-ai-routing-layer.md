@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "I Built My Own AI Routing Layer"
 date: 2026-07-14
 linked_posts:

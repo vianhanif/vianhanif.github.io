@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "[TITLE]"
 date: 2026-07-08
 linked_posts:

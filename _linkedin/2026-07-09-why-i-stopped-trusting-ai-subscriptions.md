@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "Why I Stopped Trusting AI Subscriptions"
 date: 2026-07-09
 linked_posts:

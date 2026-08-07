@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "Why I Need Analytics for My Personal Blog"
 date: 2026-10-07
 linked_posts:

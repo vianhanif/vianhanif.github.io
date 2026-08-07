@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "PM2Bar: Get `pm2 list` Visibility Without the Terminal"
 date: 2026-09-05
 linked_posts:

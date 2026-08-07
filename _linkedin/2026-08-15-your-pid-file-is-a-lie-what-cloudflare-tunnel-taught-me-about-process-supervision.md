@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "Your PID File Is a Lie: What Cloudflare Tunnel Taught Me About Process Supervision"
 date: 2026-08-15
 linked_posts:

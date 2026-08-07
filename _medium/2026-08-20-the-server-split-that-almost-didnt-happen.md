@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "The Server Split That Almost Didn't Happen"
 date: 2026-08-20
 linked_posts:

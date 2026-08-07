@@ -1,4 +1,5 @@
 ---
+layout: page
 title: "CC BY-NC 4.0: The License I Chose for This Blog"
 date: 2026-08-30
 linked_posts:
