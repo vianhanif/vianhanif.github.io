@@ -180,4 +180,4 @@ The split is optional. That's the point. The 9router-api repo has no history of 
 - [tsx — TypeScript execute engine](https://github.com/privatenumber/tsx)
 - [PR #3069 — ESM interop fixes for open-sse](https://github.com/decolua/9router/pull/3069)
 - [The monorepo split](/posts/what-i-changed-in-9router/)
-- [Checking upstream v0.5.50](/posts/checking-upstream-what-v0-5-50-brought-back-to-9router/)
+- [Checking upstream v0.5.50](/posts/checking-upstream-what-v0-5-50-gained-for-9router/)
