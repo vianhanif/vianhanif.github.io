@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Checking Upstream: What v0.5.50 Gained for 9router"
-date: 2026-08-07
+date: 2026-08-09
 linked_posts:
   - /posts/checking-upstream-what-v0-5-50-gained-for-9router/
 status: draft
