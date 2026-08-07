@@ -98,7 +98,6 @@ defaults:
       comments: false
       toc: false
       sitemap: false
-      canonical_url: false
   - scope:
       path: ""
       type: specs
