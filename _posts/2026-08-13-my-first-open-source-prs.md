@@ -21,7 +21,7 @@ That's where I learned what contribution actually costs. It's not "find issue, w
 
 Concrete example: the [grant normalization fix](https://github.com/bloodf/9router/pull/2). Gateway keys carry grants — which MCP instances a key can access. The persistence layer sometimes stored grants as full objects, sometimes as string IDs, depending on which code path wrote them. Everything worked until a key saved by one path got loaded by the other. The fix normalizes grants to string IDs on both load and save. Small diff, days of tracing to find it. That's what integration work actually looks like.
 
-While helping with that, I kept finding smaller seams in upstream itself — things that got in the way of my own daily use. Interestingly, the ESM interop fixes were the most tangled; untangling them actually required splitting the API server into its own standalone process — a story I cover in [The Server Split That Almost Didn't Happen](/posts/the-server-split-that-almost-didnt-happen/).
+While helping with that, I kept finding smaller seams in upstream itself — things that got in the way of my own daily use. The messiest part was making 9router work for Node.js developers who use modern JavaScript module imports. To untangle that, we had to split the API server into its own standalone process. That story deserves its own post.
 
 Seams found:
 - [ESM interop issues](https://github.com/decolua/9router/pull/3069) blocking plain-Node consumers
