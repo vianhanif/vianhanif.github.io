@@ -19,7 +19,7 @@ Three things almost killed it:
 
 Each fix was small. Finding them took the whole day. The ESM fixes went upstream as a PR.
 
-Result: ~400MB → ~120MB memory. Same SQLite, same combo routing, same provider chains. Just without React, Monaco, and the dashboard UI.
+Result: ~96MB → ~23MB memory. Same routing, same provider chains, same keys — config ported over, not shared live. Just without React, Monaco, and the dashboard UI.
 
 The repo has no history of its own — it exists to consume another repo's history.
 

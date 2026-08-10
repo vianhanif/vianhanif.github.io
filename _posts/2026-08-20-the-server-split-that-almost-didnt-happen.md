@@ -5,7 +5,7 @@ tags: [9router, technical, architecture]
 layout: post
 ---
 
-The first import was the first failure: 'ERR_MODULE_NOT_FOUND'. The code wouldn't even boot. Or so I told myself.
+The first import was the first failure: 'ERR_MODULE_NOT_FOUND'. The code wouldn't even boot.
 
 But back up. Three months ago I wrote about the [monorepo split](/posts/what-i-changed-in-9router/). API server, dashboard, CLI — three workspaces instead of one blob. That was the starting point.
 
@@ -156,10 +156,21 @@ It was the final "almost didn't happen" hurdle.
 
 | Mode | Command | Memory |
 |------|---------|--------|
-| Full | `9r-up` | ~400MB |
-| API only | `9r-api-only` | ~120MB |
+| API only | `9r-up` / `9r-down` | ~23MB |
+| Dashboard | `9r-dash-build` / `9r-dash` / `9r-dash-down` | ~96MB |
+| API logs | `9r-logs` | — |
 
-Same SQLite. Same combo routing. Same provider fallback chains. The difference is what doesn't load: React, Monaco editor, Recharts, all the UI scaffolding. Memory measured via PM2 RSS.
+`9r-up` starts the API-only process (`9r-api`); `9r-down` stops it. The dashboard runs from its own set: `9r-dash-build`, `9r-dash`, `9r-dash-down`. Memory measured via PM2 RSS: 23.2MB vs 96.3MB — about 4.15x smaller. CPU idles near 0% either way; the real difference is footprint: 1 process vs multiple.
+
+Same combo routing. Same provider fallback chains. The difference is what doesn't load: React, Monaco editor, Recharts, all the UI scaffolding.
+
+Config isn't shared live — it's ported. Manage combos, keys, and rate limits in the 9router dashboard, port them to `9router-api` (it loads config locally or via files/env), then run API-only. Need a change? Open the dashboard temporarily, make it, re-port. No Dashboard. No CRUD.
+
+Best for: `9router-api` is an API gateway (headless); the dashboard is for management & operations — bring it up when you're managing or updating config.
+
+## The MCP Gateway
+
+The API-only process also carries the MCP (Model Context Protocol) gateway — LLM clients and MCP servers talk to it through one API. One caveat: that feature isn't merged upstream yet. It's bloodf's [MCP Gateway dashboard PR #2234](https://github.com/decolua/9router/pull/2234), building on the earlier upstream MCP Gateway work in [PR #1938](https://github.com/decolua/9router/pull/1938) — I covered that effort in [my first open source PRs post](/posts/my-first-open-source-prs/). The standalone server runs it from the fork until it lands.
 
 ## What This Actually Changed
 
@@ -167,7 +178,7 @@ The API server isn't a fork; it's a separate repo that imports from upstream 9ro
 
 ## What Didn't Change
 
-The dashboard still runs full Next.js. When I'm at my desk, I want the UI — console log page, combo editor, provider management. All of it works in full mode.
+The dashboard still runs full Next.js. When I'm at my desk, I want the UI — console log page, combo editor, provider management. All of it works in dashboard mode.
 
 The split is optional. That's the point. The 9router-api repo has no history of its own — it exists to consume 9router's history.
 
@@ -179,5 +190,7 @@ The split is optional. That's the point. The 9router-api repo has no history of 
 - [My 9router fork](https://github.com/vianhanif/9router)
 - [tsx — TypeScript execute engine](https://github.com/privatenumber/tsx)
 - [PR #3069 — ESM interop fixes for open-sse](https://github.com/decolua/9router/pull/3069)
+- [MCP Gateway dashboard PR #2234 (unmerged)](https://github.com/decolua/9router/pull/2234)
+- [MCP Gateway PR #1938](https://github.com/decolua/9router/pull/1938)
 - [The monorepo split](/posts/what-i-changed-in-9router/)
 - [Checking upstream v0.5.50](/posts/checking-upstream-what-v0-5-50-gained-for-9router/)

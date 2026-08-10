@@ -33,7 +33,7 @@ Each fix was small. Finding them took the whole day.
 
 ### The Result
 
-Two modes now: full (`~400MB` with the dashboard) or API-only (`~120MB`). Same SQLite, same combo routing, same provider fallback chains. The 9router-api repo has no history of its own — it exists to consume 9router's history.
+Two modes now: API-only (`~23MB`) or full dashboard (`~96MB`). Same combo routing, same provider fallback chains, same keys — configuration is ported from the 9router dashboard, not shared live. The API-only process also doubles as an MCP gateway, though that feature is still an unmerged upstream PR ([MCP Gateway dashboard #2234](https://github.com/decolua/9router/pull/2234)), building on earlier work in [PR #1938](https://github.com/decolua/9router/pull/1938). The 9router-api repo has no history of its own — it exists to consume 9router's history.
 
 → Full story: https://vianhanif.link/posts/the-server-split-that-almost-didnt-happen/
 
@@ -60,4 +60,7 @@ Node.js, ESM, Architecture, Developer Tools, Technical
 - 9router-api standalone server: https://github.com/vianhanif/9router-api
 - 9router upstream: https://github.com/decolua/9router
 - PR #3069 (ESM interop fixes): https://github.com/decolua/9router/pull/3069
+- MCP Gateway dashboard PR #2234 (unmerged): https://github.com/decolua/9router/pull/2234
+- MCP Gateway PR #1938: https://github.com/decolua/9router/pull/1938
+- My 9router fork: https://github.com/vianhanif/9router
 - tsx (TypeScript execute engine): https://github.com/privatenumber/tsx
