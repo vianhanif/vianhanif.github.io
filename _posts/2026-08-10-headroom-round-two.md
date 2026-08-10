@@ -7,13 +7,13 @@ layout: page
 
 Three days ago I wrote an [autopsy](/posts/headroom-integration-autopsy/) about ripping a dead Headroom integration out of my 9router fork. The endpoint I was calling didn't exist in the version I was running, the failure was swallowed silently, and the cleanest fix was deletion.
 
-This is the follow-up. Headroom is now actually running behind my dashboard, compressing tokens. Getting there took one afternoon and four separate walls — and after last time, I expected the bug to be another version mismatch. It wasn't. Not once.
+Four walls later, it actually worked. I expected the bug to be another version mismatch. It wasn't. Not once.
 
 ## The Setup
 
-Instead of re-integrating Headroom into my fork's custom code, I switched to a branch tracking upstream 9router v0.5.50 (that's the *router's* version — not to be confused with the Headroom v0.5.4 from the autopsy), which ships a full integration: Python detection (`lib/headroom/detect.js`), process lifecycle management (`lib/headroom/process.js`), management routes (`/api/headroom/start`, `/stop`, `/status`), and an embedded proxy that serves Headroom's own dashboard inside 9router's UI.
+I switched to a branch tracking upstream 9router v0.5.50. I’d previously been running a fork with custom providers, but v0.5.50 now ships a full Headroom integration natively. I cherry-picked my custom [combos import/export](https://github.com/decolua/9router/pull/3062) ports into this branch; RTK compression was already upstream. See [my notes on v0.5.50](/posts/checking-upstream-what-v0-5-50-gained-for-9router/) for the full breakdown of what shifted.
 
-Exactly what the autopsy said the integration should have been. Infrastructure management, not a feature flag.
+The integration includes Python detection (`lib/headroom/detect.js`), process lifecycle management (`lib/headroom/process.js`), management routes, and an embedded proxy. Infrastructure management, not a feature flag.
 
 I flipped the toggle. It didn't work. Of course it didn't.
 
@@ -24,6 +24,8 @@ I had installed Headroom via pipx. The dashboard insisted it wasn't installed.
 The detection logic probes a list of Python interpreter candidates — Homebrew paths, framework installs, user-local paths — and runs `pip show headroom-ai` against each one. It needs the *package* visible to a probed interpreter; a `headroom` binary sitting on PATH isn't enough, because the dashboard also uses that interpreter to manage the proxy. pipx installs into its own isolated venv, so every candidate interpreter answered "no such package." The install was real; it was just invisible to every Python the dashboard could see.
 
 Uninstalled from pipx. Cleared the stale PID and log files left in `~/.9router/headroom/` from my earlier manual-proxy experiments. Started over.
+
+The fix for Wall 1 turned out to be Wall 2.
 
 ## Wall 2: The PEP 668 Wall
 
@@ -38,14 +40,15 @@ PEP 668 marks the whole environment externally managed — pip refuses to instal
 The workaround that made detection happy:
 
 ```zsh
-/usr/local/bin/python3.12 -m pip install --user --break-system-packages "headroom-ai[proxy]"
+# Run using an interpreter on the detection probe list (paths vary by machine)
+/opt/homebrew/bin/python3.12 -m pip install --user --break-system-packages "headroom-ai[proxy]"
 ```
 
-`--break-system-packages` is the actual override — a deliberate footgun flag, used here with eyes open — while `--user` just steers the install into the user site of an interpreter the detection logic actually probes. That lands headroom-ai 0.34.0 exactly where the dashboard looks.
+`--break-system-packages` is a deliberate footgun flag, used here with eyes open — it overrides the PEP 668 guarantee, which might impact future system-level updates for that interpreter. `--user` steers the install into the site-packages where the detection logic actually probes. That lands headroom-ai 0.34.0 exactly where the dashboard looks.
 
 ## Wall 3: The Binary Nobody Could Find
 
-Installed, detected — but the `headroom` binary itself lands in `~/Library/Python/3.12/bin`, which is *not* on the dashboard's extended PATH. A symlink into `~/.local/bin` — which is — closed the loop.
+Installed, detected — but the `headroom` binary itself lands in `~/Library/Python/3.12/bin`, which wasn't on the dashboard's extended PATH. A `status` check in the dashboard returned a `binary not found` error, pointing me to the missing location. A symlink into `~/.local/bin` — which is on the extended PATH — closed the loop.
 
 Dashboard now reports: Headroom running, v0.34.0. Three walls down.
 
@@ -68,18 +71,20 @@ Every one of those 404'd against the Next.js app — no Tailwind, hence the text
 
 Styled dashboard. Then I clicked into Settings and got `Failed to load settings: HTTP 404` — the settings page fetches `/settings`, `/settings/schema`, and `/settings/apply`, and the fetch-rewrite allowlist didn't include `settings`. One allowlist entry later, the whole embedded UI worked.
 
-Both dashboard fixes are upstream now as [PR #3065](https://github.com/decolua/9router/pull/3065), alongside a [combos import/export port](https://github.com/decolua/9router/pull/3062) from my fork.
+Both dashboard fixes are open as [PR #3065](https://github.com/decolua/9router/pull/3065), alongside a [combos import/export port](https://github.com/decolua/9router/pull/3062) from my fork.
 
 ## The Receipts
 
-Last time the lesson was "check if it's actually running." So this time, proof. After one working session routed through the proxy:
+Last time the lesson was "check if it's actually running." So this time, proof. The dashboard reports 992 requests compressed with 2.1M tokens saved — modest numbers, because I cap the token-input limit: requests above the cap skip compression entirely, a tradeoff that keeps the proxy fast. Here is the proof-of-life:
 
-- 21 requests compressed, zero failed
+- 21 requests compressed in this session, zero failed
 - 69,627 tokens stripped out of 622,745 — 11.2% average
 - Best single request: 10,798 → 8,559 tokens (20.7%)
 - ~$0.56 saved on the session, per Headroom's own cost accounting
 
 Not life-changing money. But it's real, it's measured, and it's per-request visible in a dashboard that now actually renders.
+
+![Headroom dashboard showing 992 requests compressed, 2.1M tokens saved](/static/images/headroom-dashboard.png)
 
 ## What Round Two Taught Me
 
@@ -105,3 +110,4 @@ The token saver is on. The dashboard renders. And this time, when a request goes
 - [Upstream 9router](https://github.com/decolua/9router)
 - [PR #3065 — headroom dashboard proxy fixes](https://github.com/decolua/9router/pull/3065)
 - [PR #3062 — combos import/export](https://github.com/decolua/9router/pull/3062)
+- [Checking upstream: what v0.5.50 gained for 9router](/posts/checking-upstream-what-v0-5-50-gained-for-9router/)
