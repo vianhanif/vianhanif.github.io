@@ -2,7 +2,7 @@
 title: "Headroom, Round Two: Four Walls Between Me and a Working Token Saver"
 date: 2026-08-10
 tags: [9router, technical, postmortem]
-layout: page
+layout: post
 ---
 
 Three days ago I wrote an [autopsy](/posts/headroom-integration-autopsy/) about ripping a dead Headroom integration out of my 9router fork. The endpoint I was calling didn't exist in the version I was running, the failure was swallowed silently, and the cleanest fix was deletion.
