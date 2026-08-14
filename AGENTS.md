@@ -16,8 +16,8 @@ Reference for writing about AI-assisted development. Keeps story details consist
 
 | State | Requirements |
 |-------|--------------|
-| Drafted | Post has `date > site.time`. Author may not have reviewed. Placeholder claims allowed. NOT ready for syndication. |
-| Published | Post has `date <= site.time`. Reviewed and confirmed by author. Every factual claim has a source link. Ready for syndication prep. |
+| Drafted | Post has `date > site.time`. LinkedIn = raw field notes. Medium = expanded story. NOT ready for syndication. |
+| Published | Post has `date <= site.time`. Reviewed and confirmed by author. Every factual claim has a source link. LinkedIn = hook + insightful field notes, no philosophical end. Ready for syndication prep. |
 
 All posts live in `_posts/`. Jekyll automatically filters future-dated posts from the home feed via custom layout overrides, while keeping them previewable at their permalink URL.
 
