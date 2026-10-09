@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Dark terminal background -->
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Subtle grid -->
+  <g stroke="#1f2937" stroke-width="1" fill="none">
+    <line x1="0" y1="120" x2="1200" y2="120"/>
+    <line x1="0" y1="240" x2="1200" y2="240"/>
+    <line x1="0" y1="360" x2="1200" y2="360"/>
+    <line x1="0" y1="480" x2="1200" y2="480"/>
+  </g>
+  <!-- Terminal header -->
+  <rect x="100" y="100" width="1000" height="40" rx="6" fill="#161b22" stroke="#30363d"/>
+  <circle cx="120" cy="120" r="6" fill="#ff5f56"/>
+  <circle cx="142" cy="120" r="6" fill="#ffbd2e"/>
+  <circle cx="164" cy="120" r="6" fill="#27ca3f"/>
+  <text x="600" y="126" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="14" fill="#8b949e">opencode.db</text>
+  <!-- Prompt line -->
+  <text x="140" y="190" font-family="'JetBrains Mono',monospace" font-size="16" fill="#58a6ff">sqlite></text>
+  <text x="240" y="190" font-family="'JetBrains Mono',monospace" font-size="16" fill="#c9d1d9">UPDATE session</text>
+  <text x="240" y="220" font-family="'JetBrains Mono',monospace" font-size="16" fill="#ffa657">SET</text> <text x="290" y="220" font-family="'JetBrains Mono',monospace" font-size="16" fill="#c9d1d9">directory = '/Users/pid-user'</text>
+  <text x="240" y="250" font-family="'JetBrains Mono',monospace" font-size="16" fill="#ffa657">WHERE</text> <text x="315" y="250" font-family="'JetBrains Mono',monospace" font-size="16" fill="#c9d1d9">directory = '/Users/pid-alvian'</text>
+  <text x="140" y="300" font-family="'JetBrains Mono',monospace" font-size="16" fill="#58a6ff">sqlite></text>
+  <text x="240" y="300" font-family="'JetBrains Mono',monospace" font-size="16" fill="#7ee787">163 rows updated</text>
+  <!-- Visual: database icon + arrow -->
+  <g transform="translate(750, 160)">
+    <path d="M0 40 C0 25 80 25 80 40 C80 55 0 55 0 40" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+    <path d="M0 40 C0 25 80 25 80 40" fill="none" stroke="#58a6ff" stroke-width="2" stroke-dasharray="8,4"/>
+    <path d="M0 40 C0 55 80 55 80 40" fill="none" stroke="#30363d" stroke-width="1"/>
+    <ellipse cx="40" cy="25" rx="40" ry="10" fill="none" stroke="#30363d" stroke-width="1"/>
+    <ellipse cx="40" cy="55" rx="40" ry="10" fill="none" stroke="#30363d" stroke-width="1"/>
+  </g>
+  <g transform="translate(920, 190)">
+    <path d="M0 0 L40 0 L20 -30 Z" fill="#7ee787"/>
+    <rect x="20" y="-60" width="40" height="60" fill="#7ee787"/>
+  </g>
+  <!-- Summary box -->
+  <rect x="100" y="380" width="1000" height="180" rx="8" fill="#161b22" stroke="#30363d"/>
+  <text x="140" y="420" font-family="'JetBrains Mono',monospace" font-size="18" fill="#c9d1d9" font-weight="bold">163 sessions recovered</text>
+  <text x="140" y="460" font-family="'JetBrains Mono',monospace" font-size="14" fill="#8b949e">Data wasn't lost — just scoped to old home dir.</text>
+  <text x="140" y="490" font-family="'JetBrains Mono',monospace" font-size="14" fill="#8b949e">One SQL statement. No export/import needed.</text>
+  <!-- Footer -->
+  <text x="600" y="590" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="12" fill="#484f58">vianhanif.link  •  opencode  •  sqlite</text>
+</svg>
