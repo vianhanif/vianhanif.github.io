@@ -25,6 +25,11 @@ $prose: 68ch;
 
   #main-wrapper {
     margin-left: $gutter !important;
+
+    > .container {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
   }
 
   /* Kill the 3-col grid: main centered at prose width, panel hidden */
