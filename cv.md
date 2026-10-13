@@ -1,7 +1,6 @@
 ---
 layout: page
-icon: fas fa-file-lines
-order: 5
+permalink: /cv/
 title: Resume
 ---
 

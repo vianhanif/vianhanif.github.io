@@ -7,14 +7,14 @@ import urllib.error
 
 # Configuration
 CV_URL = "https://raw.githubusercontent.com/vianhanif/my-cv/main/CV.md"
-OUTPUT_PATH = "_tabs/cv.md"
+OUTPUT_PATH = "cv.md"
 TIMEOUT = 10
 
-# Front-matter
+# Front-matter — page NOT in the tabs collection, so it never appears in the
+# sidebar nav. Reachable only via https://vianhanif.link/cv/ (linked from About).
 FRONT_MATTER = """---
 layout: page
-icon: fas fa-file-lines
-order: 5
+permalink: /cv/
 title: Resume
 ---
 
