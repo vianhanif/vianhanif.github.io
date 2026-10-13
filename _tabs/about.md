@@ -13,3 +13,5 @@ The posts here aren't tutorials. They're field notes: _the 403 that wasn't_, _he
 If you're looking for polished answers, you won't find them here. If you want to watch someone stumble through interesting problems — sometimes with useful results — you're in the right place.
 
 Code at [GitHub](https://github.com/vianhanif). Writing at [Medium](https://alvian.medium.com). Based in Depok, West Java.
+
+📄 [View my CV](/cv/)

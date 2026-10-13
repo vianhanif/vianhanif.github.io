@@ -1,0 +1,71 @@
+/* CV page print styles.
+   Print output hides layout chrome on every page (harmless),
+   and the CV is the only page dense enough to need pagination rules.
+   Selectors verified against Chirpy v7.6 upstream templates. */
+
+@media print {
+  /* Hide layout chrome */
+  #sidebar,
+  #topbar-wrapper,
+  #panel-wrapper,
+  #tail-wrapper,
+  #toc-wrapper,
+  footer {
+    display: none !important;
+  }
+
+  /* Full-width main content */
+  body {
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  #main-wrapper,
+  .container,
+  main {
+    display: block !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  main,
+  main .content {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  /* Pagination hygiene */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote,
+  pre,
+  table {
+    page-break-inside: avoid;
+  }
+
+  /* Expand hyperlink URLs, but not relative anchors */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    color: #666;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
