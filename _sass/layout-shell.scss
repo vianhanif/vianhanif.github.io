@@ -1,0 +1,52 @@
+/* Layout shell: C+D hybrid — gutter nav + centered prose.
+   CSS-only reshape of Chirpy default.html. Zero JS.
+   Only touches: #sidebar (narrow it), main (center it), #panel-wrapper (hide it).
+   Everything else stays theme-default → low drift risk.
+*/
+
+$gutter: 190px;
+$prose: 68ch;
+
+/* Desktop only; mobile keeps Chirpy defaults (slide-out sidebar) */
+@media (min-width: 992px) {
+  #sidebar {
+    width: $gutter !important;
+
+    .profile-wrapper {
+      padding-left: 1.5rem !important;
+      padding-right: 1rem !important;
+
+      #avatar {
+        width: 5.5rem;
+        height: 5.5rem;
+      }
+    }
+  }
+
+  #main-wrapper {
+    margin-left: $gutter !important;
+  }
+
+  /* Kill the 3-col grid: main centered at prose width, panel hidden */
+  #main-wrapper > .container > .row {
+    display: block !important;
+
+    > main {
+      max-width: $prose;
+      margin-inline: auto;
+      float: none;
+    }
+
+    #panel-wrapper {
+      display: none !important;
+    }
+  }
+
+  #tail-wrapper {
+    max-width: $prose;
+    margin-inline: auto;
+  }
+}
+
+/* ponytail: skipped full-bleed hero breakout + fixed topbar (fragile vs Chirpy's
+   own slide/scroll JS). Add back only if a viewport-spanning hero band is required. */
