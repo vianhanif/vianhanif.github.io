@@ -1,0 +1,50 @@
+# Homepage narrative configuration
+# Hero tagline, featured posts, and project milestones
+
+hero:
+  tagline: "Learning in public, one post at a time"
+  subtitle: "Field notes on AI engineering, infrastructure, and developer tooling"
+
+start_here:
+  title: "Start here"
+  description: "Three posts that set the tone"
+  # URLs of posts to feature, in displayed order
+  posts:
+    - /posts/why-i-left-github-copilot/
+    - /posts/your-pid-file-is-a-lie-what-cloudflare-tunnel-taught-me-about-process-supervision/
+    - /posts/how-i-used-ai-agents-as-my-editorial-pipeline/
+
+timeline:
+  title: "Latest thinking"
+  # Post limit on timeline (excludes start-here posts)
+  limit: 8
+  show_all_link: true
+
+# Project milestones (timeline nodes)
+# Absorbed into site as both portfolio items + recommended reading anchors
+milestones:
+  - title: "9router"
+    subtitle: "MCP gateway: coordinate AI tool calls across language boundaries"
+    url: "https://github.com/vianhanif/9router"
+    featured: true
+    
+  - title: "agents"
+    subtitle: "Tool-agnostic AI engineering workflow: role-based sessions, delegation gate"
+    url: "https://github.com/vianhanif/agents"
+    featured: true
+    
+  - title: "kubectl-multi-logs"
+    subtitle: "Simplify distributed system debugging with aggregated log output"
+    url: "https://github.com/vianhanif/kubectl-multi-logs"
+    
+  - title: "pm2-bar"
+    subtitle: "macOS menu bar app mirroring pm2 list output"
+    url: "https://github.com/vianhanif/pm2-bar"
+    
+  - title: "git-review-cli"
+    subtitle: "Provider-agnostic code review toolkit"
+    url: "https://github.com/vianhanif/git-review-cli"
+    
+  - title: "mac-cleanup-go"
+    subtitle: "macOS maintenance tool with animated terminal UI"
+    url: "https://github.com/vianhanif/mac-cleanup-go"

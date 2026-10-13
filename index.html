@@ -1,4 +1,96 @@
 ---
-layout: home
-# Index page
+layout: default
+# Custom narrative homepage (Option 4)
 ---
+
+{% include lang.html %}
+
+{%- comment -%}
+  Option 4: Hero + Start-Here + Timeline + Milestones. Zero JS.
+  Featured posts are matched from _data/homepage.yml by URL.
+{%- endcomment -%}
+
+{%- assign featured_urls = site.data.homepage.start_here.posts -%}
+{%- assign all_normal = site.posts | where_exp: 'item', 'item.hidden != true and item.date <= site.time' -%}
+
+{%- comment -%} Preserve the curated YAML order for featured posts {%- endcomment -%}
+{%- assign featured_posts = '' | split: '' -%}
+{%- for url in featured_urls -%}
+  {%- assign match = all_normal | where: 'url', url | first -%}
+  {%- if match -%}
+    {%- assign featured_posts = featured_posts | push: match -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- assign timeline_posts = '' | split: '' -%}
+{%- for post in all_normal -%}
+  {%- unless featured_urls contains post.url -%}
+    {%- assign timeline_posts = timeline_posts | push: post -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="home-section home-hero">
+    <h1>{{ site.title }}</h1>
+    <p>{{ site.data.homepage.hero.subtitle }}</p>
+    <div class="home-hero-cta">
+      <a href="#start-here" class="primary">Read featured posts</a>
+      <a href="/about/">About me</a>
+      <a href="/categories/">Browse by category</a>
+    </div>
+  </section>
+
+  {%- comment -%} START HERE {%- endcomment -%}
+  <section id="start-here" class="home-section">
+    <div class="home-section-label">{{ site.data.homepage.start_here.title }}</div>
+    <p class="home-section-desc">{{ site.data.homepage.start_here.description }}</p>
+    <div class="feature-grid">
+      {%- for post in featured_posts -%}
+        <a href="{{ post.url | relative_url }}" class="feature-card">
+          <span class="step">{{ forloop.index }}</span>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content | strip_html | truncatewords: 16 }}</p>
+        </a>
+      {%- endfor -%}
+    </div>
+  </section>
+
+  {%- comment -%} TIMELINE {%- endcomment -%}
+  <section class="home-section">
+    <div class="home-section-label">{{ site.data.homepage.timeline.title }}</div>
+    <ul class="home-timeline">
+      {%- assign tl_limit = site.data.homepage.timeline.limit | default: 10 -%}
+      {%- for post in timeline_posts limit: tl_limit -%}
+        <li>
+          <time class="tl-date">{{ post.date | date: "%b %d, %Y" }}</time>
+          <a href="{{ post.url | relative_url }}" class="tl-title">{{ post.title }}</a>
+          {%- if post.categories.size > 0 -%}
+            <div class="tl-sub">
+              {%- for cat in post.categories -%}
+                <span>{{ cat }}</span>
+                {%- unless forloop.last -%} &middot; {%- endunless -%}
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+
+      {%- for milestone in site.data.homepage.milestones -%}
+        <li class="milestone">
+          <span class="tl-date">Project</span>
+          <a href="{{ milestone.url }}" class="tl-title" target="_blank" rel="noopener">{{ milestone.title }}</a>
+          <div class="tl-sub">{{ milestone.subtitle }}</div>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    {%- if site.data.homepage.timeline.show_all_link -%}
+      <a href="/archives/" class="home-timeline-more">&rarr; View all posts</a>
+    {%- endif -%}
+  </section>
+
+</div>
+<!-- #post-list -->
+
