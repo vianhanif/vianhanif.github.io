@@ -78,6 +78,83 @@
   border-color: var(--link-hover-color);
 }
 
+/* ---------- hero nav row (replaces killed topbar tabs) ---------- */
+.home-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--main-border-color);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.home-nav a {
+  color: var(--text-muted-color);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.home-nav a:hover {
+  color: var(--link-color);
+}
+
+.home-nav-sep {
+  flex-grow: 1;
+}
+
+.home-nav-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+/* ---------- about (folded into first-read) ---------- */
+.home-about p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-color);
+  margin: 0 0 0.85rem;
+  max-width: 62ch;
+}
+
+.home-about p:last-child {
+  margin-bottom: 0;
+}
+
+.home-about-meta {
+  font-size: 0.85rem !important;
+  color: var(--text-muted-color) !important;
+  margin-top: 1rem !important;
+}
+
+.home-about-meta a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.home-about-meta a:hover {
+  text-decoration: underline;
+}
+
+.home-about-sep {
+  margin: 0 0.4rem;
+  color: var(--main-border-color);
+}
+
+.home-about-cv a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.home-about-cv a:hover {
+  text-decoration: underline;
+}
+
 /* ---------- start here (featured) ---------- */
 .feature-grid {
   display: grid;

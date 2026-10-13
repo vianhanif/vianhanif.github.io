@@ -1,8 +1,12 @@
 ---
-# the default layout is 'page'
-icon: fas fa-info-circle
-order: 4
+layout: page
+title: About
+permalink: /about/
 ---
+
+> **Most of the content below now appears on the homepage.** This page is kept for persistent reference links.
+
+## This site
 
 This is where I figure things out in public.
 
@@ -12,6 +16,10 @@ The posts here aren't tutorials. They're field notes: _the 403 that wasn't_, _he
 
 If you're looking for polished answers, you won't find them here. If you want to watch someone stumble through interesting problems — sometimes with useful results — you're in the right place.
 
-Code at [GitHub](https://github.com/vianhanif). Writing at [Medium](https://alvian.medium.com). Based in Depok, West Java.
+## Links
 
-📄 [View my CV](/cv/)
+- [GitHub](https://github.com/vianhanif)
+- [Medium](https://alvian.medium.com)
+- [CV](/cv/)
+
+Based in Depok, West Java.

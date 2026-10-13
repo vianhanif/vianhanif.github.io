@@ -38,9 +38,50 @@ title: "vian's notes"
     <p>{{ site.data.homepage.hero.subtitle }}</p>
     <div class="home-hero-cta">
       <a href="#start-here" class="primary">Read featured posts</a>
-      <a href="/about/">About me</a>
+      <a href="#about">About me</a>
       <a href="/tags/">Browse by tags</a>
     </div>
+
+    {%- comment -%} Site nav — replaces topbar/__ tabs (killed) {%- endcomment -%}
+    <nav class="home-nav" aria-label="Site sections">
+      <a href="#about">About</a>
+      <a href="/tags/">Tags</a>
+      <a href="/archives/">Archive</a>
+      {%- if site.data.contact -%}
+        <span class="home-nav-sep" aria-hidden="true"></span>
+        {%- for c in site.data.contact -%}
+          {%- assign _icon = c.icon | default: '' -%}
+          {%- if c.url -%}
+            <a href="{{ c.url }}" class="home-nav-icon" target="_blank" rel="noopener" aria-label="{{ c.type }}"><i class="{{ _icon }}"></i></a>
+          {%- elsif c.type == 'github' and site.github.username -%}
+            <a href="https://github.com/{{ site.github.username }}" class="home-nav-icon" target="_blank" rel="noopener" aria-label="github"><i class="{{ _icon }}"></i></a>
+          {%- elsif c.type == 'email' and site.social.email -%}
+            <a href="mailto:{{ site.social.email }}" class="home-nav-icon" aria-label="email"><i class="{{ _icon }}"></i></a>
+          {%- elsif c.type == 'rss' -%}
+            <a href="{{ '/feed.xml' | relative_url }}" class="home-nav-icon" aria-label="rss"><i class="{{ _icon }}"></i></a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </nav>
+  </section>
+
+  {%- comment -%} ABOUT (about-me text folded into first-read; nav tabs removed) {%- endcomment -%}
+  <section id="about" class="home-section home-about">
+    <div class="home-section-label">{{ site.data.homepage.about.title }}</div>
+    {%- for para in site.data.homepage.about.paragraphs -%}
+      {{ para | markdownify }}
+    {%- endfor -%}
+    <p class="home-about-meta">
+      {%- for link in site.data.homepage.about.links -%}
+        <a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.text }}</a>
+        {%- unless forloop.last -%} &middot; {%- endunless -%}
+      {%- endfor -%}
+      <span class="home-about-sep">|</span>
+      {{ site.data.homepage.about.location }}
+    </p>
+    <p class="home-about-cv">
+      <a href="{{ site.data.homepage.about.cv_link | relative_url }}">View my CV &rarr;</a>
+    </p>
   </section>
 
   {%- comment -%} START HERE {%- endcomment -%}
