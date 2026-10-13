@@ -32,13 +32,17 @@ $prose: 68ch;
     }
   }
 
-  /* Kill the 3-col grid: main centered at prose width, panel hidden */
+  /* Kill the 3-col grid: main sits near the nav (left-weighted), panel hidden.
+     Dead-center leaves a large dead zone between sidebar and prose at wide
+     viewports; a modest left offset reads tighter and more editorial. */
   #main-wrapper > .container > .row {
     display: block !important;
 
     > main {
       max-width: $prose;
-      margin-inline: auto;
+      margin-left: 0;
+      margin-right: auto;
+      padding-left: clamp(1.5rem, 5vw, 4rem);
       float: none;
     }
 
@@ -47,9 +51,12 @@ $prose: 68ch;
     }
   }
 
+  /* Footer tracks the same column as the prose */
   #tail-wrapper {
     max-width: $prose;
-    margin-inline: auto;
+    margin-left: 0;
+    margin-right: auto;
+    padding-left: clamp(1.5rem, 5vw, 4rem);
   }
 }
 
