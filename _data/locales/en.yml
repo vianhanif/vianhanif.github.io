@@ -1,10 +1,5 @@
 # Override Chirpy theme's default license
 
-# Topbar title for pages using `layout: default` (e.g. the homepage).
-# Theme falls back to `page.layout | capitalize` ("Default") when this key is absent.
-layout:
-  default: vian's notes
-
 copyright:
   # Shown at the bottom of the post
   license:
