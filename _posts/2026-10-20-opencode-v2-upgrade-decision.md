@@ -9,7 +9,7 @@ I noticed OpenCode quietly published their V2 release. As someone running V1 acr
 
 ## Why I Noticed V2
 
-The announcement showed up on the docs homepage ([opencode.ai](https://opencode.ai/)): "NEW OpenCode v2 is now available," linking to [opencode.ai/v2](https://opencode.ai/v2). No press release, no changelog email — very much an OpenCode thing.
+The announcement showed up on the docs homepage ([opencode.ai](https://opencode.ai/)): "New OpenCode v2 is now available," linking to [opencode.ai/v2](https://opencode.ai/v2). No press release, no changelog email — just a changelog page at [opencode.ai/changelog](https://opencode.ai/changelog). Very much an OpenCode thing.
 
 I was curious because V1 had been solid but had a natural ceiling around session management, especially after environment changes. I'd already written about one episode: recovering 181 sessions from SQLite after a laptop swap, which meant remapping project IDs and normalizing subpaths by hand. In V1, a session was bound to exact paths and project IDs, so any shift orphaned data.
 
@@ -26,19 +26,21 @@ opencode service status
 # http://127.0.0.1:49374
 ```
 
-The docs note the service is discovered or started by default, and you can opt into a private server with `--standalone` or point at a specific one with `--server <url>` ([CLI reference](https://opencode.ai/v2/docs/cli/)).
+The docs note the service is discovered or started by default, and you can opt into a private server with `--standalone` or point at a specific one with `--server <url>` ([V2 docs](https://opencode.ai/v2/docs/)).
 
-**2. A new session store.** V2 introduced a `session_v2` table alongside a `project` table that tracks the worktree. My own database tells the story: after migration, `sqlite3 ~/.local/share/opencode/opencode.db "SELECT COUNT(*) FROM session_v2;"` returned 188 rows.
+**2. A new session store.** V2 introduced a `session_v2` table alongside a `project` table that tracks the worktree. My own database tells the story: after migration, `sqlite3 ~/.local/share/opencode/opencode.db "SELECT COUNT(*) FROM session_v2;"` returned 188 rows. It's a live store, not a snapshot — by the time I wrote this up it was 282.
 
 **3. Real session tooling.** `opencode session` now supports `list`, `export`, `import`, and `delete` — JSON in and out. That alone would have made my laptop-swap recovery much less painful.
 
-**4. A browser/app pairing flow.** `opencode pair` prints one-time links to connect a browser or app to the running server ([CLI reference](https://opencode.ai/v2/docs/cli/)).
+**4. A browser/app pairing flow.** `opencode pair` prints one-time links to connect a browser or app to the running server ([V2 docs](https://opencode.ai/v2/docs/)).
+
+**5. Your config file changes shape.** The [migration guide](https://opencode.ai/v2/docs/migrate-v1) names three intentional breaking changes: plugins use a new API (V1 plugin implementations don't run in V2 at all), the server API contract changed, and terminal configuration moves from layered `tui.json(c)` files into one global `~/.config/opencode/cli.json`. Alongside those, a batch of keys got renamed — `agent` and `mode` → `agents`, `provider` → `providers`, `plugin` → `plugins`, `command` → `commands`, `snapshot` → `snapshots`, `attachment` → `media`, `bash` → `shell`, `task` → `subagent`, `write`/`patch` → `edit`. V2 also stopped asking before touching paths outside your project: `external_directory` is allowed by default. Most of that is auto-translated on first start, but the guide is worth reading before you assume.
 
 ## The Benefits That Made Me Commit
 
 **Session persistence that survives environment changes.** This was my number one reason. The `project` + `session_v2` schema tracks worktrees rather than raw paths, which means fewer orphaned records when paths shift. My recovery post documents three failure modes I still had to fix by hand — so it's not magic — but the foundation is far more resilient than V1's flat path binding.
 
-**Everything routes through one service.** Config, permissions, and tool execution live in the server, not in each invocation. That's a cleaner mental model and a cleaner debugging surface.
+**Everything routes through one service.** Config, permissions, and tool execution live in the server, not in each invocation. That's a cleaner mental model and a cleaner debugging surface. The one carve-out: terminal client settings stay client-side, in `~/.config/opencode/cli.json` — the background service doesn't load that file.
 
 **First-class session import/export.** Being able to move sessions as JSON is the kind of boring, valuable capability that makes migrations sane.
 
@@ -52,7 +54,7 @@ What I *can* measure is the current binary on this machine:
 
 ```bash
 time opencode --version
-# real 0.08s–0.10s
+# real ~0.12s
 ```
 
 That's a single cold number, not a before/after comparison. The structural reason it should feel faster is the background service: since one server persists, subsequent clients skip the discovery-and-init work V1 did on every invocation. That's an argument from architecture, not from data. If you want a real comparison, measure `time opencode` on V1 and V2 yourself on the same machine.
@@ -115,7 +117,7 @@ On my machine the V2 store already held 188 sessions, and `opencode session list
 opencode session list      # sessions for the current project
 opencode                   # open the TUI
 opencode pair              # browser/app pairing links
-opencode session export    # JSON out, when you want a portable copy
+opencode session export <session-id>   # JSON out, when you want a portable copy
 ```
 
 ### Step 6: Keep Backups, Then Clean Up
@@ -143,6 +145,7 @@ For me the migration was worth it: no data loss, a cleaner architecture undernea
 
 - [OpenCode Intro (V1 vs V2 install note)](https://opencode.ai/docs/)
 - [OpenCode V2 Getting Started](https://opencode.ai/v2/docs/)
-- [OpenCode V2 CLI Reference](https://opencode.ai/v2/docs/cli/)
+- [OpenCode V2 CLI settings](https://opencode.ai/v2/docs/cli/config/)
+- [OpenCode V1 → V2 migration guide](https://opencode.ai/v2/docs/migrate-v1)
 - [Saving OpenCode Sessions After Laptop Swap](/posts/saving-opencode-sessions-after-laptop-swap/)
-- [OpenCode GitHub Releases](https://github.com/anomalyco/opencode/releases)
+- [OpenCode changelog](https://opencode.ai/changelog)

@@ -45,5 +45,5 @@ opencode, developer-tools, sqlite, technical, migration
 ## Sources
 - [OpenCode Intro](https://opencode.ai/docs/)
 - [OpenCode V2 Getting Started](https://opencode.ai/v2/docs/)
-- [OpenCode V2 CLI Reference](https://opencode.ai/v2/docs/cli/)
+- [OpenCode V2 CLI settings](https://opencode.ai/v2/docs/cli/config/)
 - [SQLite `SELECT` statement](https://www.sqlite.org/lang_select.html)

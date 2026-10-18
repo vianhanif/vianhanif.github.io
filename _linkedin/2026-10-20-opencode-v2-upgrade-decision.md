@@ -22,7 +22,7 @@ Here's how I decided:
 - Everything new lands on V2 first
 
 **The honest part about speed**
-Everyone says "it's faster." I can't prove it against V1 — I never measured a baseline. What I *can* do is measure the current binary: `time opencode --version` → ~0.08s. That's one number, not a comparison. The architectural reason it should be faster is the persistent service. That's an argument, not data.
+Everyone says "it's faster." I can't prove it against V1 — I never measured a baseline. What I *can* do is measure the current binary: `time opencode --version` → ~0.12s. That's one number, not a comparison. The architectural reason it should be faster is the persistent service. That's an argument, not data.
 
 **The migration**
 Back up state and data, replace the binary (V1 and V2 can't coexist under the `opencode` command), start the service, verify with SQL, test the core workflows. Low risk if you back up first.
