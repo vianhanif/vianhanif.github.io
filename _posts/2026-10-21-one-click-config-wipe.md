@@ -1,11 +1,11 @@
 ---
 title: "One Trailing Comma, One Wiped Config: A Data-Loss Bug in 9router's OpenCode Writer"
-date: 2026-10-11
+date: 2026-10-21
 tags: [opencode, 9router, technical, postmortem, data-loss]
 layout: post
 ---
 
-I found a bug last week that would have deleted my OpenCode configuration — MCP servers, plugins, custom models, all of it — after a single click on a button whose entire job is to *write* that config. Not corrupt it. Not partially update it. Replace it with an empty file and report success.
+I found a bug a few days ago that would have deleted my OpenCode configuration — MCP servers, plugins, custom models, all of it — after a single click on a button whose entire job is to *write* that config. Not corrupt it. Not partially update it. Replace it with an empty file and report success.
 
 It was in `src/app/api/cli-tools/opencode-settings/route.js` — the endpoint that generates your OpenCode config from the 9router dashboard — and it's the more serious of the two bugs I found there. That one made my agent use the wrong transport. This one eats user data. The fix shipped as [PR #45](https://github.com/vianhanif/9router/pull/45), `1ce75921`.
 

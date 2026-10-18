@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "OpenCode V2: Deciding to Upgrade and the Journey There"
-date: 2026-10-02
+date: 2026-10-12
 linked_posts:
   - /posts/opencode-v2-upgrade-decision/
   - /posts/saving-opencode-sessions-after-laptop-swap/
