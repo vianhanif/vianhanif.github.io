@@ -18,7 +18,7 @@ The code read the existing config file, parsed it, and on failure carried on wit
 
 The trigger is mundane, which is what makes it bad. [OpenCode config files are JSONC](https://opencode.ai/docs/config) — comments and trailing commas are allowed. A file with a trailing comma is perfectly valid for the tool and a hard failure for `JSON.parse`. The same endpoint already had a read helper that stripped trailing commas, so the file had two parsers with contradictory expectations, and the destructive one won.
 
-The damage is proportional to how much you've configured, and it's silent: the request returns 200, the dashboard says applied, and the JSON left on disk is valid — just empty. You find out days later when a tool your agent used to have stopped existing, and you blame the tool.
+The damage is proportional to how much you've configured, and it's silent: the request returns 200, the dashboard says applied, and the JSON left on disk is valid — but it is not yours anymore: only the entry the handler just wrote, everything else gone. You find out days later when a tool your agent used to have stopped existing, and you blame the tool.
 
 I found it while writing a changelog entry for [an unrelated fix in the same file](https://vianhanif.link/posts/opencode-v2-provider-traps/). Describing the write path made me read it line by line, which no amount of testing had made me do — my own config has no comments, so the bug never fired on my machine.
 
