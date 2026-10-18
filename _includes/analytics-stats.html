@@ -1,0 +1,22 @@
+{%- if site.analytics_beacon.enabled and site.analytics_beacon.endpoint != '' -%}
+  {%- assign publish_ok = true -%}
+  {%- if page.collection == 'posts' and page.date > site.time -%}{%- assign publish_ok = false -%}{%- endif -%}
+  {%- unless page.collection == 'linkedin' or page.collection == 'medium' -%}
+    {%- if publish_ok -%}
+      {%- assign target_slug = include.slug | default: page.slug -%}
+<script>
+(function() {
+  var endpoint = '{{ site.analytics_beacon.endpoint | escape }}';
+  var slug = '{{ target_slug | escape }}';
+  var el = document.currentScript?.parentElement || document.getElementById('analytics-stats-' + slug);
+  fetch(endpoint + '/a/v/' + slug)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (el) el.innerHTML = '<span class="analytics-count" title="Unique visitors">' + (d.unique_visitors || 0) + '</span>';
+    })
+    .catch(function(){ /* silent */ });
+})();
+</script>
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}
