@@ -1,0 +1,21 @@
+{%- if site.analytics_beacon.enabled and site.analytics_beacon.endpoint != '' -%}
+  {%- assign publish_ok = true -%}
+  {%- if page.collection == 'posts' and page.date > site.time -%}{%- assign publish_ok = false -%}{%- endif -%}
+  {%- unless page.collection == 'linkedin' or page.collection == 'medium' -%}
+    {%- if publish_ok -%}
+<script>
+(function() {
+  if (window.analyticsBeaconSent) return;
+  var endpoint = '{{ site.analytics_beacon.endpoint | escape }}';
+  var slug = '{{ page.slug | escape }}';
+  fetch(endpoint + '/a/v', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ slug: slug, referrer: document.referrer, ua: navigator.userAgent }),
+    keepalive: true
+  }).then(function(r){ window.analyticsBeaconSent = r.ok; });
+})();
+</script>
+    {%- endif -%}
+  {%- endunless -%}
+{%- endif -%}

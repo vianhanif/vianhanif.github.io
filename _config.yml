@@ -133,3 +133,10 @@ jekyll-archives:
   permalinks:
     tag: /tags/:name/
     category: /categories/:name/
+
+# Privacy-first analytics scaffold (WIP, disabled by default)
+# See _includes/analytics-tracker.html and _includes/analytics-stats.html.
+# Do NOT rename to `analytics:` — Chirpy uses that key for provider config.
+analytics_beacon:
+  enabled: false
+  endpoint: ""
