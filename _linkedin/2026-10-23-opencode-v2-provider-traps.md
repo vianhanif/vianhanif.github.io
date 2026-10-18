@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "OpenCode V2 + 9router: 9 Traps in a Custom Provider Setup"
-date: 2026-10-15
+date: 2026-10-23
 linked_posts:
   - /posts/opencode-v2-provider-traps/
   - /posts/one-click-config-wipe/

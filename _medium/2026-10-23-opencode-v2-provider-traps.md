@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "OpenCode V2 + 9router: 9 Traps in a Custom Provider Setup"
-date: 2026-10-15
+date: 2026-10-23
 linked_posts:
   - /posts/opencode-v2-provider-traps/
   - /posts/one-click-config-wipe/
@@ -36,7 +36,7 @@ The last trap is the one that can cost you data: back up your config before any 
 opencode, developer-tools, debugging, technical, tips
 
 ## Publish Timing
-→ Blog series: October 12 → October 21, 2026
+→ Blog series: October 20 → October 29, 2026
 → Medium: D-0 (same day as blog publish)
 → LinkedIn: D+1
 

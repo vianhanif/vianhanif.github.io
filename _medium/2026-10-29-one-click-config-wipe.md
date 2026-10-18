@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "One Trailing Comma, One Wiped Config: A Data-Loss Bug in 9router's OpenCode Writer"
-date: 2026-10-21
+date: 2026-10-29
 linked_posts:
   - /posts/one-click-config-wipe/
   - /posts/opencode-v2-provider-traps/
@@ -34,7 +34,7 @@ Rules I now apply to any config writer: a parse failure is never "start fresh"; 
 opencode, developer-tools, debugging, technical, postmortem, data-loss
 
 ## Publish Timing
-→ Blog series: October 12 → October 21, 2026
+→ Blog series: October 20 → October 29, 2026
 → Medium: D-0 (same day as blog publish)
 → LinkedIn: D+1
 

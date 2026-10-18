@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "What Changed in OpenCode V2"
-date: 2026-10-18
+date: 2026-10-26
 linked_posts:
   - /posts/what-changed-in-opencode-v2/
   - /posts/opencode-v2-upgrade-decision/
@@ -34,7 +34,7 @@ But the core story is this: the server stays open, your work is where you left i
 opencode, developer-tools, technical, architecture, explainer
 
 ## Publish Timing
-→ Blog: October 18, 2026
+→ Blog: October 26, 2026
 → Medium: D-0 (same day as blog)
 → LinkedIn: D+1
 

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "OpenCode V2: Deciding to Upgrade and the Journey There"
-date: 2026-10-12
+date: 2026-10-20
 linked_posts:
   - /posts/opencode-v2-upgrade-decision/
   - /posts/saving-opencode-sessions-after-laptop-swap/
@@ -30,7 +30,7 @@ The verdict: if you rely on session history or work across machines, V2 is a cle
 opencode, developer-tools, sqlite, technical, migration
 
 ## Publish Timing
-→ Blog series: October 12 → October 21, 2026
+→ Blog series: October 20 → October 29, 2026
 → Medium: D-0 (same day as blog publish)
 → LinkedIn: D+1
 

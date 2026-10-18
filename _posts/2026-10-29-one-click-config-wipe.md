@@ -1,6 +1,6 @@
 ---
 title: "One Trailing Comma, One Wiped Config: A Data-Loss Bug in 9router's OpenCode Writer"
-date: 2026-10-21
+date: 2026-10-29
 tags: [opencode, 9router, technical, postmortem, data-loss]
 layout: post
 ---

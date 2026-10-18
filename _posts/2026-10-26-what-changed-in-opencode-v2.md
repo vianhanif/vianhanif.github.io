@@ -1,6 +1,6 @@
 ---
 title: "What Changed in OpenCode V2"
-date: 2026-10-18
+date: 2026-10-26
 tags: [opencode, tooling, explainer, architecture]
 layout: post
 ---

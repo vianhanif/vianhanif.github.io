@@ -1,6 +1,6 @@
 ---
 title: "OpenCode V2: Deciding to Upgrade and the Journey There"
-date: 2026-10-12
+date: 2026-10-20
 tags: [opencode, tooling, migration, technical, upgrade]
 layout: post
 ---

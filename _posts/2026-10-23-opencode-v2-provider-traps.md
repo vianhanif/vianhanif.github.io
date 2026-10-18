@@ -1,6 +1,6 @@
 ---
 title: "OpenCode V2 + 9router: 9 Traps in a Custom Provider Setup"
-date: 2026-10-15
+date: 2026-10-23
 tags: [opencode, 9router, technical, tips, guide]
 layout: post
 ---

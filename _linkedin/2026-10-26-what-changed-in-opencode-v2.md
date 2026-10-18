@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "What Changed in OpenCode V2"
-date: 2026-10-18
+date: 2026-10-26
 linked_posts:
   - /posts/what-changed-in-opencode-v2/
   - /posts/opencode-v2-upgrade-decision/
