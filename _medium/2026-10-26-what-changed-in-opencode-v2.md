@@ -22,9 +22,9 @@ V2 is the workshop. One background server runs for you automatically, and it rem
 
 Sessions are portable: `opencode session export <ID> > file.json` on one machine, `opencode session import file.json` on another, and you're back where you started.
 
-The provider system is flexible. You don't have to use Anthropic or OpenAI. Point your config at a custom endpoint or a local model, and OpenCode talks to it — no reinstall, just a JSON block with your address and credentials. For me that meant wiring it to my own [routing proxy](https://vianhanif.link/posts/what-i-changed-in-9router/). One character wrong in the config string and OpenCode silently picks the wrong backend — [I traced that bug for two days](https://vianhanif.link/posts/opencode-v2-provider-traps/).
+The provider system is flexible. You don't have to use Anthropic or OpenAI. Point your config at a custom endpoint or a local model, and OpenCode talks to it — no reinstall, just a JSON block with your address and credentials. For me that meant wiring it to my own [routing proxy](https://vianhanif.link/posts/what-i-changed-in-9router/). One character wrong in the config string and OpenCode can end up on the wrong backend — [I traced that bug for two days](https://vianhanif.link/posts/opencode-v2-provider-traps/).
 
-For bigger setups: you get different agents with different permissions (read-only builders, builders who can edit), skills that load on-demand, MCP servers that talk to external systems, LSP diagnostics fed back to the agent, and the option to run it from the web or script it over HTTP. None of that breaks if you ignore it.
+For bigger setups: you get different agents with different permissions (read-only researchers, builders who can edit), skills that load on-demand, MCP servers that talk to external systems, and the option to run it from the web or script it over HTTP. None of that breaks if you ignore it. One thing went backwards: V2 doesn't run LSP anymore — it still reads the config without complaining, but no language servers and no diagnostics, so pipe lint and type errors in yourself.
 
 But the core story is this: the server stays open, your work is where you left it, and you pick the provider. Everything else is optional elaboration on that shape.
 

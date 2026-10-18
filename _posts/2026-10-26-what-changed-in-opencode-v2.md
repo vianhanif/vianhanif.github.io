@@ -30,7 +30,7 @@ V1 had a background server and a session database, but you had to manage it by h
 V2 runs one background server for you automatically, and it remembers *which folder you were in*. Every command you type just connects to the running server and knows exactly where to pick up.
 
 ```bash
-opencode service status     # it's already running, and it says so
+opencode service status     # prints the server URL if it's up
 opencode service restart    # restart it without touching anything else
 ```
 
@@ -80,7 +80,7 @@ Two things worth noticing:
 - **You pick the address and the password.** Nothing is hardwired. Point it at a different server and the same agent talks to a different backend — no reinstall, no relearning.
 - **Secrets can be pulled from your environment instead of pasted in.** Config supports `{env:VAR_NAME}` and `{file:path}` substitutions ([docs](https://opencode.ai/docs/config)), so the file can say "get the key from here" without containing the key.
 
-Fair warning, earned the hard way: the `package` line is brittle. One wrong character and OpenCode silently picks the wrong backend — [I spent two days tracing that bug](/posts/opencode-v2-provider-traps/) before realizing it was a slash-vs-hyphen typo in the config.
+Fair warning, earned the hard way: the `package` line is brittle. One wrong character and OpenCode can end up on the wrong backend — [I spent two days tracing that bug](/posts/opencode-v2-provider-traps/) before realizing it was a slash-vs-hyphen typo in the config.
 
 ### 4. Each job gets its own hand
 
@@ -88,7 +88,7 @@ OpenCode comes with different "agents" — same as having a builder, a planner, 
 
 - Some can edit files. Some are read-only by design.
 - You pick one with Tab, or name one with `@`.
-- The difference is enforced, not decorative: permissions live in config and OpenCode actually asks before touching anything it shouldn't ([permissions](https://opencode.ai/docs/permissions), [agents](https://opencode.ai/docs/agents)).
+- The difference is enforced, not decorative: permissions live in config — but the default is *allow everything*, so the `ask` prompts only show up once you set them. Plan ships with edits and shell set to ask; Build ships wide open ([permissions](https://opencode.ai/docs/permissions), [agents](https://opencode.ai/docs/agents)).
 
 Plain-language version: you decide in advance what the apprentice is allowed to touch, rather than watching nervously.
 
@@ -105,7 +105,9 @@ Skills matter because they're **loaded on demand** — the workshop doesn't read
 
 ### 6. The workshop doesn't have to be your terminal
 
-MCP servers, LSP diagnostics, plugins, and HTTP APIs exist if you want them — but they're optional. For most people, `opencode run "prompt"` in the terminal is enough. For the rest: MCP lets your agent talk to external systems with OAuth handled; LSP feeds your language server's diagnostics back to the agent; the HTTP server lets you script it; editor plugins and a web interface exist if you want the workshop in VS Code or a browser. None of that breaks if you ignore it.
+MCP servers, plugins, and HTTP APIs exist if you want them — but they're optional. For most people, `opencode run "prompt"` in the terminal is enough. For the rest: MCP lets your agent talk to external systems with OAuth handled; the HTTP server lets you script it; editor plugins and a web interface exist if you want the workshop in VS Code or a browser. None of that breaks if you ignore it.
+
+One thing went the other way, and it's the only real step back: **V2 doesn't run LSP.** It still reads your `lsp` config without complaining, but it won't start language servers or surface their diagnostics. If the agent needs to see type errors or lint, pipe that output in yourself — it isn't a setting you're missing.
 
 The point is: **the workshop stays open whether you walk in the front door or use a side entrance.** The server runs; your work is where you left it; you pick the provider. Everything else is elaboration.
 
@@ -114,12 +116,15 @@ The point is: **the workshop stays open whether you walk in the front door or us
 - **It doesn't make the model smarter.** Same model in, same quality out. V2 improves the *plumbing*.
 - **It doesn't remove the need to read what it wrote.** Permissions and approval prompts help; they don't review your diff.
 - **Configs can break.** JSONC is powerful, and the comment-stripping logic can be fragile — [I found a data-loss bug](/posts/opencode-v2-provider-traps/) where a misplaced try-catch would wipe your entire config on a syntax error.
-- **It ships fast and changes it.** Commands and database schema changed between V1 and V2. Check `opencode --help` before trusting a guide, including this one.
+- **It ships fast, and some of that is deliberate breaking change.** V2 calls out three: plugins, the server API, and terminal config. On top of that, commands and database schema churn. Check `opencode --help` before trusting a guide, including this one.
+- **Your V1 plugins don't run in V2.** The plugin API was replaced, not extended. Anything you wrote for V1 needs porting — this is one of the three breaking changes the migration guide names, not an oversight.
+- **The server API changed shape.** If you scripted against V1's API or clients, those contracts are gone. The HTTP server still exists, but the endpoints don't line up.
+- **Terminal config moved to a single global `cli.json`.** The scattered terminal settings from V1 are consolidated into one file. If you had a habit of tweaking terminal state, that habit moves.
 
 ## Where to Start (Five Commands)
 
 ```bash
-opencode service status      # is the workshop open?
+opencode service status      # prints the server URL if it's up
 opencode session list        # what's on the bench?
 opencode auth list           # which keys are loaded?
 opencode models              # what can I cook with?
@@ -140,5 +145,6 @@ If those five work, everything else on this page is a variation.
 - [OpenCode MCP servers](https://opencode.ai/docs/mcp-servers)
 - [OpenCode plugins](https://opencode.ai/docs/plugins)
 - [OpenCode web / server / IDE](https://opencode.ai/docs/web)
+- [OpenCode V1 → V2 migration guide](https://opencode.ai/v2/docs/migrate-v1)
 
 **Earlier in this series:** [Deciding to Upgrade](/posts/opencode-v2-upgrade-decision/) · [9 Traps in a Custom Provider Setup](/posts/opencode-v2-provider-traps/) — or [deeper dives](/posts/saving-opencode-sessions-after-laptop-swap/) on session recovery if you're migrating from V1.
